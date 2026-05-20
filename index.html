@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JOBUP Intérim — Confiance · Accompagnement · Évolution</title>
+<meta name="description" content="JOBUP Intérim · Agence d'intérim spécialisée BTP et tertiaire. Confiance, accompagnement, évolution.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffffff'/%3E%3Cpath d='M6 24 Q14 8 26 6 L24 9 L26 11' stroke='%231e6fdb' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Crect x='9' y='17' width='3' height='6' fill='%2380b4f0'/%3E%3Crect x='14' y='14' width='3' height='9' fill='%231e6fdb'/%3E%3Crect x='19' y='11' width='3' height='12' fill='%230d4fa8'/%3E%3Ccircle cx='10.5' cy='15' r='1.4' fill='%2380b4f0'/%3E%3Ccircle cx='15.5' cy='12' r='1.4' fill='%231e6fdb'/%3E%3Ccircle cx='20.5' cy='9' r='1.4' fill='%230d4fa8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue-1: #0d4fa8;
+    --blue-2: #1e6fdb;
+    --blue-3: #4a8ee8;
+    --blue-4: #80b4f0;
+    --blue-pale: #eaf2fd;
+    --steel-1: #2d3748;
+    --steel-2: #4a5568;
+    --steel-3: #718096;
+    --paper: #ffffff;
+    --paper-2: #f7f9fc;
+    --paper-3: #eef2f7;
+    --line: #e2e8f0;
+    --line-strong: #cbd5e0;
+    --ink: #0f1729;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--blue-2); color: var(--paper); }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s var(--ease);
+  }
+  nav.scrolled {
+    padding: 0.7rem 2rem;
+    border-bottom-color: var(--line);
+    box-shadow: 0 1px 0 rgba(15, 23, 41, 0.04);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo svg { width: 38px; height: 38px; }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-text strong {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+  .logo-text strong .up {
+    color: var(--blue-2);
+  }
+  .logo-text small {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: var(--steel-3);
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-menu a {
+    color: var(--steel-1);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.4rem 0;
+    transition: color 0.3s;
+  }
+  .nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--blue-2);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-menu a:hover { color: var(--blue-2); }
+  .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+  .nav-menu a.active { color: var(--blue-2); }
+
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+  .lang-switch {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 2px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--steel-3);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: 0.05em;
+    transition: all 0.3s var(--ease);
+  }
+  .lang-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .nav-cta {
+    background: var(--blue-2);
+    color: var(--paper);
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s var(--ease);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    box-shadow: 0 4px 12px rgba(30, 111, 219, 0.25);
+  }
+  .nav-cta:hover {
+    background: var(--blue-1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(30, 111, 219, 0.35);
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+  }
+  .nav-toggle svg { width: 22px; height: 22px; stroke: var(--ink); }
+
+  @media (max-width: 900px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: block; }
+    .nav-cta { display: none; }
+    nav { padding: 0.85rem 1.25rem; }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--paper);
+    z-index: 99;
+    transform: translateY(-100%);
+    transition: transform 0.5s var(--ease);
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .mobile-menu.open { transform: translateY(0); }
+  .mobile-menu a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .mobile-menu a:hover { color: var(--blue-2); }
+  .mobile-menu .mobile-cta {
+    margin-top: 2rem;
+    background: var(--blue-2);
+    color: var(--paper);
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 8rem 2rem 4rem;
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--blue-pale);
+    color: var(--blue-1);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(30, 111, 219, 0.15);
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--blue-2);
+    box-shadow: 0 0 0 4px rgba(30, 111, 219, 0.15);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .hero-title {
+    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title .accent {
+    color: var(--blue-2);
+    position: relative;
+    display: inline-block;
+  }
+  .hero-title .accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0.05em;
+    left: 0;
+    right: 0;
+    height: 0.12em;
+    background: var(--blue-2);
+    border-radius: 2px;
+    transform-origin: left;
+    animation: underline 1s var(--ease) 0.8s both;
+    transform: scaleX(0);
+  }
+  @keyframes underline { to { transform: scaleX(1); } }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--steel-2);
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--blue-2);
+    color: var(--paper);
+    box-shadow: 0 6px 16px rgba(30, 111, 219, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--blue-1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(30, 111, 219, 0.4);
+  }
+  .btn-secondary {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--line-strong);
+  }
+  .btn-secondary:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .btn-arrow { transition: transform 0.3s; }
+  .btn:hover .btn-arrow { transform: translateX(3px); }
+
+  .hero-trust {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-trust-item h4 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .hero-trust-item h4 span { color: var(--blue-2); }
+  .hero-trust-item p {
+    font-size: 0.8rem;
+    color: var(--steel-3);
+    margin-top: 0.35rem;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 480px;
+    margin-left: auto;
+  }
+  @media (max-width: 900px) { .hero-visual { margin: 0 auto; max-width: 380px; } }
+
+  .hero-card {
+    position: absolute;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 41, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-card-1 {
+    top: 8%; left: 0;
+    animation-delay: 0s;
+  }
+  .hero-card-2 {
+    bottom: 12%; right: 0;
+    animation-delay: 1.3s;
+  }
+  .hero-card-3 {
+    bottom: 5%; left: 12%;
+    animation-delay: 2.6s;
+  }
+
+  .hero-card-icon {
+    width: 42px; height: 42px;
+    background: var(--blue-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-2);
+    flex-shrink: 0;
+  }
+  .hero-card-icon svg { width: 22px; height: 22px; }
+
+  .hero-card-text strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .hero-card-text span {
+    font-size: 0.72rem;
+    color: var(--steel-3);
+  }
+
+  .hero-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--blue-2), var(--blue-1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    box-shadow: 0 30px 60px -15px rgba(30, 111, 219, 0.5);
+    animation: spin 30s linear infinite;
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .hero-center-inner {
+    text-align: center;
+    animation: spin-reverse 30s linear infinite;
+  }
+  @keyframes spin-reverse { to { transform: rotate(-360deg); } }
+
+  .hero-center svg { width: 60px; height: 60px; }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    background: var(--ink);
+    color: var(--paper);
+    overflow: hidden;
+    padding: 1.25rem 0;
+    margin-top: 2rem;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: scroll 35s linear infinite;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  .marquee-item::after {
+    content: '●';
+    color: var(--blue-2);
+    font-size: 0.5em;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ============ COMMON ============ */
+  section { position: relative; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 2rem; }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--blue-2);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-tag::before, .section-tag::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--blue-2);
+  }
+
+  .h-display {
+    font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .h-display .accent { color: var(--blue-2); }
+
+  .h-desc {
+    color: var(--steel-2);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 1rem auto 0;
+  }
+
+  /* ============ VALUES ============ */
+  .values {
+    padding: 6rem 0;
+    background: var(--paper-2);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .values-grid { grid-template-columns: 1fr; } }
+
+  .value-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .value-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue-2);
+    box-shadow: 0 20px 40px -10px rgba(30, 111, 219, 0.15);
+  }
+
+  .value-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--blue-2);
+    margin-bottom: 1.5rem;
+  }
+
+  .value-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--blue-2), var(--blue-1));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    margin-bottom: 1.5rem;
+    transition: transform 0.4s var(--ease);
+  }
+  .value-card:hover .value-icon { transform: scale(1.08) rotate(-5deg); }
+  .value-icon svg { width: 28px; height: 28px; }
+
+  .value-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .value-desc { color: var(--steel-2); }
+
+  /* ============ SECTORS ============ */
+  .sectors {
+    padding: 6rem 0;
+    background: var(--paper);
+  }
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .sectors-grid { grid-template-columns: 1fr; } }
+
+  .sector-feature {
+    background: linear-gradient(135deg, var(--blue-2) 0%, var(--blue-1) 100%);
+    color: var(--paper);
+    border-radius: 28px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+  }
+  .sector-feature::before {
+    content: '';
+    position: absolute;
+    bottom: -50px; right: -50px;
+    width: 250px; height: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+  .sector-feature::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+  }
+
+  .sector-feature-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+  }
+  .sector-feature h3 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .sector-feature p {
+    max-width: 380px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .sector-feature-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .sector-feature-stat strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .sector-feature-stat span {
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+
+  .sectors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sector-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s var(--ease);
+    cursor: pointer;
+  }
+  .sector-card:hover {
+    background: var(--paper);
+    border-color: var(--blue-2);
+    transform: translateX(4px);
+  }
+  .sector-card-icon {
+    width: 48px; height: 48px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-2);
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease);
+  }
+  .sector-card:hover .sector-card-icon {
+    background: var(--blue-2);
+    color: var(--paper);
+    border-color: var(--blue-2);
+  }
+  .sector-card-icon svg { width: 22px; height: 22px; }
+  .sector-card-text strong {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+  .sector-card-text span {
+    font-size: 0.85rem;
+    color: var(--steel-3);
+  }
+  .sector-card-arrow {
+    margin-left: auto;
+    color: var(--steel-3);
+    transition: all 0.3s var(--ease);
+  }
+  .sector-card:hover .sector-card-arrow {
+    color: var(--blue-2);
+    transform: translateX(4px);
+  }
+
+  /* ============ PROCESS ============ */
+  .process {
+    padding: 6rem 0;
+    background: var(--paper-2);
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 900px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .process-grid { grid-template-columns: 1fr; } }
+
+  .process-step {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.4s var(--ease);
+  }
+  .process-step:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-6px);
+    border-color: var(--ink);
+  }
+  .process-step:hover .step-desc { color: rgba(255, 255, 255, 0.7); }
+
+  .step-num {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-pale);
+    color: var(--blue-2);
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s var(--ease);
+  }
+  .process-step:hover .step-num {
+    background: var(--blue-2);
+    color: var(--paper);
+  }
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .step-desc {
+    font-size: 0.92rem;
+    color: var(--steel-2);
+    transition: color 0.3s;
+  }
+
+  /* ============ STATS BAND ============ */
+  .stats-band {
+    padding: 5rem 0;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .stats-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  @media (max-width: 900px) { .stats-band-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stats-band-item h3 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stats-band-item h3 span { color: var(--blue-3); }
+  .stats-band-item p {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+  }
+
+  /* ============ TESTIMONIAL ============ */
+  .testimonial {
+    padding: 6rem 0;
+    background: var(--paper);
+  }
+  .testimonial-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 3rem;
+    position: relative;
+  }
+  @media (max-width: 600px) { .testimonial-card { padding: 2rem; } }
+
+  .testimonial-quote-mark {
+    font-size: 5rem;
+    color: var(--blue-2);
+    line-height: 0.5;
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+  .testimonial-quote {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    line-height: 1.35;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: -0.015em;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .testimonial-avatar {
+    width: 52px; height: 52px;
+    background: var(--blue-2);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .testimonial-name strong { display: block; font-weight: 700; }
+  .testimonial-name span { color: var(--steel-3); font-size: 0.88rem; }
+  .testimonial-rating {
+    margin-left: auto;
+    color: #f59e0b;
+    font-size: 1.1rem;
+  }
+
+  /* ============ CTA ============ */
+  .cta {
+    padding: 6rem 2rem;
+    background: var(--paper-2);
+  }
+  .cta-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--blue-2) 0%, var(--blue-1) 100%);
+    color: var(--paper);
+    border-radius: 32px;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  @media (max-width: 600px) { .cta-card { padding: 3rem 1.5rem; } }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .cta-desc {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+  .cta-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .cta-card .btn-primary {
+    background: var(--paper);
+    color: var(--blue-2);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  .cta-card .btn-primary:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .cta-card .btn-secondary {
+    background: transparent;
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .cta-card .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--paper);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 0 2rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+  }
+  .footer-brand svg { width: 38px; height: 38px; }
+  .footer-brand .logo-text strong { color: var(--paper); }
+  .footer-brand .logo-text small { color: rgba(255, 255, 255, 0.6); }
+
+  .footer-about {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.92rem;
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .footer-social {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+  }
+  .footer-social:hover {
+    background: var(--blue-2);
+    border-color: var(--blue-2);
+  }
+  .footer-social svg { width: 18px; height: 18px; }
+
+  .footer-col h5 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.25rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .footer-col a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--blue-3); }
+
+  .footer-base {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <a href="index.html" class="logo" aria-label="JOBUP Intérim">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="32" height="32" rx="6" fill="#ffffff"/>
+      <path d="M6 24 Q14 8 26 6 L24 9 L26 11" stroke="#1e6fdb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="9" y="17" width="3" height="6" fill="#80b4f0"/>
+      <rect x="14" y="14" width="3" height="9" fill="#1e6fdb"/>
+      <rect x="19" y="11" width="3" height="12" fill="#0d4fa8"/>
+      <circle cx="10.5" cy="15" r="1.4" fill="#80b4f0"/>
+      <circle cx="15.5" cy="12" r="1.4" fill="#1e6fdb"/>
+      <circle cx="20.5" cy="9" r="1.4" fill="#0d4fa8"/>
+    </svg>
+    <div class="logo-text">
+      <strong>JOB<span class="up">UP</span></strong>
+      <small>Intérim</small>
+    </div>
+  </a>
+
+  <ul class="nav-menu">
+    <li><a href="index.html" class="active" data-i18n="nav.home">Accueil</a></li>
+    <li><a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a></li>
+    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="#process" data-i18n="nav.process">Notre méthode</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Recruter →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-i18n="nav.home">Accueil</a>
+  <a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a>
+  <a href="#services" data-i18n="nav.services">Services</a>
+  <a href="#process" data-i18n="nav.process">Notre méthode</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  <a href="contact.html" class="mobile-cta" data-i18n="nav.cta">Recruter →</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge" data-i18n="hero.badge">Plus de 480 offres actives en ligne</div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.t1">Votre prochaine mission,</span><br>
+        <span class="accent" data-i18n="hero.t2">commence ici.</span>
+      </h1>
+      <p class="hero-desc" data-i18n="hero.desc">
+        JOBUP Intérim accompagne entreprises du BTP et du tertiaire dans leurs recrutements depuis 2014. Confiance, accompagnement, évolution — trois mots, une promesse tenue.
+      </p>
+      <div class="hero-actions">
+        <a href="offres.html" class="btn btn-primary">
+          <span data-i18n="hero.cta1">Voir les offres</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="contact.html" class="btn btn-secondary">
+          <span data-i18n="hero.cta2">Déposer mon CV</span>
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <h4>15<span>k+</span></h4>
+          <p data-i18n="hero.trust1">Missions réalisées</p>
+        </div>
+        <div class="hero-trust-item">
+          <h4>320<span>+</span></h4>
+          <p data-i18n="hero.trust2">Entreprises clientes</p>
+        </div>
+        <div class="hero-trust-item">
+          <h4>48<span>h</span></h4>
+          <p data-i18n="hero.trust3">Délai de placement</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-center">
+        <div class="hero-center-inner">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 24 Q14 8 26 6 L24 9 L26 11" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="9" y="17" width="3" height="6" fill="white" opacity="0.6"/>
+            <rect x="14" y="14" width="3" height="9" fill="white" opacity="0.8"/>
+            <rect x="19" y="11" width="3" height="12" fill="white"/>
+            <circle cx="10.5" cy="15" r="1.4" fill="white" opacity="0.6"/>
+            <circle cx="15.5" cy="12" r="1.4" fill="white" opacity="0.8"/>
+            <circle cx="20.5" cy="9" r="1.4" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-card hero-card-1">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hero-card-text">
+          <strong data-i18n="hero.card1.t">Mission acceptée</strong>
+          <span data-i18n="hero.card1.s">Maçon · 3 mois · Lyon</span>
+        </div>
+      </div>
+
+      <div class="hero-card hero-card-2">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 11l-3-3-3 3M19 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hero-card-text">
+          <strong data-i18n="hero.card2.t">+ 12 candidats</strong>
+          <span data-i18n="hero.card2.s">cette semaine</span>
+        </div>
+      </div>
+
+      <div class="hero-card hero-card-3">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 7.5H22l-6.25 4.5L18 21.5 12 17l-6 4.5 2.25-7.5L2 9.5h7.5L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="currentColor"/></svg>
+        </div>
+        <div class="hero-card-text">
+          <strong>4.9 / 5</strong>
+          <span data-i18n="hero.card3.s">Note moyenne</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">BTP &amp; Construction</span>
+    <span class="marquee-item">Gros œuvre</span>
+    <span class="marquee-item">Second œuvre</span>
+    <span class="marquee-item" data-i18n="m.4">Travaux publics</span>
+    <span class="marquee-item" data-i18n="m.5">Tertiaire</span>
+    <span class="marquee-item" data-i18n="m.6">Comptabilité</span>
+    <span class="marquee-item" data-i18n="m.7">Administration</span>
+    <span class="marquee-item">Logistique</span>
+    <span class="marquee-item">BTP &amp; Construction</span>
+    <span class="marquee-item">Gros œuvre</span>
+    <span class="marquee-item">Second œuvre</span>
+    <span class="marquee-item" data-i18n="m.4">Travaux publics</span>
+    <span class="marquee-item" data-i18n="m.5">Tertiaire</span>
+    <span class="marquee-item" data-i18n="m.6">Comptabilité</span>
+    <span class="marquee-item" data-i18n="m.7">Administration</span>
+    <span class="marquee-item">Logistique</span>
+  </div>
+</div>
+
+<!-- ============ VALUES ============ -->
+<section class="values" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag reveal" data-i18n="val.tag">Nos valeurs</div>
+      <h2 class="h-display reveal">
+        <span data-i18n="val.t1">Trois mots qui définissent</span><br>
+        <span class="accent" data-i18n="val.t2">notre méthode.</span>
+      </h2>
+      <p class="h-desc reveal" data-i18n="val.desc">Une promesse claire pour nos candidats comme pour nos clients.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="value-title" data-i18n="val.v1.t">Confiance</h3>
+        <p class="value-desc" data-i18n="val.v1.d">Transparence sur les missions, les rémunérations, les conditions. Pas de surprise, pas de petits caractères.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-num">02</div>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="value-title" data-i18n="val.v2.t">Accompagnement</h3>
+        <p class="value-desc" data-i18n="val.v2.d">Un consultant dédié, joignable, qui connaît votre dossier. Du brief à la fin de mission, et au-delà.</p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-num">03</div>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 17l-8.5-8.5-5 5L2 7M16 17h6v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="value-title" data-i18n="val.v3.t">Évolution</h3>
+        <p class="value-desc" data-i18n="val.v3.d">L'intérim, c'est aussi monter en compétences. Formations, CACES, habilitations — on investit dans votre avenir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTORS ============ -->
+<section class="sectors">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag reveal" data-i18n="sec.tag">Nos spécialités</div>
+      <h2 class="h-display reveal">
+        <span data-i18n="sec.t1">Deux expertises,</span>
+        <span class="accent" data-i18n="sec.t2">une exigence.</span>
+      </h2>
+    </div>
+
+    <div class="sectors-grid">
+      <div class="sector-feature reveal">
+        <div>
+          <div class="sector-feature-label" data-i18n="sec.feat.label">Spécialité historique</div>
+          <h3 data-i18n="sec.feat.t">BTP &amp; Construction</h3>
+          <p data-i18n="sec.feat.d">Maçons, électriciens, plombiers, conducteurs d'engins, chefs de chantier. Tous nos profils sont vérifiés, qualifiés et habilités selon les normes en vigueur.</p>
+        </div>
+        <div class="sector-feature-stats">
+          <div class="sector-feature-stat">
+            <strong>312</strong>
+            <span data-i18n="sec.feat.s1">offres actives</span>
+          </div>
+          <div class="sector-feature-stat">
+            <strong>9.4k</strong>
+            <span data-i18n="sec.feat.s2">profils en vivier</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sectors-list">
+        <div class="sector-card reveal">
+          <div class="sector-card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M14 9h.01M14 13h.01M14 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sector-card-text">
+            <strong data-i18n="sec.l1.t">Tertiaire &amp; Bureau</strong>
+            <span data-i18n="sec.l1.d">Comptabilité, administration, accueil, secrétariat</span>
+          </div>
+          <div class="sector-card-arrow">→</div>
+        </div>
+        <div class="sector-card reveal">
+          <div class="sector-card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M16 16h4M2 16h2M2 8h2M16 8h4M9 12l5 0M12 14V10M3 22l4-4M21 22l-4-4M3 2l4 4M21 2l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sector-card-text">
+            <strong data-i18n="sec.l2.t">Gros œuvre</strong>
+            <span data-i18n="sec.l2.d">Maçons, coffreurs, ferrailleurs, grutiers</span>
+          </div>
+          <div class="sector-card-arrow">→</div>
+        </div>
+        <div class="sector-card reveal">
+          <div class="sector-card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="sector-card-text">
+            <strong data-i18n="sec.l3.t">Second œuvre</strong>
+            <span data-i18n="sec.l3.d">Électricien, plombier, plaquiste, peintre</span>
+          </div>
+          <div class="sector-card-arrow">→</div>
+        </div>
+        <div class="sector-card reveal">
+          <div class="sector-card-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7M5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="sector-card-text">
+            <strong data-i18n="sec.l4.t">Logistique &amp; Transport</strong>
+            <span data-i18n="sec.l4.d">Caristes, magasiniers, chauffeurs</span>
+          </div>
+          <div class="sector-card-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag reveal" data-i18n="proc.tag">Notre méthode</div>
+      <h2 class="h-display reveal">
+        <span data-i18n="proc.t1">Quatre étapes,</span>
+        <span class="accent" data-i18n="proc.t2">zéro perte de temps.</span>
+      </h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h3 class="step-title" data-i18n="proc.s1.t">Brief</h3>
+        <p class="step-desc" data-i18n="proc.s1.d">On échange 20 minutes. Vous nous décrivez le poste, l'équipe, l'urgence.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <h3 class="step-title" data-i18n="proc.s2.t">Recherche</h3>
+        <p class="step-desc" data-i18n="proc.s2.d">On active notre vivier et notre réseau. Trois candidats validés sous 48h.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <h3 class="step-title" data-i18n="proc.s3.t">Sélection</h3>
+        <p class="step-desc" data-i18n="proc.s3.d">Vous rencontrez les candidats. Vous choisissez. Contrat signé le jour même.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <h3 class="step-title" data-i18n="proc.s4.t">Suivi</h3>
+        <p class="step-desc" data-i18n="proc.s4.d">Point hebdo le premier mois. Garantie de remplacement gratuite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-band-grid">
+      <div class="stats-band-item reveal">
+        <h3><span data-count="15000">0</span><span>+</span></h3>
+        <p data-i18n="sb.1">Missions réalisées depuis 2014</p>
+      </div>
+      <div class="stats-band-item reveal">
+        <h3><span data-count="320">0</span><span>+</span></h3>
+        <p data-i18n="sb.2">Entreprises clientes</p>
+      </div>
+      <div class="stats-band-item reveal">
+        <h3>96<span>%</span></h3>
+        <p data-i18n="sb.3">Taux de satisfaction</p>
+      </div>
+      <div class="stats-band-item reveal">
+        <h3>48<span>h</span></h3>
+        <p data-i18n="sb.4">Délai moyen de placement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="testimonial">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag reveal" data-i18n="t.tag">Ils nous font confiance</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-quote" data-i18n="t.quote">
+        En trois ans avec JOBUP, on a placé 28 intérimaires sur nos chantiers, dont 9 qu'on a embauchés en CDI. Réactivité, sérieux, et surtout des candidats qualifiés. Pas un seul échec.
+      </p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">PD</div>
+        <div class="testimonial-name">
+          <strong>Pierre Durand</strong>
+          <span data-i18n="t.role">Directeur travaux · BTP Solutions Group</span>
+        </div>
+        <div class="testimonial-rating">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="cta-card reveal">
+    <div class="cta-inner">
+      <h2 class="cta-title">
+        <span data-i18n="ct.t1">Un besoin urgent ?</span><br>
+        <span data-i18n="ct.t2">On vous rappelle dans l'heure.</span>
+      </h2>
+      <p class="cta-desc" data-i18n="ct.desc">Décrivez votre besoin en 2 minutes. Un consultant vous rappelle sous 60 minutes ouvrées.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary">
+          <span data-i18n="ct.cta1">Nous contacter</span>
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="offres.html" class="btn btn-secondary" data-i18n="ct.cta2">Consulter les offres</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="#ffffff"/>
+            <path d="M6 24 Q14 8 26 6 L24 9 L26 11" stroke="#1e6fdb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="9" y="17" width="3" height="6" fill="#80b4f0"/>
+            <rect x="14" y="14" width="3" height="9" fill="#1e6fdb"/>
+            <rect x="19" y="11" width="3" height="12" fill="#0d4fa8"/>
+            <circle cx="10.5" cy="15" r="1.4" fill="#80b4f0"/>
+            <circle cx="15.5" cy="12" r="1.4" fill="#1e6fdb"/>
+            <circle cx="20.5" cy="9" r="1.4" fill="#0d4fa8"/>
+          </svg>
+          <div class="logo-text">
+            <strong>JOB<span class="up" style="color:#4a8ee8;">UP</span></strong>
+            <small>Intérim</small>
+          </div>
+        </div>
+        <p class="footer-about" data-i18n="ft.about">Agence d'intérim spécialisée BTP et tertiaire. Confiance, accompagnement, évolution depuis 2014.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="#" class="footer-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="footer-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="ft.h1">Navigation</h5>
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+          <li><a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a></li>
+          <li><a href="#process" data-i18n="nav.process">Notre méthode</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="ft.h2">Secteurs</h5>
+        <ul>
+          <li><a href="offres.html">BTP &amp; Construction</a></li>
+          <li><a href="offres.html" data-i18n="ft.s2">Tertiaire</a></li>
+          <li><a href="offres.html" data-i18n="ft.s3">Logistique</a></li>
+          <li><a href="offres.html" data-i18n="ft.s4">Gros &amp; second œuvre</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="ft.h3">Contact</h5>
+        <ul>
+          <li><a href="tel:+33180000000">+33 1 80 00 00 00</a></li>
+          <li><a href="mailto:contact@jobup-interim.fr">contact@jobup-interim.fr</a></li>
+          <li><span style="color: rgba(255,255,255,0.6)">12 rue de la République<br>75011 Paris</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="ft.h4">Légal</h5>
+        <ul>
+          <li><a href="#" data-i18n="ft.l1">Mentions légales</a></li>
+          <li><a href="#" data-i18n="ft.l2">RGPD</a></li>
+          <li><a href="#" data-i18n="ft.l3">Cookies</a></li>
+          <li><a href="#" data-i18n="ft.l4">CGU</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span data-i18n="ft.copy">© 2026 JOBUP Intérim · Tous droits réservés</span>
+      <span data-i18n="ft.made">Agrément n°IDF/2014/00891</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ TRANSLATIONS ============
+  const i18n = {
+    fr: {
+      'nav.home': 'Accueil', 'nav.jobs': "Offres d'emploi", 'nav.services': 'Services',
+      'nav.process': 'Notre méthode', 'nav.contact': 'Contact', 'nav.cta': 'Recruter →',
+
+      'hero.badge': 'Plus de 480 offres actives en ligne',
+      'hero.t1': 'Votre prochaine mission,',
+      'hero.t2': 'commence ici.',
+      'hero.desc': "JOBUP Intérim accompagne entreprises du BTP et du tertiaire dans leurs recrutements depuis 2014. Confiance, accompagnement, évolution — trois mots, une promesse tenue.",
+      'hero.cta1': 'Voir les offres', 'hero.cta2': 'Déposer mon CV',
+      'hero.trust1': 'Missions réalisées', 'hero.trust2': 'Entreprises clientes', 'hero.trust3': 'Délai de placement',
+      'hero.card1.t': 'Mission acceptée', 'hero.card1.s': 'Maçon · 3 mois · Lyon',
+      'hero.card2.t': '+ 12 candidats', 'hero.card2.s': 'cette semaine',
+      'hero.card3.s': 'Note moyenne',
+
+      'm.4': 'Travaux publics', 'm.5': 'Tertiaire', 'm.6': 'Comptabilité', 'm.7': 'Administration',
+
+      'val.tag': 'Nos valeurs',
+      'val.t1': 'Trois mots qui définissent', 'val.t2': 'notre méthode.',
+      'val.desc': 'Une promesse claire pour nos candidats comme pour nos clients.',
+      'val.v1.t': 'Confiance',
+      'val.v1.d': 'Transparence sur les missions, les rémunérations, les conditions. Pas de surprise, pas de petits caractères.',
+      'val.v2.t': 'Accompagnement',
+      'val.v2.d': "Un consultant dédié, joignable, qui connaît votre dossier. Du brief à la fin de mission, et au-delà.",
+      'val.v3.t': 'Évolution',
+      'val.v3.d': "L'intérim, c'est aussi monter en compétences. Formations, CACES, habilitations — on investit dans votre avenir.",
+
+      'sec.tag': 'Nos spécialités',
+      'sec.t1': 'Deux expertises,', 'sec.t2': 'une exigence.',
+      'sec.feat.label': 'Spécialité historique', 'sec.feat.t': 'BTP & Construction',
+      'sec.feat.d': "Maçons, électriciens, plombiers, conducteurs d'engins, chefs de chantier. Tous nos profils sont vérifiés, qualifiés et habilités selon les normes en vigueur.",
+      'sec.feat.s1': 'offres actives', 'sec.feat.s2': 'profils en vivier',
+      'sec.l1.t': 'Tertiaire & Bureau', 'sec.l1.d': 'Comptabilité, administration, accueil, secrétariat',
+      'sec.l2.t': 'Gros œuvre', 'sec.l2.d': 'Maçons, coffreurs, ferrailleurs, grutiers',
+      'sec.l3.t': 'Second œuvre', 'sec.l3.d': 'Électricien, plombier, plaquiste, peintre',
+      'sec.l4.t': 'Logistique & Transport', 'sec.l4.d': 'Caristes, magasiniers, chauffeurs',
+
+      'proc.tag': 'Notre méthode',
+      'proc.t1': 'Quatre étapes,', 'proc.t2': 'zéro perte de temps.',
+      'proc.s1.t': 'Brief', 'proc.s1.d': "On échange 20 minutes. Vous nous décrivez le poste, l'équipe, l'urgence.",
+      'proc.s2.t': 'Recherche', 'proc.s2.d': 'On active notre vivier et notre réseau. Trois candidats validés sous 48h.',
+      'proc.s3.t': 'Sélection', 'proc.s3.d': 'Vous rencontrez les candidats. Vous choisissez. Contrat signé le jour même.',
+      'proc.s4.t': 'Suivi', 'proc.s4.d': 'Point hebdo le premier mois. Garantie de remplacement gratuite.',
+
+      'sb.1': 'Missions réalisées depuis 2014',
+      'sb.2': 'Entreprises clientes',
+      'sb.3': 'Taux de satisfaction',
+      'sb.4': 'Délai moyen de placement',
+
+      't.tag': 'Ils nous font confiance',
+      't.quote': "En trois ans avec JOBUP, on a placé 28 intérimaires sur nos chantiers, dont 9 qu'on a embauchés en CDI. Réactivité, sérieux, et surtout des candidats qualifiés. Pas un seul échec.",
+      't.role': 'Directeur travaux · BTP Solutions Group',
+
+      'ct.t1': 'Un besoin urgent ?',
+      'ct.t2': "On vous rappelle dans l'heure.",
+      'ct.desc': 'Décrivez votre besoin en 2 minutes. Un consultant vous rappelle sous 60 minutes ouvrées.',
+      'ct.cta1': 'Nous contacter', 'ct.cta2': 'Consulter les offres',
+
+      'ft.about': "Agence d'intérim spécialisée BTP et tertiaire. Confiance, accompagnement, évolution depuis 2014.",
+      'ft.h1': 'Navigation', 'ft.h2': 'Secteurs', 'ft.h3': 'Contact', 'ft.h4': 'Légal',
+      'ft.s2': 'Tertiaire', 'ft.s3': 'Logistique', 'ft.s4': 'Gros & second œuvre',
+      'ft.l1': 'Mentions légales', 'ft.l2': 'RGPD', 'ft.l3': 'Cookies', 'ft.l4': 'CGU',
+      'ft.copy': '© 2026 JOBUP Intérim · Tous droits réservés',
+      'ft.made': 'Agrément n°IDF/2014/00891',
+    },
+    en: {
+      'nav.home': 'Home', 'nav.jobs': 'Job offers', 'nav.services': 'Services',
+      'nav.process': 'Our method', 'nav.contact': 'Contact', 'nav.cta': 'Hire →',
+
+      'hero.badge': 'Over 480 active jobs online',
+      'hero.t1': 'Your next mission',
+      'hero.t2': 'starts here.',
+      'hero.desc': 'JOBUP Intérim supports construction and office companies with their hiring since 2014. Trust, support, growth — three words, one delivered promise.',
+      'hero.cta1': 'Browse jobs', 'hero.cta2': 'Submit my CV',
+      'hero.trust1': 'Completed missions', 'hero.trust2': 'Client companies', 'hero.trust3': 'Placement time',
+      'hero.card1.t': 'Mission accepted', 'hero.card1.s': 'Mason · 3 months · Lyon',
+      'hero.card2.t': '+ 12 candidates', 'hero.card2.s': 'this week',
+      'hero.card3.s': 'Average rating',
+
+      'm.4': 'Public works', 'm.5': 'Office', 'm.6': 'Accounting', 'm.7': 'Admin',
+
+      'val.tag': 'Our values',
+      'val.t1': 'Three words that define', 'val.t2': 'our method.',
+      'val.desc': 'A clear promise for our candidates and our clients alike.',
+      'val.v1.t': 'Trust',
+      'val.v1.d': 'Transparency on missions, pay, conditions. No surprises, no fine print.',
+      'val.v2.t': 'Support',
+      'val.v2.d': 'A dedicated consultant who knows your file. From brief to mission end, and beyond.',
+      'val.v3.t': 'Growth',
+      'val.v3.d': 'Temp work means upskilling too. Training, certifications, qualifications — we invest in your future.',
+
+      'sec.tag': 'Our specialties',
+      'sec.t1': 'Two expertise areas,', 'sec.t2': 'one standard.',
+      'sec.feat.label': 'Historic specialty', 'sec.feat.t': 'Construction',
+      'sec.feat.d': 'Masons, electricians, plumbers, machine operators, site managers. All our profiles are verified, qualified and certified to current standards.',
+      'sec.feat.s1': 'active jobs', 'sec.feat.s2': 'pool profiles',
+      'sec.l1.t': 'Office & Admin', 'sec.l1.d': 'Accounting, admin, reception, secretarial',
+      'sec.l2.t': 'Structural', 'sec.l2.d': 'Masons, formworkers, steel fixers, crane operators',
+      'sec.l3.t': 'Finishing', 'sec.l3.d': 'Electrician, plumber, plasterer, painter',
+      'sec.l4.t': 'Logistics & Transport', 'sec.l4.d': 'Forklift, warehouse, drivers',
+
+      'proc.tag': 'Our method',
+      'proc.t1': 'Four steps,', 'proc.t2': 'zero wasted time.',
+      'proc.s1.t': 'Brief', 'proc.s1.d': "20-minute call. You describe the role, the team, the urgency.",
+      'proc.s2.t': 'Search', 'proc.s2.d': 'We activate our pool and network. Three validated candidates within 48h.',
+      'proc.s3.t': 'Selection', 'proc.s3.d': 'You meet the candidates. You choose. Contract signed same day.',
+      'proc.s4.t': 'Follow-up', 'proc.s4.d': 'Weekly check the first month. Free replacement guarantee.',
+
+      'sb.1': 'Missions completed since 2014',
+      'sb.2': 'Client companies',
+      'sb.3': 'Satisfaction rate',
+      'sb.4': 'Average placement time',
+
+      't.tag': 'Trusted by',
+      't.quote': "In three years with JOBUP, we placed 28 temps on our sites, including 9 we hired permanently. Responsive, professional, with qualified candidates. Not one failure.",
+      't.role': 'Operations Director · BTP Solutions Group',
+
+      'ct.t1': 'Urgent need?',
+      'ct.t2': 'We call you back within the hour.',
+      'ct.desc': "Describe your need in 2 minutes. A consultant calls you back within 60 working minutes.",
+      'ct.cta1': 'Contact us', 'ct.cta2': 'Browse jobs',
+
+      'ft.about': 'Staffing agency specialized in construction and office. Trust, support, growth since 2014.',
+      'ft.h1': 'Menu', 'ft.h2': 'Sectors', 'ft.h3': 'Contact', 'ft.h4': 'Legal',
+      'ft.s2': 'Office', 'ft.s3': 'Logistics', 'ft.s4': 'Structural & finishing',
+      'ft.l1': 'Legal notice', 'ft.l2': 'GDPR', 'ft.l3': 'Cookies', 'ft.l4': 'Terms',
+      'ft.copy': '© 2026 JOBUP Intérim · All rights reserved',
+      'ft.made': 'License n°IDF/2014/00891',
+    }
+  };
+
+  let currentLang = 'fr';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const dict = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.dataset.i18nPh;
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    try { localStorage.setItem('jobup-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  try {
+    const saved = localStorage.getItem('jobup-lang');
+    if (saved && i18n[saved]) setLanguage(saved);
+  } catch (e) {}
+
+  // NAV scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 50);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '-30px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Count up
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        let current = 0;
+        const duration = 1500;
+        const step = target / (duration / 16);
+        const update = () => {
+          current += step;
+          if (current >= target) {
+            el.textContent = target.toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US');
+          } else {
+            el.textContent = Math.floor(current).toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-US');
+            requestAnimationFrame(update);
+          }
+        };
+        update();
+        countIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+  // Smooth scroll for in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

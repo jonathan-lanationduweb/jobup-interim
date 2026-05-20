@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JOBUP Intérim — Contact</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffffff'/%3E%3Cpath d='M6 24 Q14 8 26 6 L24 9 L26 11' stroke='%231e6fdb' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Crect x='9' y='17' width='3' height='6' fill='%2380b4f0'/%3E%3Crect x='14' y='14' width='3' height='9' fill='%231e6fdb'/%3E%3Crect x='19' y='11' width='3' height='12' fill='%230d4fa8'/%3E%3Ccircle cx='10.5' cy='15' r='1.4' fill='%2380b4f0'/%3E%3Ccircle cx='15.5' cy='12' r='1.4' fill='%231e6fdb'/%3E%3Ccircle cx='20.5' cy='9' r='1.4' fill='%230d4fa8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue-1: #0d4fa8;
+    --blue-2: #1e6fdb;
+    --blue-3: #4a8ee8;
+    --blue-pale: #eaf2fd;
+    --steel-1: #2d3748;
+    --steel-2: #4a5568;
+    --steel-3: #718096;
+    --paper: #ffffff;
+    --paper-2: #f7f9fc;
+    --line: #e2e8f0;
+    --line-strong: #cbd5e0;
+    --ink: #0f1729;
+    --green: #16a34a;
+    --green-pale: #dcfce7;
+    --red: #ef4444;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--blue-2); color: var(--paper); }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: var(--ink); }
+  .logo svg { width: 38px; height: 38px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text strong { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .logo-text strong .up { color: var(--blue-2); }
+  .logo-text small {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em;
+    color: var(--steel-3); margin-top: 2px; text-transform: uppercase;
+  }
+  .nav-menu { display: flex; gap: 2rem; list-style: none; }
+  .nav-menu a {
+    color: var(--steel-1); text-decoration: none;
+    font-size: 0.92rem; font-weight: 500;
+    position: relative; padding: 0.4rem 0;
+    transition: color 0.3s;
+  }
+  .nav-menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--blue-2);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-menu a:hover { color: var(--blue-2); }
+  .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+  .nav-menu a.active { color: var(--blue-2); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-switch {
+    display: inline-flex; border: 1px solid var(--line);
+    border-radius: 999px; padding: 2px; font-size: 0.72rem; font-weight: 600;
+  }
+  .lang-btn {
+    background: none; border: none; padding: 0.35rem 0.75rem;
+    border-radius: 999px; cursor: pointer; color: var(--steel-3);
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    letter-spacing: 0.05em; transition: all 0.3s var(--ease);
+  }
+  .lang-btn.active { background: var(--ink); color: var(--paper); }
+  .nav-cta {
+    background: var(--blue-2); color: var(--paper);
+    padding: 0.65rem 1.25rem; border-radius: 999px;
+    text-decoration: none; font-size: 0.85rem; font-weight: 600;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 4px 12px rgba(30, 111, 219, 0.25);
+  }
+  .nav-cta:hover { background: var(--blue-1); }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; }
+  .nav-toggle svg { width: 22px; height: 22px; stroke: var(--ink); }
+  @media (max-width: 900px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: block; }
+    .nav-cta { display: none; }
+    nav { padding: 0.85rem 1.25rem; }
+  }
+  .mobile-menu {
+    position: fixed; inset: 0; background: var(--paper); z-index: 99;
+    transform: translateY(-100%); transition: transform 0.5s var(--ease);
+    padding: 6rem 2rem 2rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .mobile-menu.open { transform: translateY(0); }
+  .mobile-menu a {
+    color: var(--ink); text-decoration: none;
+    font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+  }
+  .mobile-menu a:hover { color: var(--blue-2); }
+
+  /* HEAD */
+  .page-head {
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--paper-2), var(--paper));
+  }
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--blue-2);
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .page-tag::before, .page-tag::after {
+    content: ''; width: 30px; height: 1px; background: var(--blue-2);
+  }
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .page-title .accent { color: var(--blue-2); }
+  .page-desc {
+    color: var(--steel-2);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* LAYOUT */
+  .main {
+    max-width: 1200px;
+    margin: 2rem auto 5rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .main { grid-template-columns: 1fr; gap: 2rem; } }
+
+  /* INFO */
+  .info-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: sticky;
+    top: 90px;
+    overflow: hidden;
+    position: relative;
+  }
+  .info-card::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 250px; height: 250px;
+    background: var(--blue-2);
+    opacity: 0.3;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  .info-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .info-card .lead {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .info-list {
+    display: flex; flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .info-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .info-icon {
+    width: 42px; height: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue-3);
+    flex-shrink: 0;
+  }
+  .info-icon svg { width: 20px; height: 20px; }
+  .info-text strong {
+    display: block;
+    font-size: 0.95rem; font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .info-text p, .info-text a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .info-text a:hover { color: var(--blue-3); }
+  .info-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+  .info-stat strong {
+    display: block;
+    font-size: 1.75rem; font-weight: 800;
+    color: var(--blue-3);
+    letter-spacing: -0.02em; line-height: 1;
+  }
+  .info-stat span {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* FORM */
+  .form-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 41, 0.08);
+  }
+  @media (max-width: 500px) { .form-card { padding: 1.75rem; } }
+
+  .steps-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .step-dot {
+    flex: 1; height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    transition: background 0.4s var(--ease);
+  }
+  .step-dot.active, .step-dot.done { background: var(--blue-2); }
+
+  .steps-label {
+    font-size: 0.78rem; color: var(--steel-3);
+    font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .form-step-title {
+    font-size: 1.5rem; font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .form-step-desc { color: var(--steel-2); margin-bottom: 1.75rem; }
+
+  .step { display: none; animation: slideIn 0.4s var(--ease); }
+  .step.active { display: block; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Role choice */
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 500px) { .role-grid { grid-template-columns: 1fr; } }
+  .role-card {
+    background: var(--paper-2);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    text-align: left;
+    font-family: inherit;
+  }
+  .role-card:hover { border-color: var(--blue-3); transform: translateY(-2px); }
+  .role-card.selected { border-color: var(--blue-2); background: var(--blue-pale); }
+  .role-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--blue-2), var(--blue-1));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper);
+    margin-bottom: 1rem;
+  }
+  .role-icon svg { width: 24px; height: 24px; }
+  .role-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+  .role-desc { color: var(--steel-2); font-size: 0.88rem; }
+
+  /* Fields */
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+  .field { margin-bottom: 1.25rem; }
+  .field label {
+    display: block;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--steel-1);
+    margin-bottom: 0.4rem;
+  }
+  .field label .req { color: var(--blue-2); }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: var(--paper);
+    color: var(--ink);
+    transition: all 0.3s var(--ease);
+    outline: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--blue-2);
+    box-shadow: 0 0 0 3px rgba(30, 111, 219, 0.1);
+  }
+  .field input.error, .field select.error, .field textarea.error {
+    border-color: var(--red);
+    background: #fef2f2;
+  }
+  .field textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--steel-3); }
+  .field-error {
+    color: var(--red); font-size: 0.8rem;
+    margin-top: 0.3rem; display: none;
+  }
+  .field-error.show { display: block; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    background: var(--paper-2);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.88rem; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    color: var(--ink);
+  }
+  .pill:hover { border-color: var(--steel-3); }
+  .pill.selected {
+    background: var(--blue-2);
+    color: var(--paper);
+    border-color: var(--blue-2);
+  }
+
+  .file-upload {
+    border: 2px dashed var(--line-strong);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    background: var(--paper-2);
+  }
+  .file-upload:hover { border-color: var(--blue-2); background: var(--blue-pale); }
+  .file-upload svg {
+    width: 32px; height: 32px;
+    color: var(--blue-2);
+    margin-bottom: 0.5rem;
+  }
+  .file-upload strong { display: block; color: var(--blue-2); font-weight: 700; font-size: 0.95rem; }
+  .file-upload span { display: block; font-size: 0.82rem; color: var(--steel-3); margin-top: 0.2rem; }
+  .file-upload input[type="file"] { display: none; }
+  .file-name {
+    display: none;
+    margin-top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: var(--blue-pale);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    color: var(--blue-1);
+    font-weight: 600;
+  }
+  .file-name.show { display: block; }
+
+  /* Actions */
+  .step-actions {
+    display: flex; justify-content: space-between; gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .btn {
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem; font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    border: 1.5px solid transparent;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--blue-2);
+    color: var(--paper);
+    box-shadow: 0 4px 12px rgba(30, 111, 219, 0.25);
+  }
+  .btn-primary:hover {
+    background: var(--blue-1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(30, 111, 219, 0.35);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--steel-2);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Success */
+  .success-step { text-align: center; padding: 2rem 0; }
+  .success-icon {
+    width: 80px; height: 80px;
+    background: var(--green-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--green);
+    animation: pop 0.6s var(--ease);
+  }
+  .success-icon svg { width: 40px; height: 40px; }
+  @keyframes pop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  .success-step h3 {
+    font-size: 1.75rem; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 0.5rem;
+  }
+  .success-step p {
+    color: var(--steel-2);
+    max-width: 400px;
+    margin: 0 auto 2rem;
+  }
+  .success-recap {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: left;
+    max-width: 380px;
+    margin: 0 auto 2rem;
+    display: flex; flex-direction: column;
+    gap: 0.6rem;
+  }
+  .success-recap-item {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem;
+  }
+  .success-recap-item span { color: var(--steel-3); }
+  .success-recap-item strong { color: var(--ink); font-weight: 600; }
+
+  /* FAQ */
+  .faq-section { background: var(--paper-2); padding: 5rem 2rem; }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 3rem; }
+  .faq-head h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+  .faq-head p { color: var(--steel-2); }
+  .faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s var(--ease);
+  }
+  .faq-item.open { border-color: var(--blue-2); }
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    font-weight: 600; font-size: 1.02rem;
+  }
+  .faq-toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--paper-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue-2);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease);
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--blue-2);
+    color: var(--paper);
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease);
+    color: var(--steel-2);
+  }
+  .faq-answer-inner { padding: 0 1.5rem 1.25rem; }
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--paper); text-decoration: none; }
+  footer a:hover { color: var(--blue-3); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="6" fill="#ffffff"/>
+      <path d="M6 24 Q14 8 26 6 L24 9 L26 11" stroke="#1e6fdb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="9" y="17" width="3" height="6" fill="#80b4f0"/>
+      <rect x="14" y="14" width="3" height="9" fill="#1e6fdb"/>
+      <rect x="19" y="11" width="3" height="12" fill="#0d4fa8"/>
+      <circle cx="10.5" cy="15" r="1.4" fill="#80b4f0"/>
+      <circle cx="15.5" cy="12" r="1.4" fill="#1e6fdb"/>
+      <circle cx="20.5" cy="9" r="1.4" fill="#0d4fa8"/>
+    </svg>
+    <div class="logo-text">
+      <strong>JOB<span class="up">UP</span></strong>
+      <small>Intérim</small>
+    </div>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+    <li><a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a></li>
+    <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="index.html#process" data-i18n="nav.process">Notre méthode</a></li>
+    <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="offres.html" class="nav-cta" data-i18n="nav.cta2">Voir les offres →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-i18n="nav.home">Accueil</a>
+  <a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a>
+  <a href="index.html#services" data-i18n="nav.services">Services</a>
+  <a href="index.html#process" data-i18n="nav.process">Notre méthode</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+</div>
+
+<!-- PAGE HEAD -->
+<section class="page-head">
+  <div class="page-tag" data-i18n="ph.tag">Premier contact</div>
+  <h1 class="page-title">
+    <span data-i18n="ph.t1">Une seule équipe,</span>
+    <span class="accent" data-i18n="ph.t2">une réponse rapide.</span>
+  </h1>
+  <p class="page-desc" data-i18n="ph.desc">Décrivez votre besoin ou candidatez en moins de 2 minutes. Un consultant vous rappelle sous 60 minutes ouvrées.</p>
+</section>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- INFO -->
+  <aside class="info-card">
+    <h2 data-i18n="info.t">Contactez-nous</h2>
+    <p class="lead" data-i18n="info.desc">Vous préférez le téléphone ou l'email ? Nous restons joignables.</p>
+
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.8a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.35 1.84.59 2.8.72A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="info-text">
+          <strong data-i18n="info.phone">Téléphone</strong>
+          <a href="tel:+33180000000">+33 1 80 00 00 00</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-10 7L2 6"/></svg>
+        </div>
+        <div class="info-text">
+          <strong>Email</strong>
+          <a href="mailto:contact@jobup-interim.fr">contact@jobup-interim.fr</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="info-text">
+          <strong data-i18n="info.addr">Adresse</strong>
+          <p>12 rue de la République<br>75011 Paris</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="info-text">
+          <strong data-i18n="info.hours">Horaires</strong>
+          <p data-i18n="info.hours.val">Lun — Ven · 8h30 — 19h00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-stats">
+      <div class="info-stat">
+        <strong>60min</strong>
+        <span data-i18n="info.s1">Rappel garanti</span>
+      </div>
+      <div class="info-stat">
+        <strong>4.9/5</strong>
+        <span data-i18n="info.s2">Note Google</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="steps-bar">
+      <div class="step-dot active" data-dot="1"></div>
+      <div class="step-dot" data-dot="2"></div>
+      <div class="step-dot" data-dot="3"></div>
+    </div>
+    <div class="steps-label">
+      <span data-i18n="step.label">Étape</span>
+      <span id="stepNum">1</span> / 3
+    </div>
+
+    <form id="contactForm" novalidate>
+
+      <!-- STEP 1 : ROLE -->
+      <div class="step active" data-step="1">
+        <h2 class="form-step-title" data-i18n="s1.title">Vous êtes ?</h2>
+        <p class="form-step-desc" data-i18n="s1.desc">Cela nous aide à orienter votre demande vers le bon consultant.</p>
+
+        <div class="role-grid">
+          <button type="button" class="role-card" data-role="company">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M14 9h.01M14 13h.01M14 17h.01" stroke-linecap="round"/></svg>
+            </div>
+            <div class="role-title" data-i18n="s1.r1.t">Je suis une entreprise</div>
+            <div class="role-desc" data-i18n="s1.r1.d">Je cherche à recruter du personnel.</div>
+          </button>
+
+          <button type="button" class="role-card" data-role="candidate">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="role-title" data-i18n="s1.r2.t">Je suis un candidat</div>
+            <div class="role-desc" data-i18n="s1.r2.d">Je cherche une mission ou un emploi.</div>
+          </button>
+        </div>
+
+        <div class="step-actions">
+          <a href="index.html" class="btn btn-ghost" data-i18n="btn.back">← Retour</a>
+          <button type="button" class="btn btn-primary" id="next1" disabled>
+            <span data-i18n="btn.next">Continuer</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2 : DETAILS -->
+      <div class="step" data-step="2">
+        <h2 class="form-step-title" id="step2Title" data-i18n="s2.title">Votre besoin</h2>
+        <p class="form-step-desc" id="step2Desc" data-i18n="s2.desc">Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.</p>
+
+        <!-- Company view -->
+        <div id="companyView" style="display:none;">
+          <div class="field">
+            <label data-i18n="s2.sector">Secteur recherché <span class="req">*</span></label>
+            <div class="pills" data-pill-group="sector">
+              <button type="button" class="pill" data-pill="btp">BTP</button>
+              <button type="button" class="pill" data-pill="tertiaire" data-i18n="s2.p.tert">Tertiaire</button>
+              <button type="button" class="pill" data-pill="logistique" data-i18n="s2.p.logi">Logistique</button>
+              <button type="button" class="pill" data-pill="autre" data-i18n="s2.p.other">Autre</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="s2.ctype">Type de contrat <span class="req">*</span></label>
+            <div class="pills" data-pill-group="contract">
+              <button type="button" class="pill" data-pill="interim" data-i18n="s2.c.int">Intérim</button>
+              <button type="button" class="pill" data-pill="cdd">CDD</button>
+              <button type="button" class="pill" data-pill="cdi">CDI</button>
+              <button type="button" class="pill" data-pill="autre" data-i18n="s2.c.other">Autre</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="poste" data-i18n="s2.pos">Poste recherché <span class="req">*</span></label>
+            <input type="text" id="poste" name="poste" data-i18n-ph="s2.pos.ph" placeholder="Ex. Maçon, Comptable, Cariste...">
+            <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="city" data-i18n="s2.city">Ville</label>
+              <input type="text" id="city" name="city" data-i18n-ph="s2.city.ph" placeholder="Paris, Lyon...">
+            </div>
+            <div class="field">
+              <label for="start" data-i18n="s2.start">Démarrage</label>
+              <select id="start" name="start">
+                <option data-i18n="s2.start.1">Dès que possible</option>
+                <option data-i18n="s2.start.2">Sous 15 jours</option>
+                <option data-i18n="s2.start.3">Sous 1 mois</option>
+                <option data-i18n="s2.start.4">Plus tard</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="msgCompany" data-i18n="s2.msg">Précisions sur le besoin</label>
+            <textarea id="msgCompany" name="msgCompany" data-i18n-ph="s2.msg.ph" placeholder="Détaillez le poste, les compétences requises, la durée..."></textarea>
+          </div>
+        </div>
+
+        <!-- Candidate view -->
+        <div id="candidateView" style="display:none;">
+          <div class="field">
+            <label data-i18n="s2.metier">Métier / domaine <span class="req">*</span></label>
+            <div class="pills" data-pill-group="domaine">
+              <button type="button" class="pill" data-pill="btp">BTP</button>
+              <button type="button" class="pill" data-pill="tertiaire" data-i18n="s2.p.tert">Tertiaire</button>
+              <button type="button" class="pill" data-pill="logistique" data-i18n="s2.p.logi">Logistique</button>
+              <button type="button" class="pill" data-pill="autre" data-i18n="s2.p.other">Autre</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="job" data-i18n="s2.myjob">Votre poste actuel ou recherché <span class="req">*</span></label>
+            <input type="text" id="job" name="job" data-i18n-ph="s2.myjob.ph" placeholder="Ex. Électricien N3, Assistante de direction...">
+            <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="xp" data-i18n="s2.xp">Expérience</label>
+              <select id="xp" name="xp">
+                <option data-i18n="s2.xp.1">Débutant (moins de 1 an)</option>
+                <option data-i18n="s2.xp.2">1 à 3 ans</option>
+                <option data-i18n="s2.xp.3">3 à 7 ans</option>
+                <option data-i18n="s2.xp.4">Plus de 7 ans</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cityCand" data-i18n="s2.where">Lieu souhaité</label>
+              <input type="text" id="cityCand" name="cityCand" data-i18n-ph="s2.where.ph" placeholder="Région ou ville">
+            </div>
+          </div>
+
+          <div class="field">
+            <label data-i18n="s2.cv">Votre CV (PDF, DOC — optionnel)</label>
+            <label class="file-upload" for="cvFile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <strong data-i18n="s2.cv.click">Cliquez pour téléverser</strong>
+              <span data-i18n="s2.cv.fmt">PDF, DOC, DOCX — Max 5 MB</span>
+              <input type="file" id="cvFile" accept=".pdf,.doc,.docx">
+            </label>
+            <div class="file-name" id="fileName"></div>
+          </div>
+
+          <div class="field">
+            <label for="msgCand" data-i18n="s2.bio">Votre message (optionnel)</label>
+            <textarea id="msgCand" name="msgCand" data-i18n-ph="s2.bio.ph" placeholder="Quelques mots sur vous, vos disponibilités, vos certifications..."></textarea>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" id="back2">← <span data-i18n="btn.back2">Précédent</span></button>
+          <button type="button" class="btn btn-primary" id="next2">
+            <span data-i18n="btn.next">Continuer</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3 : CONTACT -->
+      <div class="step" data-step="3">
+        <h2 class="form-step-title" data-i18n="s3.title">Vos coordonnées</h2>
+        <p class="form-step-desc" data-i18n="s3.desc">Pour qu'on puisse vous rappeler dans l'heure.</p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="firstname" data-i18n="s3.fn">Prénom <span class="req">*</span></label>
+            <input type="text" id="firstname" name="firstname">
+            <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+          </div>
+          <div class="field">
+            <label for="lastname" data-i18n="s3.ln">Nom <span class="req">*</span></label>
+            <input type="text" id="lastname" name="lastname">
+            <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="nom@exemple.fr">
+            <div class="field-error" data-i18n="err.email">Email invalide.</div>
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="s3.ph">Téléphone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78">
+            <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+          </div>
+        </div>
+
+        <div class="field" id="companyField" style="display:none;">
+          <label for="company" data-i18n="s3.co">Entreprise <span class="req">*</span></label>
+          <input type="text" id="company" name="company">
+          <div class="field-error" data-i18n="err.req">Ce champ est obligatoire.</div>
+        </div>
+
+        <div class="field">
+          <label style="display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; font-weight: 400; color: var(--steel-2); font-size: 0.88rem;">
+            <input type="checkbox" id="rgpd" style="margin-top: 3px; width: 18px; height: 18px; accent-color: var(--blue-2);">
+            <span data-i18n="s3.rgpd">J'accepte que mes données soient utilisées par JOBUP Intérim pour traiter ma demande, conformément à la politique RGPD.</span>
+          </label>
+          <div class="field-error" data-i18n="err.rgpd">Vous devez accepter la politique RGPD.</div>
+        </div>
+
+        <div class="step-actions">
+          <button type="button" class="btn btn-ghost" id="back3">← <span data-i18n="btn.back2">Précédent</span></button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span data-i18n="btn.send">Envoyer ma demande</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="step success-step" data-step="success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="ok.title">Demande envoyée !</h3>
+        <p data-i18n="ok.desc">Merci. Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30-19h).</p>
+
+        <div class="success-recap">
+          <div class="success-recap-item">
+            <span data-i18n="ok.r1">Type de demande</span>
+            <strong id="recapRole">—</strong>
+          </div>
+          <div class="success-recap-item">
+            <span data-i18n="ok.r2">Référence</span>
+            <strong id="recapRef">—</strong>
+          </div>
+          <div class="success-recap-item">
+            <span data-i18n="ok.r3">Rappel avant</span>
+            <strong id="recapTime">—</strong>
+          </div>
+        </div>
+
+        <a href="index.html" class="btn btn-primary" data-i18n="ok.back">Retour à l'accueil</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <h2 data-i18n="faq.title">Questions fréquentes</h2>
+      <p data-i18n="faq.desc">Avant de nous contacter, vous y trouverez peut-être déjà la réponse.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-i18n="faq.q1">Combien de temps pour avoir un retour ?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faq.a1">
+          Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30-19h). Pour les demandes urgentes hors horaires, laissez un message vocal au +33 1 80 00 00 00.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-i18n="faq.q2">Est-ce que vos services sont gratuits pour les candidats ?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faq.a2">
+          Oui, totalement. Nos services sont facturés aux entreprises clientes. Aucun frais ne vous sera jamais demandé en tant que candidat — c'est la loi en France.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-i18n="faq.q3">Quels secteurs couvrez-vous ?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faq.a3">
+          Nous sommes spécialisés BTP (gros œuvre, second œuvre, TP) et tertiaire (comptabilité, administration, accueil). Nous gérons aussi la logistique (caristes, magasiniers, chauffeurs).
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-i18n="faq.q4">Vous intervenez dans toute la France ?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faq.a4">
+          Oui, sur tout le territoire métropolitain. Nous avons des agences à Paris, Lyon, Bordeaux et Lille, et un réseau de partenaires partout en France.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-i18n="faq.q5">Quelle est votre garantie sur les missions ?</span>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-i18n="faq.a5">
+          Pour les entreprises : garantie de remplacement gratuite pendant 7 jours sur intérim, 30 jours sur CDD/CDI. Suivi hebdomadaire le premier mois.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 JOBUP Intérim · <a href="index.html">Accueil</a> · <a href="offres.html">Offres</a> · <a href="#">Mentions légales</a></p>
+</footer>
+
+<script>
+  // ============ TRANSLATIONS ============
+  const i18n = {
+    fr: {
+      'nav.home': 'Accueil', 'nav.jobs': "Offres d'emploi", 'nav.services': 'Services',
+      'nav.process': 'Notre méthode', 'nav.contact': 'Contact',
+      'nav.cta2': 'Voir les offres →',
+
+      'ph.tag': 'Premier contact',
+      'ph.t1': 'Une seule équipe,', 'ph.t2': 'une réponse rapide.',
+      'ph.desc': "Décrivez votre besoin ou candidatez en moins de 2 minutes. Un consultant vous rappelle sous 60 minutes ouvrées.",
+
+      'info.t': 'Contactez-nous',
+      'info.desc': "Vous préférez le téléphone ou l'email ? Nous restons joignables.",
+      'info.phone': 'Téléphone', 'info.addr': 'Adresse',
+      'info.hours': 'Horaires', 'info.hours.val': 'Lun — Ven · 8h30 — 19h00',
+      'info.s1': 'Rappel garanti', 'info.s2': 'Note Google',
+
+      'step.label': 'Étape',
+      'btn.back': '← Retour', 'btn.back2': 'Précédent', 'btn.next': 'Continuer', 'btn.send': 'Envoyer ma demande',
+
+      's1.title': 'Vous êtes ?',
+      's1.desc': "Cela nous aide à orienter votre demande vers le bon consultant.",
+      's1.r1.t': 'Je suis une entreprise', 's1.r1.d': 'Je cherche à recruter du personnel.',
+      's1.r2.t': 'Je suis un candidat', 's1.r2.d': 'Je cherche une mission ou un emploi.',
+
+      's2.title': 'Votre besoin',
+      's2.desc': "Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.",
+      's2.sector': 'Secteur recherché',
+      's2.p.tert': 'Tertiaire', 's2.p.logi': 'Logistique', 's2.p.other': 'Autre',
+      's2.ctype': 'Type de contrat',
+      's2.c.int': 'Intérim', 's2.c.other': 'Autre',
+      's2.pos': 'Poste recherché', 's2.pos.ph': 'Ex. Maçon, Comptable, Cariste...',
+      's2.city': 'Ville', 's2.city.ph': 'Paris, Lyon...',
+      's2.start': 'Démarrage',
+      's2.start.1': 'Dès que possible', 's2.start.2': 'Sous 15 jours',
+      's2.start.3': 'Sous 1 mois', 's2.start.4': 'Plus tard',
+      's2.msg': 'Précisions sur le besoin',
+      's2.msg.ph': 'Détaillez le poste, les compétences requises, la durée...',
+      's2.metier': 'Métier / domaine',
+      's2.myjob': 'Votre poste actuel ou recherché',
+      's2.myjob.ph': 'Ex. Électricien N3, Assistante de direction...',
+      's2.xp': 'Expérience',
+      's2.xp.1': 'Débutant (moins de 1 an)', 's2.xp.2': '1 à 3 ans',
+      's2.xp.3': '3 à 7 ans', 's2.xp.4': 'Plus de 7 ans',
+      's2.where': 'Lieu souhaité', 's2.where.ph': 'Région ou ville',
+      's2.cv': 'Votre CV (PDF, DOC — optionnel)',
+      's2.cv.click': 'Cliquez pour téléverser', 's2.cv.fmt': 'PDF, DOC, DOCX — Max 5 MB',
+      's2.bio': 'Votre message (optionnel)',
+      's2.bio.ph': 'Quelques mots sur vous, vos disponibilités, vos certifications...',
+
+      's3.title': 'Vos coordonnées',
+      's3.desc': "Pour qu'on puisse vous rappeler dans l'heure.",
+      's3.fn': 'Prénom', 's3.ln': 'Nom', 's3.ph': 'Téléphone', 's3.co': 'Entreprise',
+      's3.rgpd': "J'accepte que mes données soient utilisées par JOBUP Intérim pour traiter ma demande, conformément à la politique RGPD.",
+
+      'err.req': 'Ce champ est obligatoire.',
+      'err.email': 'Email invalide.',
+      'err.rgpd': 'Vous devez accepter la politique RGPD.',
+
+      'ok.title': 'Demande envoyée !',
+      'ok.desc': 'Merci. Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30-19h).',
+      'ok.r1': 'Type de demande', 'ok.r2': 'Référence', 'ok.r3': 'Rappel avant',
+      'ok.back': "Retour à l'accueil",
+
+      'faq.title': 'Questions fréquentes',
+      'faq.desc': "Avant de nous contacter, vous y trouverez peut-être déjà la réponse.",
+      'faq.q1': 'Combien de temps pour avoir un retour ?',
+      'faq.a1': "Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30-19h). Pour les demandes urgentes hors horaires, laissez un message vocal au +33 1 80 00 00 00.",
+      'faq.q2': 'Est-ce que vos services sont gratuits pour les candidats ?',
+      'faq.a2': "Oui, totalement. Nos services sont facturés aux entreprises clientes. Aucun frais ne vous sera jamais demandé en tant que candidat — c'est la loi en France.",
+      'faq.q3': 'Quels secteurs couvrez-vous ?',
+      'faq.a3': 'Nous sommes spécialisés BTP (gros œuvre, second œuvre, TP) et tertiaire (comptabilité, administration, accueil). Nous gérons aussi la logistique (caristes, magasiniers, chauffeurs).',
+      'faq.q4': 'Vous intervenez dans toute la France ?',
+      'faq.a4': 'Oui, sur tout le territoire métropolitain. Nous avons des agences à Paris, Lyon, Bordeaux et Lille, et un réseau de partenaires partout en France.',
+      'faq.q5': 'Quelle est votre garantie sur les missions ?',
+      'faq.a5': 'Pour les entreprises : garantie de remplacement gratuite pendant 7 jours sur intérim, 30 jours sur CDD/CDI. Suivi hebdomadaire le premier mois.',
+    },
+    en: {
+      'nav.home': 'Home', 'nav.jobs': 'Jobs', 'nav.services': 'Services',
+      'nav.process': 'Our method', 'nav.contact': 'Contact',
+      'nav.cta2': 'Browse jobs →',
+
+      'ph.tag': 'First contact',
+      'ph.t1': 'One team,', 'ph.t2': 'a quick reply.',
+      'ph.desc': 'Describe your need or apply in under 2 minutes. A consultant calls you back within 60 working minutes.',
+
+      'info.t': 'Contact us',
+      'info.desc': 'Prefer phone or email? We stay reachable.',
+      'info.phone': 'Phone', 'info.addr': 'Address',
+      'info.hours': 'Hours', 'info.hours.val': 'Mon — Fri · 8:30am — 7pm',
+      'info.s1': 'Guaranteed callback', 'info.s2': 'Google rating',
+
+      'step.label': 'Step',
+      'btn.back': '← Back', 'btn.back2': 'Previous', 'btn.next': 'Continue', 'btn.send': 'Send my request',
+
+      's1.title': 'You are?',
+      's1.desc': 'This helps us route your request to the right consultant.',
+      's1.r1.t': "I'm a company", 's1.r1.d': "I'm looking to hire staff.",
+      's1.r2.t': "I'm a candidate", 's1.r2.d': "I'm looking for a mission or a job.",
+
+      's2.title': 'Your need',
+      's2.desc': 'Give us context. The more specific, the better.',
+      's2.sector': 'Sector sought',
+      's2.p.tert': 'Office', 's2.p.logi': 'Logistics', 's2.p.other': 'Other',
+      's2.ctype': 'Contract type',
+      's2.c.int': 'Temp', 's2.c.other': 'Other',
+      's2.pos': 'Position sought', 's2.pos.ph': 'E.g. Mason, Accountant, Forklift...',
+      's2.city': 'City', 's2.city.ph': 'Paris, Lyon...',
+      's2.start': 'Start',
+      's2.start.1': 'As soon as possible', 's2.start.2': 'Within 15 days',
+      's2.start.3': 'Within 1 month', 's2.start.4': 'Later',
+      's2.msg': 'Details about the need',
+      's2.msg.ph': 'Describe the role, required skills, duration...',
+      's2.metier': 'Trade / field',
+      's2.myjob': 'Your current or desired role',
+      's2.myjob.ph': 'E.g. Electrician N3, Executive Assistant...',
+      's2.xp': 'Experience',
+      's2.xp.1': 'Beginner (under 1 year)', 's2.xp.2': '1 to 3 years',
+      's2.xp.3': '3 to 7 years', 's2.xp.4': 'Over 7 years',
+      's2.where': 'Desired location', 's2.where.ph': 'Region or city',
+      's2.cv': 'Your CV (PDF, DOC — optional)',
+      's2.cv.click': 'Click to upload', 's2.cv.fmt': 'PDF, DOC, DOCX — Max 5 MB',
+      's2.bio': 'Your message (optional)',
+      's2.bio.ph': 'A few words about yourself, availability, certifications...',
+
+      's3.title': 'Your contact',
+      's3.desc': 'So we can call you back within the hour.',
+      's3.fn': 'First name', 's3.ln': 'Last name', 's3.ph': 'Phone', 's3.co': 'Company',
+      's3.rgpd': 'I agree that JOBUP Intérim may use my data to process my request, in compliance with GDPR.',
+
+      'err.req': 'This field is required.',
+      'err.email': 'Invalid email.',
+      'err.rgpd': 'You must accept the GDPR policy.',
+
+      'ok.title': 'Request sent!',
+      'ok.desc': 'Thank you. A consultant calls you back within 60 working minutes (Mon-Fri · 8:30am-7pm).',
+      'ok.r1': 'Request type', 'ok.r2': 'Reference', 'ok.r3': 'Callback before',
+      'ok.back': 'Back to home',
+
+      'faq.title': 'Frequently asked questions',
+      'faq.desc': 'Before reaching out, you might already find the answer below.',
+      'faq.q1': 'How long until I get a reply?',
+      'faq.a1': 'A consultant calls you back within 60 working minutes (Mon-Fri · 8:30am-7pm). For urgent out-of-hours requests, leave a voicemail at +33 1 80 00 00 00.',
+      'faq.q2': 'Are your services free for candidates?',
+      'faq.a2': "Yes, completely. Our services are billed to client companies. You will never be charged as a candidate — it's the law in France.",
+      'faq.q3': 'What sectors do you cover?',
+      'faq.a3': 'We specialize in construction (structural, finishing, public works) and office (accounting, admin, reception). We also handle logistics (forklift, warehouse, drivers).',
+      'faq.q4': 'Do you cover all of France?',
+      'faq.a4': 'Yes, across the entire mainland. We have offices in Paris, Lyon, Bordeaux and Lille, plus partners across the country.',
+      'faq.q5': 'What is your guarantee on missions?',
+      'faq.a5': 'For companies: free replacement guarantee for 7 days on temp missions, 30 days on fixed-term/permanent. Weekly follow-up the first month.',
+    }
+  };
+
+  let currentLang = 'fr';
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const dict = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.dataset.i18nPh;
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    try { localStorage.setItem('jobup-lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+  try {
+    const saved = localStorage.getItem('jobup-lang');
+    if (saved && i18n[saved]) setLanguage(saved);
+  } catch (e) {}
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // ============ FORM STATE ============
+  let formData = {
+    role: null,
+    pills: { sector: null, contract: null, domaine: null },
+    cv: null,
+  };
+
+  // Role selection
+  const next1 = document.getElementById('next1');
+  document.querySelectorAll('.role-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      formData.role = card.dataset.role;
+      next1.disabled = false;
+    });
+  });
+
+  // Pill groups
+  document.querySelectorAll('[data-pill-group]').forEach(group => {
+    const name = group.dataset.pillGroup;
+    group.querySelectorAll('.pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        group.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        formData.pills[name] = pill.dataset.pill;
+      });
+    });
+  });
+
+  // Step navigation
+  function goStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`[data-step="${n}"]`).classList.add('active');
+    document.querySelectorAll('.step-dot').forEach(d => {
+      const dn = parseInt(d.dataset.dot);
+      d.classList.toggle('active', dn === n);
+      d.classList.toggle('done', dn < n);
+    });
+    document.getElementById('stepNum').textContent = n;
+    window.scrollTo({ top: document.querySelector('.main').offsetTop - 80, behavior: 'smooth' });
+  }
+
+  next1.addEventListener('click', () => {
+    if (!formData.role) return;
+    document.getElementById('companyView').style.display = formData.role === 'company' ? 'block' : 'none';
+    document.getElementById('candidateView').style.display = formData.role === 'candidate' ? 'block' : 'none';
+    document.getElementById('companyField').style.display = formData.role === 'company' ? 'block' : 'none';
+    goStep(2);
+  });
+
+  document.getElementById('back2').addEventListener('click', () => goStep(1));
+  document.getElementById('back3').addEventListener('click', () => goStep(2));
+
+  // Validation
+  function validateField(el) {
+    if (!el || el.style.display === 'none' || !el.required && !el.value) {
+      // not required and empty -> ok unless it has hard validators
+    }
+    const errEl = el.parentElement.querySelector('.field-error');
+    let valid = true;
+    if (el.required && !el.value.trim()) valid = false;
+    if (el.type === 'email' && el.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) valid = false;
+    el.classList.toggle('error', !valid);
+    if (errEl) errEl.classList.toggle('show', !valid);
+    return valid;
+  }
+
+  document.getElementById('next2').addEventListener('click', () => {
+    let valid = true;
+    if (formData.role === 'company') {
+      const poste = document.getElementById('poste');
+      poste.required = true;
+      if (!validateField(poste)) valid = false;
+      if (!formData.pills.sector) {
+        alert(currentLang === 'fr' ? 'Sélectionnez un secteur.' : 'Select a sector.');
+        valid = false;
+      }
+      if (!formData.pills.contract) {
+        alert(currentLang === 'fr' ? 'Sélectionnez un type de contrat.' : 'Select a contract type.');
+        valid = false;
+      }
+    } else {
+      const job = document.getElementById('job');
+      job.required = true;
+      if (!validateField(job)) valid = false;
+      if (!formData.pills.domaine) {
+        alert(currentLang === 'fr' ? 'Sélectionnez un domaine.' : 'Select a field.');
+        valid = false;
+      }
+    }
+    if (valid) goStep(3);
+  });
+
+  // File upload
+  const cvFile = document.getElementById('cvFile');
+  const fileName = document.getElementById('fileName');
+  cvFile.addEventListener('change', () => {
+    if (cvFile.files[0]) {
+      formData.cv = cvFile.files[0].name;
+      fileName.textContent = '📎 ' + cvFile.files[0].name;
+      fileName.classList.add('show');
+    }
+  });
+
+  // Live validate fields on blur
+  ['firstname', 'lastname', 'email', 'phone', 'company'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('blur', () => {
+        el.required = true;
+        if (id === 'company' && formData.role !== 'company') return;
+        validateField(el);
+      });
+    }
+  });
+
+  // Submit
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+    ['firstname', 'lastname', 'email', 'phone'].forEach(id => {
+      const el = document.getElementById(id);
+      el.required = true;
+      if (!validateField(el)) valid = false;
+    });
+    if (formData.role === 'company') {
+      const c = document.getElementById('company');
+      c.required = true;
+      if (!validateField(c)) valid = false;
+    }
+    const rgpd = document.getElementById('rgpd');
+    const rgpdErr = rgpd.parentElement.parentElement.querySelector('.field-error');
+    if (!rgpd.checked) {
+      rgpdErr.classList.add('show');
+      valid = false;
+    } else {
+      rgpdErr.classList.remove('show');
+    }
+
+    if (!valid) return;
+
+    // Generate ref and time
+    const ref = 'JU-' + Date.now().toString().slice(-7);
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
+    const timeStr = now.toLocaleTimeString(currentLang === 'fr' ? 'fr-FR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+
+    document.getElementById('recapRole').textContent = formData.role === 'company'
+      ? (currentLang === 'fr' ? 'Recrutement' : 'Hiring')
+      : (currentLang === 'fr' ? 'Candidature' : 'Application');
+    document.getElementById('recapRef').textContent = ref;
+    document.getElementById('recapTime').textContent = timeStr;
+
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.querySelector('[data-step="success"]').classList.add('active');
+    document.querySelectorAll('.step-dot').forEach(d => d.classList.add('done'));
+    window.scrollTo({ top: document.querySelector('.main').offsetTop - 80, behavior: 'smooth' });
+  });
+
+  // FAQ
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>

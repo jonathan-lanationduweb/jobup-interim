@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JOBUP Intérim — Offres d'emploi</title>
+<meta name="description" content="Toutes les offres d'emploi JOBUP Intérim. BTP, tertiaire, logistique.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ffffff'/%3E%3Cpath d='M6 24 Q14 8 26 6 L24 9 L26 11' stroke='%231e6fdb' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Crect x='9' y='17' width='3' height='6' fill='%2380b4f0'/%3E%3Crect x='14' y='14' width='3' height='9' fill='%231e6fdb'/%3E%3Crect x='19' y='11' width='3' height='12' fill='%230d4fa8'/%3E%3Ccircle cx='10.5' cy='15' r='1.4' fill='%2380b4f0'/%3E%3Ccircle cx='15.5' cy='12' r='1.4' fill='%231e6fdb'/%3E%3Ccircle cx='20.5' cy='9' r='1.4' fill='%230d4fa8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue-1: #0d4fa8;
+    --blue-2: #1e6fdb;
+    --blue-3: #4a8ee8;
+    --blue-4: #80b4f0;
+    --blue-pale: #eaf2fd;
+    --steel-1: #2d3748;
+    --steel-2: #4a5568;
+    --steel-3: #718096;
+    --paper: #ffffff;
+    --paper-2: #f7f9fc;
+    --paper-3: #eef2f7;
+    --line: #e2e8f0;
+    --line-strong: #cbd5e0;
+    --ink: #0f1729;
+    --green: #16a34a;
+    --green-pale: #dcfce7;
+    --orange: #ea580c;
+    --orange-pale: #fed7aa;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper-2);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--blue-2); color: var(--paper); }
+
+  /* NAV (same as index) */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: var(--ink); }
+  .logo svg { width: 38px; height: 38px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text strong { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .logo-text strong .up { color: var(--blue-2); }
+  .logo-text small {
+    font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.25em; color: var(--steel-3);
+    margin-top: 2px; text-transform: uppercase;
+  }
+  .nav-menu { display: flex; gap: 2rem; list-style: none; }
+  .nav-menu a {
+    color: var(--steel-1); text-decoration: none;
+    font-size: 0.92rem; font-weight: 500;
+    position: relative; padding: 0.4rem 0;
+    transition: color 0.3s;
+  }
+  .nav-menu a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--blue-2);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-menu a:hover { color: var(--blue-2); }
+  .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+  .nav-menu a.active { color: var(--blue-2); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-switch {
+    display: inline-flex; border: 1px solid var(--line);
+    border-radius: 999px; padding: 2px; font-size: 0.72rem; font-weight: 600;
+  }
+  .lang-btn {
+    background: none; border: none; padding: 0.35rem 0.75rem;
+    border-radius: 999px; cursor: pointer; color: var(--steel-3);
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    letter-spacing: 0.05em; transition: all 0.3s var(--ease);
+  }
+  .lang-btn.active { background: var(--ink); color: var(--paper); }
+  .nav-cta {
+    background: var(--blue-2); color: var(--paper);
+    padding: 0.65rem 1.25rem; border-radius: 999px;
+    text-decoration: none; font-size: 0.85rem; font-weight: 600;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 4px 12px rgba(30, 111, 219, 0.25);
+  }
+  .nav-cta:hover {
+    background: var(--blue-1); transform: translateY(-1px);
+  }
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; }
+  .nav-toggle svg { width: 22px; height: 22px; stroke: var(--ink); }
+  @media (max-width: 900px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: block; }
+    .nav-cta { display: none; }
+    nav { padding: 0.85rem 1.25rem; }
+  }
+  .mobile-menu {
+    position: fixed; inset: 0; background: var(--paper); z-index: 99;
+    transform: translateY(-100%); transition: transform 0.5s var(--ease);
+    padding: 6rem 2rem 2rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .mobile-menu.open { transform: translateY(0); }
+  .mobile-menu a {
+    color: var(--ink); text-decoration: none;
+    font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+  }
+  .mobile-menu a:hover { color: var(--blue-2); }
+
+  /* ============ SEARCH HEADER ============ */
+  .search-header {
+    background: linear-gradient(135deg, var(--blue-2) 0%, var(--blue-1) 100%);
+    color: var(--paper);
+    padding: 3rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .search-header::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+  }
+  .search-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .search-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+  .search-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+  }
+
+  /* Indeed-style search bar */
+  .search-bar {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 20px 40px -10px rgba(13, 79, 168, 0.4);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .search-bar { grid-template-columns: 1fr; }
+  }
+  .search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem;
+    border-right: 1px solid var(--line);
+  }
+  @media (max-width: 800px) {
+    .search-field { border-right: none; border-bottom: 1px solid var(--line); }
+    .search-field:last-of-type { border-bottom: none; }
+  }
+  .search-field:nth-of-type(3) { border-right: none; }
+  .search-field svg { width: 18px; height: 18px; color: var(--steel-3); flex-shrink: 0; }
+  .search-field input, .search-field select {
+    border: none; outline: none; background: transparent;
+    font-family: inherit; font-size: 0.95rem;
+    color: var(--ink); width: 100%;
+  }
+  .search-field input::placeholder { color: var(--steel-3); }
+  .search-submit {
+    background: var(--blue-2);
+    color: var(--paper);
+    border: none;
+    padding: 1rem 1.75rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .search-submit:hover {
+    background: var(--blue-1);
+    transform: translateY(-1px);
+  }
+
+  /* Quick chips */
+  .chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .chip {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--paper);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+  }
+  .chip:hover {
+    background: var(--paper);
+    color: var(--blue-2);
+    border-color: var(--paper);
+  }
+
+  /* ============ MAIN LAYOUT ============ */
+  .main {
+    max-width: 1320px;
+    margin: -3rem auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr 480px;
+    gap: 1.5rem;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 1100px) {
+    .main { grid-template-columns: 1fr 480px; }
+    .filters { display: none; }
+  }
+  @media (max-width: 800px) {
+    .main { grid-template-columns: 1fr; }
+    .detail { display: none; }
+    .detail.open {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: var(--paper);
+      z-index: 200;
+      overflow: auto;
+      padding: 1rem;
+    }
+  }
+
+  /* ============ FILTERS SIDEBAR ============ */
+  .filters {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 90px;
+  }
+  .filters h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .filters h3 button {
+    background: none;
+    border: none;
+    color: var(--blue-2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .filter-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .filter-group:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .filter-group h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--steel-2);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+  }
+  .filter-options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    padding: 0.35rem 0;
+    color: var(--steel-1);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .filter-option:hover { color: var(--blue-2); }
+  .filter-option input {
+    appearance: none;
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .filter-option input:checked {
+    background: var(--blue-2);
+    border-color: var(--blue-2);
+  }
+  .filter-option input:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px; top: 1px;
+    width: 5px; height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .filter-count {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--steel-3);
+  }
+
+  .filter-range {
+    margin-top: 0.5rem;
+  }
+  .filter-range input[type="range"] {
+    width: 100%;
+    accent-color: var(--blue-2);
+  }
+  .filter-range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--steel-3);
+    margin-top: 0.25rem;
+  }
+
+  /* ============ JOBS LIST ============ */
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .list-count {
+    font-weight: 600;
+    color: var(--steel-1);
+  }
+  .list-count strong { color: var(--ink); }
+  .list-sort {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--steel-2);
+  }
+  .list-sort select {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background: var(--paper);
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  .jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .job-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    position: relative;
+  }
+  .job-card:hover {
+    border-color: var(--blue-3);
+    box-shadow: 0 8px 20px -5px rgba(30, 111, 219, 0.15);
+  }
+  .job-card.active {
+    border-color: var(--blue-2);
+    border-width: 2px;
+    padding: calc(1.25rem - 1px);
+    background: var(--blue-pale);
+  }
+
+  .job-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .job-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--blue-1);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  .job-card.active .job-card-title { color: var(--blue-1); }
+  .job-card-company {
+    font-size: 0.92rem;
+    color: var(--steel-1);
+    font-weight: 600;
+  }
+  .job-card-save {
+    background: none;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    color: var(--steel-3);
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .job-card-save:hover, .job-card-save.saved {
+    color: var(--blue-2);
+    border-color: var(--blue-2);
+    background: var(--paper);
+  }
+  .job-card-save.saved svg { fill: var(--blue-2); }
+  .job-card-save svg { width: 16px; height: 16px; }
+
+  .job-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    color: var(--steel-2);
+    font-size: 0.88rem;
+    margin-bottom: 0.75rem;
+  }
+  .job-card-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .job-card-meta-item svg {
+    width: 14px; height: 14px;
+    color: var(--steel-3);
+  }
+
+  .job-card-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .job-tag {
+    background: var(--paper-3);
+    color: var(--steel-1);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .job-tag.blue { background: var(--blue-pale); color: var(--blue-1); }
+  .job-tag.green { background: var(--green-pale); color: var(--green); }
+  .job-tag.orange { background: var(--orange-pale); color: var(--orange); }
+
+  .job-card-desc {
+    color: var(--steel-2);
+    font-size: 0.88rem;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .job-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--steel-3);
+  }
+  .job-card-bottom .new {
+    color: var(--green);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .job-card-bottom .new::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ============ JOB DETAIL ============ */
+  .detail {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 2rem;
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+
+  .detail::-webkit-scrollbar { width: 6px; }
+  .detail::-webkit-scrollbar-track { background: var(--paper-3); }
+  .detail::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+
+  .detail-close {
+    display: none;
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--paper-2);
+    border: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 800px) { .detail-close { display: flex; } }
+
+  .detail-header {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.25rem;
+  }
+  .detail-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .detail-company {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--blue-2);
+    text-decoration: none;
+  }
+  .detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: 0.85rem;
+    color: var(--steel-2);
+    font-size: 0.9rem;
+  }
+  .detail-meta-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .detail-meta-item svg { width: 16px; height: 16px; color: var(--steel-3); }
+
+  .detail-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .detail-cta {
+    flex: 1;
+    background: var(--blue-2);
+    color: var(--paper);
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  .detail-cta:hover {
+    background: var(--blue-1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(30, 111, 219, 0.3);
+  }
+  .detail-save-btn {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--steel-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s var(--ease);
+  }
+  .detail-save-btn:hover, .detail-save-btn.saved {
+    color: var(--blue-2);
+    border-color: var(--blue-2);
+  }
+  .detail-save-btn.saved svg { fill: var(--blue-2); }
+  .detail-save-btn svg { width: 18px; height: 18px; }
+
+  .detail-section { margin-bottom: 1.5rem; }
+  .detail-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .detail-section p,
+  .detail-section li {
+    color: var(--steel-2);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .detail-section ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .detail-section li::marker { color: var(--blue-2); }
+
+  .detail-highlight {
+    background: var(--blue-pale);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .detail-highlight-item h5 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--blue-1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .detail-highlight-item p {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  /* Footer (minimal) */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  footer a { color: var(--paper); text-decoration: none; }
+  footer a:hover { color: var(--blue-3); }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="6" fill="#ffffff"/>
+      <path d="M6 24 Q14 8 26 6 L24 9 L26 11" stroke="#1e6fdb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="9" y="17" width="3" height="6" fill="#80b4f0"/>
+      <rect x="14" y="14" width="3" height="9" fill="#1e6fdb"/>
+      <rect x="19" y="11" width="3" height="12" fill="#0d4fa8"/>
+      <circle cx="10.5" cy="15" r="1.4" fill="#80b4f0"/>
+      <circle cx="15.5" cy="12" r="1.4" fill="#1e6fdb"/>
+      <circle cx="20.5" cy="9" r="1.4" fill="#0d4fa8"/>
+    </svg>
+    <div class="logo-text">
+      <strong>JOB<span class="up">UP</span></strong>
+      <small>Intérim</small>
+    </div>
+  </a>
+
+  <ul class="nav-menu">
+    <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+    <li><a href="offres.html" class="active" data-i18n="nav.jobs">Offres d'emploi</a></li>
+    <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="index.html#process" data-i18n="nav.process">Notre méthode</a></li>
+    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Recruter →</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-i18n="nav.home">Accueil</a>
+  <a href="offres.html" data-i18n="nav.jobs">Offres d'emploi</a>
+  <a href="index.html#services" data-i18n="nav.services">Services</a>
+  <a href="index.html#process" data-i18n="nav.process">Notre méthode</a>
+  <a href="contact.html" data-i18n="nav.contact">Contact</a>
+</div>
+
+<!-- SEARCH HEADER -->
+<section class="search-header">
+  <div class="search-header-inner">
+    <h1 class="search-title" data-i18n="sh.title">Trouvez votre prochaine mission</h1>
+    <p class="search-subtitle" data-i18n="sh.subtitle">482 offres en BTP, tertiaire, logistique partout en France.</p>
+
+    <div class="search-bar">
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="text" id="searchKw" data-i18n-ph="sh.kw" placeholder="Métier, mot-clé, entreprise…">
+      </div>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        <input type="text" id="searchLoc" data-i18n-ph="sh.loc" placeholder="Ville, département">
+      </div>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M2 10h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <select id="searchType">
+          <option value="" data-i18n="sh.allTypes">Tous types</option>
+          <option value="interim" data-i18n="sh.interim">Intérim</option>
+          <option value="cdd" data-i18n="sh.cdd">CDD</option>
+          <option value="cdi" data-i18n="sh.cdi">CDI</option>
+        </select>
+      </div>
+      <button class="search-submit" id="searchBtn">
+        <span data-i18n="sh.search">Rechercher</span>
+      </button>
+    </div>
+
+    <div class="chips">
+      <button class="chip" data-q="maçon">Maçon</button>
+      <button class="chip" data-q="électricien">Électricien</button>
+      <button class="chip" data-q="cariste">Cariste</button>
+      <button class="chip" data-q="comptable">Comptable</button>
+      <button class="chip" data-q="chef de chantier">Chef de chantier</button>
+      <button class="chip" data-q="grutier">Grutier</button>
+      <button class="chip" data-q="plombier">Plombier</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR FILTERS -->
+  <aside class="filters">
+    <h3>
+      <span data-i18n="f.title">Filtres</span>
+      <button id="resetFilters" data-i18n="f.reset">Réinitialiser</button>
+    </h3>
+
+    <div class="filter-group">
+      <h4 data-i18n="f.type">Type de contrat</h4>
+      <div class="filter-options">
+        <label class="filter-option">
+          <input type="checkbox" class="f-type" value="interim">
+          <span data-i18n="sh.interim">Intérim</span>
+          <span class="filter-count" data-count-type="interim">0</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" class="f-type" value="cdd">
+          <span data-i18n="sh.cdd">CDD</span>
+          <span class="filter-count" data-count-type="cdd">0</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" class="f-type" value="cdi">
+          <span data-i18n="sh.cdi">CDI</span>
+          <span class="filter-count" data-count-type="cdi">0</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 data-i18n="f.sector">Secteur</h4>
+      <div class="filter-options">
+        <label class="filter-option">
+          <input type="checkbox" class="f-sector" value="btp">
+          <span>BTP</span>
+          <span class="filter-count" data-count-sector="btp">0</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" class="f-sector" value="tertiaire">
+          <span data-i18n="ft.s2">Tertiaire</span>
+          <span class="filter-count" data-count-sector="tertiaire">0</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" class="f-sector" value="logistique">
+          <span data-i18n="ft.s3">Logistique</span>
+          <span class="filter-count" data-count-sector="logistique">0</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 data-i18n="f.posted">Publication</h4>
+      <div class="filter-options">
+        <label class="filter-option">
+          <input type="radio" name="posted" class="f-posted" value="24h">
+          <span data-i18n="f.24h">Dernières 24h</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="posted" class="f-posted" value="3d">
+          <span data-i18n="f.3d">3 derniers jours</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="posted" class="f-posted" value="7d">
+          <span data-i18n="f.7d">7 derniers jours</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="posted" class="f-posted" value="all" checked>
+          <span data-i18n="f.all">Toutes les dates</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h4 data-i18n="f.salary">Salaire minimum (€/mois)</h4>
+      <div class="filter-range">
+        <input type="range" min="1500" max="6000" step="100" value="1500" id="salaryRange">
+        <div class="filter-range-labels">
+          <span>1 500 €</span>
+          <span id="salaryValue">1 500 €</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- JOBS LIST -->
+  <main>
+    <div class="list-header">
+      <p class="list-count">
+        <strong id="resultCount">12</strong> <span data-i18n="l.results">offres trouvées</span>
+      </p>
+      <div class="list-sort">
+        <label data-i18n="l.sort">Trier par :</label>
+        <select id="sortBy">
+          <option value="relevant" data-i18n="l.relevant">Pertinence</option>
+          <option value="date" data-i18n="l.date">Date</option>
+          <option value="salary" data-i18n="l.salary">Salaire</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="jobs-list" id="jobsList">
+      <!-- Generated by JS -->
+    </div>
+  </main>
+
+  <!-- JOB DETAIL -->
+  <aside class="detail" id="detail">
+    <button class="detail-close" id="detailClose">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <!-- Generated by JS -->
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 JOBUP Intérim · <a href="index.html">Accueil</a> · <a href="contact.html">Contact</a> · <a href="#">Mentions légales</a></p>
+</footer>
+
+<script>
+  // ============ DATA ============
+  const jobsData = [
+    {
+      id: 1,
+      title: 'Maçon traditionnel H/F',
+      company: 'BTP Solutions Group',
+      location: 'Lyon (69)',
+      type: 'interim',
+      sector: 'btp',
+      contract: 'Intérim · 3 mois',
+      salary: '13,50 €/h',
+      salaryMonth: 2300,
+      posted: '2j',
+      isNew: true,
+      tags: ['CACES R408', 'Permis B'],
+      tagColor: 'blue',
+      desc: "Mission de 3 mois renouvelable sur chantier de construction d'immeuble R+4. Maçonnerie traditionnelle, lecture de plans, travail en équipe.",
+      mission: "Réalisation de murs en parpaings et briques, coffrages traditionnels, ferraillage et coulage de béton. Lecture de plans, prises de cotes, implantation.",
+      profile: ["CAP/BEP Maçonnerie ou équivalent", "3 ans d'expérience minimum", "Habilitation travail en hauteur appréciée", "Permis B"],
+      offer: ["13,50 €/h + paniers + déplacements", "Prime de fin de mission", "Mutuelle interim", "Possibilité CDI en fin de mission"]
+    },
+    {
+      id: 2,
+      title: "Chef de chantier TP H/F",
+      company: 'Routes & Réseaux',
+      location: 'Paris (75)',
+      type: 'cdi',
+      sector: 'btp',
+      contract: 'CDI',
+      salary: '42-48 K€',
+      salaryMonth: 3500,
+      posted: '5h',
+      isNew: true,
+      tags: ['10 ans XP', 'Permis B+C'],
+      tagColor: 'green',
+      desc: "Direction de chantiers de travaux publics (voirie, réseaux). Management d'équipes de 5 à 10 compagnons. Reporting hebdomadaire au conducteur de travaux.",
+      mission: "Préparation et organisation du chantier, encadrement des équipes, contrôle qualité, gestion des plannings et des relations sous-traitants. Sécurité.",
+      profile: ["BTS TP ou équivalent", "10 ans d'expérience en TP minimum", "Maîtrise de l'AIPR et SST", "Permis B (C un plus)"],
+      offer: ["42 000 € à 48 000 € selon profil", "Véhicule de fonction", "Mutuelle famille prise en charge à 80%", "Plan d'épargne entreprise"]
+    },
+    {
+      id: 3,
+      title: 'Comptable expérimenté(e) H/F',
+      company: 'Fiducial Expertise',
+      location: 'Bordeaux (33)',
+      type: 'cdd',
+      sector: 'tertiaire',
+      contract: 'CDD · 6 mois',
+      salary: '2 600 €/mois',
+      salaryMonth: 2600,
+      posted: '1j',
+      isNew: true,
+      tags: ['Sage 100', 'TVA'],
+      tagColor: 'blue',
+      desc: "Remplacement congé maternité dans un cabinet d'expertise comptable. Tenue de la comptabilité d'un portefeuille de PME, déclarations fiscales.",
+      mission: "Saisie comptable, rapprochements bancaires, déclarations de TVA, préparation des bilans, relation clients PME.",
+      profile: ["BTS Comptabilité minimum", "5 ans en cabinet ou entreprise", "Maîtrise Sage 100 indispensable", "Anglais lu/écrit apprécié"],
+      offer: ["2 600 € brut mensuel", "13e mois au prorata", "Tickets restaurant 9 €/jour", "Télétravail 2j/semaine"]
+    },
+    {
+      id: 4,
+      title: 'Cariste CACES 1-3-5 H/F',
+      company: 'LogiDis France',
+      location: 'Lille (59)',
+      type: 'interim',
+      sector: 'logistique',
+      contract: 'Intérim · 6 mois',
+      salary: '14,20 €/h',
+      salaryMonth: 2200,
+      posted: '3j',
+      isNew: false,
+      tags: ['CACES 1-3-5', '2x8'],
+      tagColor: 'orange',
+      desc: "Préparation de commandes, chargement/déchargement de camions, gerbage sur racks. Entrepôt de 12 000 m². Horaires en 2x8 (5h-13h / 13h-21h).",
+      mission: "Conduite de chariots élévateurs CACES 1, 3 et 5. Préparation de commandes sur scan. Contrôle qualité. Filmage de palettes.",
+      profile: ["CACES 1, 3 et 5 à jour", "Première expérience en entrepôt", "Disponible en horaires 2x8", "Rigueur, ponctualité"],
+      offer: ["14,20 €/h + prime équipe + prime nuit", "Paniers repas 7 €", "Indemnité de transport", "Mission longue durée"]
+    },
+    {
+      id: 5,
+      title: 'Électricien bâtiment N3P2 H/F',
+      company: 'Eiffage Énergie',
+      location: 'Marseille (13)',
+      type: 'interim',
+      sector: 'btp',
+      contract: 'Intérim · 4 mois',
+      salary: '15,80 €/h',
+      salaryMonth: 2600,
+      posted: '1j',
+      isNew: true,
+      tags: ['Habilitation B1V', 'CAP'],
+      tagColor: 'blue',
+      desc: "Pose de chemins de câbles, tirage de câbles, raccordements de tableaux et équipements terminaux sur chantier tertiaire (bureaux 4 500 m²).",
+      mission: "Installation électrique en courant fort et faible : pose d'appareillages, raccordements tableaux divisionnaires, mise en service.",
+      profile: ["CAP/BEP électricien bâtiment", "Habilitations électriques B1V/H0V à jour", "3 ans d'expérience minimum", "Permis B"],
+      offer: ["15,80 €/h + paniers + déplacements", "Mission renouvelable", "Formation possible aux habilitations supérieures"]
+    },
+    {
+      id: 6,
+      title: 'Assistante de direction H/F',
+      company: 'Cabinet Berthier & Associés',
+      location: 'Nantes (44)',
+      type: 'cdi',
+      sector: 'tertiaire',
+      contract: 'CDI',
+      salary: '32-36 K€',
+      salaryMonth: 2700,
+      posted: '4j',
+      isNew: false,
+      tags: ['Anglais courant', 'Office'],
+      tagColor: 'green',
+      desc: "Assistanat du directeur général d'un cabinet d'avocats d'affaires (40 collaborateurs). Gestion d'agenda complexe, organisation de déplacements internationaux.",
+      mission: "Gestion d'agenda multi-acteurs, organisation de déplacements (avion, hôtels, visas), préparation de dossiers, prise de notes en réunion.",
+      profile: ["Bac+2/3 assistanat de direction", "5 ans d'expérience minimum", "Anglais courant indispensable", "Maîtrise pack Office"],
+      offer: ["32 000 € à 36 000 € selon profil", "13e mois", "Mutuelle prise en charge 100%", "Restaurant d'entreprise"]
+    },
+    {
+      id: 7,
+      title: 'Plombier chauffagiste H/F',
+      company: 'Confort Habitat',
+      location: 'Toulouse (31)',
+      type: 'interim',
+      sector: 'btp',
+      contract: 'Intérim · 2 mois',
+      salary: '14,80 €/h',
+      salaryMonth: 2450,
+      posted: '6h',
+      isNew: true,
+      tags: ['PAC', 'Brasure'],
+      tagColor: 'blue',
+      desc: "Installation et mise en service de pompes à chaleur air/eau dans le neuf et la rénovation. Pose de planchers chauffants. Maintenance.",
+      mission: "Installation complète d'équipements thermiques résidentiels : PAC, chaudières, planchers chauffants. Raccordements hydrauliques et électriques.",
+      profile: ["CAP/BP Installateur sanitaire", "Habilitation fluides frigorigènes catégorie 1", "5 ans d'expérience", "Permis B"],
+      offer: ["14,80 €/h + véhicule + outillage fourni", "Heures sup majorées", "Possibilité de CDI à terme"]
+    },
+    {
+      id: 8,
+      title: 'Grutier R483 H/F',
+      company: 'Bouygues Bâtiment Sud-Est',
+      location: 'Lyon (69)',
+      type: 'interim',
+      sector: 'btp',
+      contract: 'Intérim · 12 mois',
+      salary: '17,50 €/h',
+      salaryMonth: 2900,
+      posted: '2j',
+      isNew: false,
+      tags: ['CACES R483', 'GME'],
+      tagColor: 'orange',
+      desc: "Conduite de grue à tour sur chantier de logements (3 bâtiments R+7). Mission longue durée jusqu'à fin de gros œuvre.",
+      mission: "Conduite de grue à tour, levage de charges, déchargement de camions, manutention de matériaux. Contrôle visuel quotidien de la grue.",
+      profile: ["CACES R483 catégorie B à jour", "5 ans d'expérience minimum", "Aucune contre-indication médicale travail en hauteur", "Sérieux exigé"],
+      offer: ["17,50 €/h + paniers + déplacements + prime", "Mission longue durée garantie", "Mutuelle interim"]
+    },
+    {
+      id: 9,
+      title: 'Magasinier polyvalent H/F',
+      company: 'Stock & Co Distribution',
+      location: 'Lille (59)',
+      type: 'cdd',
+      sector: 'logistique',
+      contract: 'CDD · 4 mois',
+      salary: '1 950 €/mois',
+      salaryMonth: 1950,
+      posted: '5j',
+      isNew: false,
+      tags: ['CACES 1-3', 'Débutant OK'],
+      tagColor: 'blue',
+      desc: "Réception de marchandises, contrôle, rangement, préparation de commandes. Petit entrepôt familial à taille humaine.",
+      mission: "Réception et contrôle des livraisons, rangement par référence, préparation des commandes, expédition. Tenue de l'entrepôt.",
+      profile: ["CACES 1 et 3 à jour", "Débutant accepté", "Aisance avec un scanner", "Esprit d'équipe"],
+      offer: ["1 950 € brut mensuel", "Prime de fin de contrat", "Bonne ambiance dans une petite équipe (8 personnes)"]
+    },
+    {
+      id: 10,
+      title: 'Conducteur de travaux gros œuvre H/F',
+      company: 'Vinci Construction',
+      location: 'Paris (75)',
+      type: 'cdi',
+      sector: 'btp',
+      contract: 'CDI',
+      salary: '55-65 K€',
+      salaryMonth: 4500,
+      posted: '1j',
+      isNew: true,
+      tags: ['Ingénieur', '8 ans XP'],
+      tagColor: 'green',
+      desc: "Conduite de chantiers de gros œuvre (immeubles tertiaires et résidentiels) entre 5 M€ et 25 M€. Encadrement de 2 à 3 chefs de chantier.",
+      mission: "Pilotage opérationnel et financier des chantiers, relations clients et sous-traitants, garant des délais, qualité, coûts et sécurité.",
+      profile: ["Ingénieur ESTP/ESITC ou équivalent", "8 ans d'expérience en gros œuvre", "Leadership et rigueur indispensables", "Permis B"],
+      offer: ["55 000 € à 65 000 € fixe + 10% variable", "Véhicule de fonction (gamme premium)", "Plan d'épargne entreprise + actionnariat", "Mutuelle famille 100%"]
+    },
+    {
+      id: 11,
+      title: 'Plaquiste H/F',
+      company: 'Finitions Pro',
+      location: 'Bordeaux (33)',
+      type: 'interim',
+      sector: 'btp',
+      contract: 'Intérim · 2 mois',
+      salary: '13,80 €/h',
+      salaryMonth: 2280,
+      posted: '3j',
+      isNew: false,
+      tags: ['Cloisons', 'Faux-plafonds'],
+      tagColor: 'blue',
+      desc: "Pose de cloisons sèches et faux-plafonds sur un chantier de réhabilitation de bureaux (1 200 m²).",
+      mission: "Pose d'ossature métallique, plaques de plâtre BA13, isolation, joints, finitions, faux-plafonds suspendus.",
+      profile: ["CAP/BEP plaquiste", "2 ans d'expérience", "Minutie et propreté du travail", "Permis B"],
+      offer: ["13,80 €/h + paniers", "Travail en équipe (binôme)", "Possibilité de prolongation"]
+    },
+    {
+      id: 12,
+      title: 'Hôte/Hôtesse d\'accueil bilingue H/F',
+      company: 'Tour Defense Premium',
+      location: 'La Défense (92)',
+      type: 'cdi',
+      sector: 'tertiaire',
+      contract: 'CDI',
+      salary: '28-32 K€',
+      salaryMonth: 2400,
+      posted: '6h',
+      isNew: true,
+      tags: ['Anglais B2+', 'Présentation'],
+      tagColor: 'green',
+      desc: "Accueil VIP au sein du siège social d'une banque privée internationale. Gestion du standard, accueil physique des visiteurs.",
+      mission: "Accueil physique et téléphonique en français et anglais, gestion des badges visiteurs, réservation de salles, courrier.",
+      profile: ["Bac+2 mini", "2 ans d'expérience en accueil haut de gamme", "Anglais B2+ exigé", "Présentation soignée, sourire"],
+      offer: ["28 000 € à 32 000 € + 13e mois", "Tickets restaurant 11 €/jour", "Mutuelle premium prise en charge 100%", "Horaires de bureau"]
+    }
+  ];
+
+  // ============ TRANSLATIONS ============
+  const i18n = {
+    fr: {
+      'nav.home': 'Accueil', 'nav.jobs': "Offres d'emploi", 'nav.services': 'Services',
+      'nav.process': 'Notre méthode', 'nav.contact': 'Contact', 'nav.cta': 'Recruter →',
+
+      'sh.title': 'Trouvez votre prochaine mission',
+      'sh.subtitle': '482 offres en BTP, tertiaire, logistique partout en France.',
+      'sh.kw': 'Métier, mot-clé, entreprise…',
+      'sh.loc': 'Ville, département',
+      'sh.allTypes': 'Tous types',
+      'sh.interim': 'Intérim', 'sh.cdd': 'CDD', 'sh.cdi': 'CDI',
+      'sh.search': 'Rechercher',
+
+      'f.title': 'Filtres', 'f.reset': 'Réinitialiser',
+      'f.type': 'Type de contrat',
+      'f.sector': 'Secteur',
+      'f.posted': 'Publication',
+      'f.24h': 'Dernières 24h', 'f.3d': '3 derniers jours', 'f.7d': '7 derniers jours', 'f.all': 'Toutes les dates',
+      'f.salary': 'Salaire minimum (€/mois)',
+
+      'l.results': 'offres trouvées',
+      'l.sort': 'Trier par :',
+      'l.relevant': 'Pertinence', 'l.date': 'Date', 'l.salary': 'Salaire',
+
+      'd.save': 'Sauvegarder',
+      'd.apply': 'Postuler',
+      'd.location': 'Lieu', 'd.contract': 'Contrat', 'd.salary': 'Rémunération', 'd.posted': 'Publié',
+      'd.mission': 'Vos missions',
+      'd.profile': 'Profil recherché',
+      'd.offer': 'Ce que nous offrons',
+      'd.about': 'À propos de la mission',
+      'd.empty.t': 'Sélectionnez une offre',
+      'd.empty.d': 'Cliquez sur une offre dans la liste pour voir tous les détails.',
+
+      'ft.s2': 'Tertiaire', 'ft.s3': 'Logistique',
+      'card.posted': 'Publié il y a',
+      'card.new': 'Nouveau',
+    },
+    en: {
+      'nav.home': 'Home', 'nav.jobs': 'Jobs', 'nav.services': 'Services',
+      'nav.process': 'Our method', 'nav.contact': 'Contact', 'nav.cta': 'Hire →',
+
+      'sh.title': 'Find your next mission',
+      'sh.subtitle': '482 jobs in construction, office, logistics across France.',
+      'sh.kw': 'Job, keyword, company…',
+      'sh.loc': 'City, region',
+      'sh.allTypes': 'All types',
+      'sh.interim': 'Temp', 'sh.cdd': 'Fixed-term', 'sh.cdi': 'Permanent',
+      'sh.search': 'Search',
+
+      'f.title': 'Filters', 'f.reset': 'Reset',
+      'f.type': 'Contract type',
+      'f.sector': 'Sector',
+      'f.posted': 'Posted',
+      'f.24h': 'Last 24h', 'f.3d': 'Last 3 days', 'f.7d': 'Last 7 days', 'f.all': 'Any date',
+      'f.salary': 'Min. salary (€/month)',
+
+      'l.results': 'jobs found',
+      'l.sort': 'Sort by:',
+      'l.relevant': 'Relevance', 'l.date': 'Date', 'l.salary': 'Salary',
+
+      'd.save': 'Save',
+      'd.apply': 'Apply',
+      'd.location': 'Location', 'd.contract': 'Contract', 'd.salary': 'Pay', 'd.posted': 'Posted',
+      'd.mission': 'Your mission',
+      'd.profile': 'Required profile',
+      'd.offer': 'What we offer',
+      'd.about': 'About the mission',
+      'd.empty.t': 'Select a job',
+      'd.empty.d': 'Click a job in the list to see all details.',
+
+      'ft.s2': 'Office', 'ft.s3': 'Logistics',
+      'card.posted': 'Posted',
+      'card.new': 'New',
+    }
+  };
+
+  let currentLang = 'fr';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const dict = i18n[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.dataset.i18nPh;
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    try { localStorage.setItem('jobup-lang', lang); } catch (e) {}
+    renderJobs();
+    if (selectedId) renderDetail(selectedId);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  try {
+    const saved = localStorage.getItem('jobup-lang');
+    if (saved && i18n[saved]) currentLang = saved;
+  } catch (e) {}
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // ============ FILTER STATE ============
+  let state = {
+    keyword: '',
+    location: '',
+    types: [],
+    sectors: [],
+    posted: 'all',
+    salaryMin: 1500,
+    sortBy: 'relevant'
+  };
+
+  let selectedId = null;
+  let savedIds = new Set();
+
+  try {
+    const s = localStorage.getItem('jobup-saved');
+    if (s) savedIds = new Set(JSON.parse(s));
+  } catch (e) {}
+
+  function saveJob(id) {
+    if (savedIds.has(id)) savedIds.delete(id);
+    else savedIds.add(id);
+    try { localStorage.setItem('jobup-saved', JSON.stringify([...savedIds])); } catch (e) {}
+  }
+
+  // ============ FILTERING ============
+  function filterJobs() {
+    return jobsData.filter(j => {
+      if (state.keyword) {
+        const q = state.keyword.toLowerCase();
+        if (!j.title.toLowerCase().includes(q) &&
+            !j.company.toLowerCase().includes(q) &&
+            !j.desc.toLowerCase().includes(q)) return false;
+      }
+      if (state.location) {
+        if (!j.location.toLowerCase().includes(state.location.toLowerCase())) return false;
+      }
+      if (state.types.length && !state.types.includes(j.type)) return false;
+      if (state.sectors.length && !state.sectors.includes(j.sector)) return false;
+      if (j.salaryMonth < state.salaryMin) return false;
+      return true;
+    });
+  }
+
+  function sortJobs(jobs) {
+    if (state.sortBy === 'date') {
+      return [...jobs].sort((a, b) => (a.isNew ? -1 : 1) - (b.isNew ? -1 : 1));
+    }
+    if (state.sortBy === 'salary') {
+      return [...jobs].sort((a, b) => b.salaryMonth - a.salaryMonth);
+    }
+    return jobs;
+  }
+
+  function updateCounts() {
+    const all = jobsData;
+    ['interim', 'cdd', 'cdi'].forEach(t => {
+      const el = document.querySelector(`[data-count-type="${t}"]`);
+      if (el) el.textContent = all.filter(j => j.type === t).length;
+    });
+    ['btp', 'tertiaire', 'logistique'].forEach(s => {
+      const el = document.querySelector(`[data-count-sector="${s}"]`);
+      if (el) el.textContent = all.filter(j => j.sector === s).length;
+    });
+  }
+
+  // ============ RENDER LIST ============
+  function renderJobs() {
+    const filtered = sortJobs(filterJobs());
+    document.getElementById('resultCount').textContent = filtered.length;
+    const list = document.getElementById('jobsList');
+    list.innerHTML = filtered.map(j => `
+      <article class="job-card ${selectedId === j.id ? 'active' : ''}" data-id="${j.id}">
+        <div class="job-card-top">
+          <div>
+            <h3 class="job-card-title">${j.title}</h3>
+            <p class="job-card-company">${j.company}</p>
+          </div>
+          <button class="job-card-save ${savedIds.has(j.id) ? 'saved' : ''}" data-save="${j.id}" aria-label="Save">
+            <svg viewBox="0 0 24 24" fill="${savedIds.has(j.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="job-card-meta">
+          <span class="job-card-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${j.location}
+          </span>
+          <span class="job-card-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M16 2v4M8 2v4M2 10h20" stroke-linecap="round"/></svg>
+            ${j.contract}
+          </span>
+          <span class="job-card-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>
+            ${j.salary}
+          </span>
+        </div>
+        <div class="job-card-tags">
+          ${j.tags.map(t => `<span class="job-tag ${j.tagColor}">${t}</span>`).join('')}
+        </div>
+        <p class="job-card-desc">${j.desc}</p>
+        <div class="job-card-bottom">
+          <span>${i18n[currentLang]['card.posted']} ${j.posted}</span>
+          ${j.isNew ? `<span class="new">${i18n[currentLang]['card.new']}</span>` : ''}
+        </div>
+      </article>
+    `).join('');
+
+    // Bind clicks
+    list.querySelectorAll('.job-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('[data-save]')) return;
+        const id = parseInt(card.dataset.id);
+        selectJob(id);
+      });
+    });
+    list.querySelectorAll('[data-save]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const id = parseInt(btn.dataset.save);
+        saveJob(id);
+        renderJobs();
+        if (selectedId === id) renderDetail(id);
+      });
+    });
+
+    // Select first by default
+    if (!selectedId && filtered.length) selectJob(filtered[0].id);
+    else if (selectedId && !filtered.find(j => j.id === selectedId) && filtered.length) selectJob(filtered[0].id);
+    else if (!filtered.length) renderEmpty();
+  }
+
+  function selectJob(id) {
+    selectedId = id;
+    renderJobs();
+    renderDetail(id);
+    if (window.innerWidth < 800) {
+      document.getElementById('detail').classList.add('open');
+    }
+  }
+
+  function renderEmpty() {
+    const dict = i18n[currentLang];
+    document.getElementById('detail').innerHTML = `
+      <button class="detail-close" id="detailClose">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div style="text-align: center; padding: 3rem 1rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;">🔍</div>
+        <h3 style="font-weight: 700; margin-bottom: 0.5rem;">${dict['d.empty.t']}</h3>
+        <p style="color: var(--steel-3);">${dict['d.empty.d']}</p>
+      </div>
+    `;
+    bindDetailClose();
+  }
+
+  function renderDetail(id) {
+    const j = jobsData.find(x => x.id === id);
+    if (!j) return renderEmpty();
+    const dict = i18n[currentLang];
+    document.getElementById('detail').innerHTML = `
+      <button class="detail-close" id="detailClose">
+        <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="detail-header">
+        <h2 class="detail-title">${j.title}</h2>
+        <a href="#" class="detail-company">${j.company}</a>
+        <div class="detail-meta">
+          <span class="detail-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${j.location}
+          </span>
+          <span class="detail-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ${dict['card.posted']} ${j.posted}
+          </span>
+        </div>
+        <div class="detail-actions">
+          <a href="contact.html?ref=${j.id}" class="detail-cta">
+            <span>${dict['d.apply']}</span>
+            <span>→</span>
+          </a>
+          <button class="detail-save-btn ${savedIds.has(j.id) ? 'saved' : ''}" id="detailSave" aria-label="${dict['d.save']}">
+            <svg viewBox="0 0 24 24" fill="${savedIds.has(j.id) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="detail-highlight">
+        <div class="detail-highlight-item">
+          <h5>${dict['d.contract']}</h5>
+          <p>${j.contract}</p>
+        </div>
+        <div class="detail-highlight-item">
+          <h5>${dict['d.salary']}</h5>
+          <p>${j.salary}</p>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>${dict['d.about']}</h4>
+        <p>${j.desc}</p>
+      </div>
+
+      <div class="detail-section">
+        <h4>${dict['d.mission']}</h4>
+        <p>${j.mission}</p>
+      </div>
+
+      <div class="detail-section">
+        <h4>${dict['d.profile']}</h4>
+        <ul>${j.profile.map(p => `<li>${p}</li>`).join('')}</ul>
+      </div>
+
+      <div class="detail-section">
+        <h4>${dict['d.offer']}</h4>
+        <ul>${j.offer.map(o => `<li>${o}</li>`).join('')}</ul>
+      </div>
+
+      <a href="contact.html?ref=${j.id}" class="detail-cta" style="display: flex; margin-top: 1rem;">
+        <span>${dict['d.apply']}</span>
+        <span>→</span>
+      </a>
+    `;
+
+    document.getElementById('detailSave')?.addEventListener('click', () => {
+      saveJob(j.id);
+      renderJobs();
+      renderDetail(j.id);
+    });
+    bindDetailClose();
+  }
+
+  function bindDetailClose() {
+    document.getElementById('detailClose')?.addEventListener('click', () => {
+      document.getElementById('detail').classList.remove('open');
+    });
+  }
+
+  // ============ BIND EVENTS ============
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    state.keyword = document.getElementById('searchKw').value;
+    state.location = document.getElementById('searchLoc').value;
+    const typeSel = document.getElementById('searchType').value;
+    state.types = typeSel ? [typeSel] : [];
+    // Sync type checkboxes
+    document.querySelectorAll('.f-type').forEach(cb => {
+      cb.checked = state.types.includes(cb.value);
+    });
+    renderJobs();
+  });
+
+  document.getElementById('searchKw').addEventListener('keypress', e => {
+    if (e.key === 'Enter') document.getElementById('searchBtn').click();
+  });
+  document.getElementById('searchLoc').addEventListener('keypress', e => {
+    if (e.key === 'Enter') document.getElementById('searchBtn').click();
+  });
+
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.getElementById('searchKw').value = chip.dataset.q;
+      document.getElementById('searchBtn').click();
+    });
+  });
+
+  document.querySelectorAll('.f-type').forEach(cb => {
+    cb.addEventListener('change', () => {
+      state.types = [...document.querySelectorAll('.f-type:checked')].map(c => c.value);
+      renderJobs();
+    });
+  });
+  document.querySelectorAll('.f-sector').forEach(cb => {
+    cb.addEventListener('change', () => {
+      state.sectors = [...document.querySelectorAll('.f-sector:checked')].map(c => c.value);
+      renderJobs();
+    });
+  });
+
+  const salaryRange = document.getElementById('salaryRange');
+  const salaryValue = document.getElementById('salaryValue');
+  salaryRange.addEventListener('input', () => {
+    state.salaryMin = parseInt(salaryRange.value);
+    salaryValue.textContent = state.salaryMin.toLocaleString('fr-FR') + ' €';
+    renderJobs();
+  });
+
+  document.getElementById('sortBy').addEventListener('change', e => {
+    state.sortBy = e.target.value;
+    renderJobs();
+  });
+
+  document.getElementById('resetFilters').addEventListener('click', () => {
+    state = { keyword: '', location: '', types: [], sectors: [], posted: 'all', salaryMin: 1500, sortBy: 'relevant' };
+    document.getElementById('searchKw').value = '';
+    document.getElementById('searchLoc').value = '';
+    document.getElementById('searchType').value = '';
+    document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+    document.querySelector('.f-posted[value="all"]').checked = true;
+    salaryRange.value = 1500;
+    salaryValue.textContent = '1 500 €';
+    document.getElementById('sortBy').value = 'relevant';
+    renderJobs();
+  });
+
+  // ============ INIT ============
+  updateCounts();
+  setLanguage(currentLang);
+</script>
+
+</body>
+</html>
