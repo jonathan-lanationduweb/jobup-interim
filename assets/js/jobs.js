@@ -210,6 +210,7 @@ window.JobBoard = (function () {
         '<span class="meta-row__item">' + I.case + job.posted + "</span>" +
       "</div>" +
       '<div class="job-detail__actions">' +
+        '<a class="btn btn--deep" href="contact.html#postuler">Postuler ' + I.arrow + "</a>" +
         '<button class="icon-btn" type="button" aria-label="Sauvegarder">' + I.bookmark + "</button>" +
       "</div>" +
       '<dl class="job-detail__summary">' +
@@ -219,8 +220,7 @@ window.JobBoard = (function () {
       "<h3>À propos de la mission</h3><p>" + job.desc + "</p>" +
       "<h3>Vos missions</h3><p>" + job.missions + "</p>" +
       "<h3>Profil recherché</h3><ul class=\"ticked\">" + job.profile.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>" +
-      "<h3>Ce que nous offrons</h3><ul class=\"ticked\">" + job.perks.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>" +
-      '<a class="btn btn--deep btn--block job-detail__apply" href="contact.html#postuler">Postuler ' + I.arrow + "</a>";
+      "<h3>Ce que nous offrons</h3><ul class=\"ticked\">" + job.perks.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
     detailEl.scrollTop = 0;
   }
 
