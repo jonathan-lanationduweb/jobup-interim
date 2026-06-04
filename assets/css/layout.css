@@ -1,0 +1,150 @@
+/* ==========================================================================
+   layout.css — Containers, sections, grids
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--alt {
+  background-color: var(--color-surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--white {
+  background-color: var(--color-surface);
+}
+
+.section--tight {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+}
+
+/* Section heading block */
+.section-head {
+  max-width: 760px;
+  margin-bottom: var(--space-8);
+}
+.section-head .lead { margin-top: var(--space-4); }
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Generic grids */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Two-column split (text / media) */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 1rem + 4vw, 5rem);
+  align-items: center;
+}
+
+/* Decorative soft circles for alt sections */
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco-circle--ring {
+  border: 1.5px solid rgba(13, 91, 215, 0.12);
+  background: transparent;
+}
+.deco-circle--fill {
+  background: radial-gradient(circle at 30% 30%, rgba(13, 91, 215, 0.16), rgba(13, 91, 215, 0.05));
+}
+/* Solid pale tint (flat disc, like the lavender disc in the mockup) */
+.deco-circle--soft {
+  background: var(--color-primary-100);
+  opacity: 0.5;
+}
+/* Concentric two-tone: pale outer halo + denser inner disc */
+.deco-circle--concentric {
+  background: var(--color-primary-100);
+  opacity: 0.6;
+}
+.deco-circle--concentric::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: rgba(13, 91, 215, 0.20);
+}
+/* Thin concentric outline rings */
+.deco-circle--rings {
+  background: transparent;
+  border: 1.6px solid rgba(13, 91, 215, 0.16);
+}
+.deco-circle--rings::after {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  border: 1.6px solid rgba(13, 91, 215, 0.16);
+}
+
+/* Size helpers */
+.deco-circle--xxl { width: clamp(440px, 42vw, 700px); aspect-ratio: 1; }
+.deco-circle--xl { width: clamp(360px, 34vw, 560px); aspect-ratio: 1; }
+.deco-circle--lg { width: clamp(240px, 24vw, 380px); aspect-ratio: 1; }
+.deco-circle--md { width: clamp(140px, 16vw, 240px); aspect-ratio: 1; }
+.deco-circle--sm { width: clamp(80px, 10vw, 140px); aspect-ratio: 1; }
+
+/* Position helpers (bleed off the section edges) */
+.deco-circle--tl { top: -10%; left: -8%; }
+.deco-circle--tr { top: -12%; right: -8%; }
+.deco-circle--bl { bottom: -14%; left: -9%; }
+.deco-circle--br { bottom: -14%; right: -9%; }
+.deco-circle--l  { top: 50%; left: -10%; transform: translateY(-50%); }
+.deco-circle--r  { top: 40%; right: -8%; transform: translateY(-50%); }
+
+/* Boundary-spanning pair: one big circle split across two adjacent sections.
+   Both halves share the same width + left, so they line up perfectly at any
+   viewport width. --span-top sits in the upper section (centre on its bottom
+   edge); --span-bottom sits in the lower section (centre on its top edge). */
+.deco-circle--span { width: clamp(360px, 38vw, 620px); aspect-ratio: 1; left: 4%; }
+.deco-circle--span-top    { bottom: 0; transform: translateY(50%); }
+.deco-circle--span-bottom { top: 0;    transform: translateY(-50%); }
+/* Light fill that reads on the deep-blue BTP background */
+.deco-circle--blue-soft { background: rgba(255, 255, 255, 0.09); }
+
+/* Keep content above decoration */
+.section { position: relative; }
+.section > .container { position: relative; z-index: 1; }
+.section--alt > .container { position: relative; z-index: 1; }
+.section--white { overflow: hidden; }
+
+/* Branded circle accents — subtle corner decoration (bleeds off edge) */
+.section-deco {
+  position: absolute;
+  width: min(440px, 40%);
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+.section-deco--tl { top: -7%; left: -3%; }
+.section-deco--tr { top: -7%; right: -3%; }
+.section-deco--bl { bottom: -10%; left: -3%; }
+.section-deco--br { bottom: -10%; right: -3%; }
+
+.flow > * + * { margin-top: var(--space-4); }
+.center { text-align: center; }
