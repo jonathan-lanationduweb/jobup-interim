@@ -18,6 +18,16 @@
     var submitBtn = form.querySelector("[data-submit]");
     var success = form.querySelector("[data-success]");
 
+    /* ---- Profil (Candidat / Entreprise) panels in step 2 ---- */
+    var profilInput = form.querySelector("input[name='profil_type']");
+    function currentProfil() { return profilInput ? profilInput.value : "Candidat"; }
+    function applyProfil() {
+      var p = currentProfil();
+      form.querySelectorAll("[data-profil-panel]").forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-profil-panel") !== p;
+      });
+    }
+
     /* ---- Segmented controls ---- */
     form.querySelectorAll("[data-segmented]").forEach(function (group) {
       var hidden = group.parentElement.querySelector("input[type='hidden']");
@@ -30,9 +40,11 @@
           opt.setAttribute("aria-pressed", "true");
           opt.classList.add("is-active");
           if (hidden) hidden.value = opt.getAttribute("data-value");
+          if (hidden === profilInput) applyProfil();
         });
       });
     });
+    applyProfil();
 
     /* ---- Render step visibility & buttons ---- */
     function show(i, animate) {
@@ -59,7 +71,14 @@
     /* ---- Per-step validation ---- */
     function validate(stepEl) {
       var ok = true;
-      stepEl.querySelectorAll("[required]").forEach(function (field) {
+      var fields = Array.prototype.slice.call(stepEl.querySelectorAll("[required], [data-require-when]"));
+      fields.forEach(function (field) {
+        // Skip fields inside a hidden profil panel
+        var panel = field.closest("[data-profil-panel]");
+        if (panel && panel.hidden) return;
+        // Conditionally-required fields: only when the profil matches
+        var rw = field.getAttribute("data-require-when");
+        if (rw && rw !== currentProfil()) return;
         var wrap = field.closest(".field") || field.parentElement;
         var err = wrap.querySelector(".field-error");
         var valid = field.value && field.value.trim() !== "";

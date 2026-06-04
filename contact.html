@@ -164,64 +164,145 @@
           <!-- Step 2 : Besoin -->
           <div class="form-step" data-step="2">
             <p class="form-step__kicker">Étape <span data-step-current>2</span> / <span data-step-total>3</span></p>
-            <h2 class="form-step__title">Votre besoin</h2>
-            <p class="form-step__subtitle">Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.</p>
 
-            <div class="segmented-block">
-              <span class="field__label">Métier / domaine</span>
-              <div class="segmented" data-segmented role="group" aria-label="Métier ou domaine">
-                <button type="button" class="segmented__option is-active" aria-pressed="true" data-value="BTP">BTP</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Tertiaire">Tertiaire</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Logistique">Logistique</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Autre">Autre</button>
-              </div>
-              <input type="hidden" name="metier" value="BTP" />
-            </div>
+            <!-- ===== Variante CANDIDAT ===== -->
+            <div data-profil-panel="Candidat">
+              <h2 class="form-step__title">Votre besoin</h2>
+              <p class="form-step__subtitle">Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.</p>
 
-            <label class="field">
-              <span class="field__label">Votre poste actuel ou recherché</span>
-              <input class="input" type="text" name="poste" placeholder="Maçon" required />
-              <span class="field-error" hidden>Merci d'indiquer un poste.</span>
-            </label>
-
-            <div class="form-row form-row--2">
-              <label class="field">
-                <span class="field__label">Expérience</span>
-                <select class="select" name="experience">
-                  <option>Débutant (moins de 1 an)</option>
-                  <option>1 à 3 ans</option>
-                  <option>3 à 5 ans</option>
-                  <option>5 à 10 ans</option>
-                  <option>Plus de 10 ans</option>
-                </select>
-              </label>
-              <label class="field">
-                <span class="field__label">Lieu souhaité</span>
-                <input class="input" type="text" name="lieu" placeholder="91130" />
-              </label>
-            </div>
-
-            <div class="field" style="margin-top:1.5rem">
-              <span class="field__label">Votre CV (PDF, DOC — optionnel)</span>
-              <div class="dropzone" data-dropzone tabindex="0" role="button" aria-label="Téléverser votre CV">
-                <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
-                <div class="dropzone__prompt">
-                  <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
-                  <p class="dropzone__title">Cliquez pour téléverser</p>
-                  <p class="dropzone__hint">PDF, DOC, DOCX — Max 5 MB</p>
+              <div class="segmented-block">
+                <span class="field__label">Métier / domaine</span>
+                <div class="segmented" data-segmented role="group" aria-label="Métier ou domaine">
+                  <button type="button" class="segmented__option is-active" aria-pressed="true" data-value="BTP">BTP</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Tertiaire">Tertiaire</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Logistique">Logistique</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Autre">Autre</button>
                 </div>
-                <div class="dropzone__file">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-                  <span data-file-name>document.pdf</span>
-                  <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
+                <input type="hidden" name="metier" value="BTP" />
+              </div>
+
+              <label class="field">
+                <span class="field__label">Votre poste actuel ou recherché</span>
+                <input class="input" type="text" name="poste" placeholder="Maçon" data-require-when="Candidat" />
+                <span class="field-error" hidden>Merci d'indiquer un poste.</span>
+              </label>
+
+              <div class="form-row form-row--2">
+                <label class="field">
+                  <span class="field__label">Expérience</span>
+                  <select class="select" name="experience">
+                    <option>Débutant (moins de 1 an)</option>
+                    <option>1 à 3 ans</option>
+                    <option>3 à 5 ans</option>
+                    <option>5 à 10 ans</option>
+                    <option>Plus de 10 ans</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span class="field__label">Lieu souhaité</span>
+                  <input class="input" type="text" name="lieu" placeholder="91130" />
+                </label>
+              </div>
+
+              <div class="field" style="margin-top:1.5rem">
+                <span class="field__label">Votre CV (PDF, DOC — optionnel)</span>
+                <div class="dropzone" data-dropzone tabindex="0" role="button" aria-label="Téléverser votre CV">
+                  <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
+                  <div class="dropzone__prompt">
+                    <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
+                    <p class="dropzone__title">Cliquez pour téléverser</p>
+                    <p class="dropzone__hint">PDF, DOC, DOCX — Max 5 MB</p>
+                  </div>
+                  <div class="dropzone__file">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                    <span data-file-name>document.pdf</span>
+                    <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
+                  </div>
                 </div>
               </div>
+
+              <label class="field" style="margin-top:1.5rem">
+                <span class="field__label">Votre message (optionnel)</span>
+                <textarea class="textarea" name="message" placeholder="Quelques mots sur vous, vos disponibilités, vos certifications…"></textarea>
+              </label>
             </div>
 
-            <label class="field" style="margin-top:1.5rem">
-              <span class="field__label">Votre message (optionnel)</span>
-              <textarea class="textarea" name="message" placeholder="Quelques mots sur vous, vos disponibilités, vos certifications…"></textarea>
-            </label>
+            <!-- ===== Variante ENTREPRISE ===== -->
+            <div data-profil-panel="Entreprise" hidden>
+              <h2 class="form-step__title">Votre besoin en personnel</h2>
+              <p class="form-step__subtitle">Décrivez le poste à pourvoir : nous vous proposons des profils qualifiés sous 48h.</p>
+
+              <div class="form-row form-row--2">
+                <label class="field">
+                  <span class="field__label">Nom de l'entreprise</span>
+                  <input class="input" type="text" name="entreprise" placeholder="Votre société" data-require-when="Entreprise" />
+                  <span class="field-error" hidden>Merci d'indiquer le nom de l'entreprise.</span>
+                </label>
+                <label class="field">
+                  <span class="field__label">Fonction du contact</span>
+                  <input class="input" type="text" name="fonction" placeholder="Responsable RH, dirigeant…" />
+                </label>
+              </div>
+
+              <div class="segmented-block" style="margin-top:1.5rem">
+                <span class="field__label">Secteur concerné</span>
+                <div class="segmented" data-segmented role="group" aria-label="Secteur concerné">
+                  <button type="button" class="segmented__option is-active" aria-pressed="true" data-value="BTP">BTP</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Tertiaire">Tertiaire</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Logistique">Logistique</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Autre">Autre</button>
+                </div>
+                <input type="hidden" name="secteur_entreprise" value="BTP" />
+              </div>
+
+              <label class="field" style="margin-top:1.5rem">
+                <span class="field__label">Poste(s) à pourvoir</span>
+                <input class="input" type="text" name="poste_entreprise" placeholder="2 maçons coffreurs" data-require-when="Entreprise" />
+                <span class="field-error" hidden>Merci d'indiquer le poste à pourvoir.</span>
+              </label>
+
+              <div class="form-row form-row--2" style="margin-top:1.5rem">
+                <label class="field">
+                  <span class="field__label">Type de contrat</span>
+                  <select class="select" name="contrat_entreprise">
+                    <option>Intérim</option>
+                    <option>CDD</option>
+                    <option>CDI</option>
+                    <option>Intérim puis CDI</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span class="field__label">Nombre de postes</span>
+                  <select class="select" name="nb_postes">
+                    <option>1 poste</option>
+                    <option>2 à 5 postes</option>
+                    <option>6 à 10 postes</option>
+                    <option>Plus de 10 postes</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-row form-row--2" style="margin-top:1.5rem">
+                <label class="field">
+                  <span class="field__label">Lieu de la mission</span>
+                  <input class="input" type="text" name="lieu_mission" placeholder="91130 Ris-Orangis" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Démarrage souhaité</span>
+                  <select class="select" name="urgence">
+                    <option>Dès que possible</option>
+                    <option>Sous 48h (urgent)</option>
+                    <option>Dans la semaine</option>
+                    <option>Dans le mois</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field" style="margin-top:1.5rem">
+                <span class="field__label">Description du besoin (optionnel)</span>
+                <textarea class="textarea" name="message_entreprise" placeholder="Compétences attendues, habilitations, durée de la mission, conditions particulières…"></textarea>
+              </label>
+            </div>
           </div>
 
           <!-- Step 3 : Coordonnées -->

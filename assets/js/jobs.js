@@ -210,7 +210,6 @@ window.JobBoard = (function () {
         '<span class="meta-row__item">' + I.case + job.posted + "</span>" +
       "</div>" +
       '<div class="job-detail__actions">' +
-        '<a class="btn btn--deep" href="contact.html#postuler">Postuler ' + I.arrow + "</a>" +
         '<button class="icon-btn" type="button" aria-label="Sauvegarder">' + I.bookmark + "</button>" +
       "</div>" +
       '<dl class="job-detail__summary">' +
