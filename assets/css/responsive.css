@@ -1,0 +1,119 @@
+/* ==========================================================================
+   responsive.css — Breakpoints (desktop-first overrides)
+   Targets: 1440+ / 1024 / 768 / 320
+   ========================================================================== */
+
+/* ---- Reveal-on-scroll animation primitives ---- */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+[data-animate="fade"] { transform: none; }
+[data-animate].is-visible { opacity: 1; transform: none; }
+[data-animate-delay="1"] { transition-delay: 0.08s; }
+[data-animate-delay="2"] { transition-delay: 0.16s; }
+[data-animate-delay="3"] { transition-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================ <= 1180px ================================== */
+@media (max-width: 1180px) {
+  .jobs-results { grid-template-columns: 1fr; }
+  .job-detail { position: static; max-height: none; order: -1; }
+}
+
+/* ============================ <= 1024px (laptop) ======================== */
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    align-items: end;
+  }
+  .hero__panel { grid-column: 1; max-width: 600px; }
+  .search-row { grid-template-columns: 1fr 1fr; }
+  .search-field:nth-child(2) { border-right: none; }
+  .search-row .btn { grid-column: 1 / -1; }
+
+  .jobs-layout { grid-template-columns: 1fr; }
+  .filters {
+    position: static;
+    top: auto;
+  }
+}
+
+/* ============================ <= 900px ================================== */
+@media (max-width: 900px) {
+  .main-nav,
+  .header-actions { display: none; }
+  .burger { display: inline-flex; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* ============================ <= 768px (tablet) ========================= */
+@media (max-width: 768px) {
+  .split { grid-template-columns: 1fr; }
+  .histoire .histoire__media { order: -1; }
+
+  .grid--3 { grid-template-columns: 1fr; }
+  .grid--2 { grid-template-columns: 1fr; }
+
+  .offers__grid { grid-template-columns: 1fr; }
+
+  .sector__inner { grid-template-columns: 1fr; }
+  .sector__media { grid-template-columns: 1fr 1fr; min-height: 280px; }
+
+  .process__steps { grid-template-columns: 1fr 1fr; gap: var(--space-7) var(--space-5); }
+  .process-step:not(:last-child)::after { display: none; }
+
+  .hero-stats { position: static; background: var(--color-primary-strong); }
+  .hero__inner { padding-bottom: var(--space-8); min-height: auto; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row--2 { grid-template-columns: 1fr; }
+  .job-detail__summary { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================ <= 560px (mobile) ========================= */
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-claim { text-align: left; }
+
+  .hero-stats__grid { grid-template-columns: 1fr; gap: var(--space-4); text-align: left; }
+  .hero__actions .btn,
+  .cta-banner__actions .btn,
+  .process__actions .btn,
+  .offer-card__actions .btn { width: 100%; }
+  .offer-card__actions { flex-direction: column; }
+
+  .search-row { grid-template-columns: 1fr; }
+  .search-field { border-right: none; border-bottom: 1px solid var(--color-border); }
+  .search-field:last-of-type { border-bottom: none; }
+
+  .sector__list { grid-template-columns: 1fr; }
+  .sector__media { grid-template-columns: 1fr; }
+
+  .testimonial-card { flex-basis: 86%; }
+
+  .form-actions { flex-direction: column-reverse; }
+  .form-actions .btn { width: 100%; }
+  .form-actions .btn--back { order: 2; }
+
+  .brand img { height: 44px; }
+  .site-header__inner { height: 72px; }
+  .mobile-nav { inset-block-start: 72px; }
+}
+
+/* ============================ Large screens 1440+ ====================== */
+@media (min-width: 1440px) {
+  .container--hero { max-width: var(--container-wide); }
+}
+
+/* ---- Print ---- */
+@media print {
+  .site-header, .site-footer, .hero__actions, .burger { display: none; }
+  [data-animate] { opacity: 1 !important; transform: none !important; }
+}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   variables.css — Design tokens for JOBUP Intérim
+   ========================================================================== */
+:root {
+  /* ---- Brand colors ---- */
+  --color-primary: #0D5BD7;
+  --color-primary-strong: #1D4ED8;   /* secondary / darker CTA blue */
+  --color-primary-dark: #0A47A8;      /* hover / pressed */
+  --color-primary-50: #EAF1FE;        /* tints */
+  --color-primary-100: #D6E4FB;
+
+  /* ---- Surfaces ---- */
+  --color-bg: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #E9EDF8;       /* lavender section background */
+  --color-footer: #050505;
+
+  /* ---- Text ---- */
+  --color-text: #111827;
+  --color-text-soft: #4B5563;
+  --color-text-muted: #6B7280;
+  --color-text-invert: #FFFFFF;
+  --color-text-invert-soft: rgba(255, 255, 255, 0.78);
+
+  /* ---- Lines & states ---- */
+  --color-border: #E5E7EB;
+  --color-border-strong: #D1D5DB;
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-warning-bg: #FEF3C7;
+  --color-success-bg: #DCFCE7;
+  --color-star: #FACC15;
+
+  /* ---- Typography ---- */
+  --font-display: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --fs-display: clamp(2.4rem, 1.4rem + 3.6vw, 4rem);
+  --fs-h1: clamp(2.1rem, 1.4rem + 2.8vw, 3.25rem);
+  --fs-h2: clamp(1.9rem, 1.3rem + 2.2vw, 2.85rem);
+  --fs-h3: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+  --fs-lead: clamp(1.02rem, 0.95rem + 0.4vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.78rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.25;
+  --lh-normal: 1.6;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5.5rem;
+  --section-y: clamp(3.5rem, 2rem + 6vw, 7rem);
+
+  /* ---- Layout ---- */
+  --container: 1200px;
+  --container-wide: 1320px;
+  --gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+
+  /* ---- Radii ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows ---- */
+  --shadow-xs: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --shadow-sm: 0 4px 14px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 14px 34px rgba(17, 24, 39, 0.08);
+  --shadow-lg: 0 26px 60px rgba(13, 91, 215, 0.16);
+  --shadow-blue: 0 18px 40px rgba(13, 91, 215, 0.28);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.45s;
+
+  /* ---- Z-index ---- */
+  --z-header: 100;
+  --z-overlay: 200;
+}

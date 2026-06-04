@@ -1,0 +1,12 @@
+# Outils / config locale
+.claude/
+.thumbnail
+
+# Captures et scripts de travail
+screenshots/
+
+# Images de debug / working à la racine (les images du site sont dans assets/)
+/*.png
+
+# Maquettes / sources de design (non utilisées par le site déployé)
+uploads/
