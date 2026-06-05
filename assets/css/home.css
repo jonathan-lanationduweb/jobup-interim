@@ -77,21 +77,32 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-5);
   padding-block: clamp(1.25rem, 1rem + 1vw, 1.8rem);
+  align-items: stretch;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 0.4rem;
 }
 .stat__value {
   display: flex;
   align-items: center;
-  gap: 0.4em;
+  justify-content: center;
+  gap: 0.45em;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
   color: #fff;
   line-height: 1;
+  height: 2.6rem;
 }
 .stat__value .dot { width: 0.5em; height: 0.5em; border-radius: 50%; background: #60A5FA; }
 .stat__value .icon { width: 0.85em; height: 0.85em; color: #93C5FD; }
-.stat__icon { height: 0.95em; width: auto; flex: none; }
-.stat__label { color: rgba(255, 255, 255, 0.74); font-size: var(--fs-small); margin-top: 0.35rem; }
+.stat__icon { height: 2rem; width: 2rem; object-fit: contain; flex: none; }
+.stat__label { color: rgba(255, 255, 255, 0.74); font-size: var(--fs-small); margin: 0; }
 
 /* ----------------------------- HISTOIRE --------------------------------- */
 .histoire__media {
@@ -131,18 +142,28 @@
 .method__grid { margin-top: var(--space-2); }
 
 /* ----------------------------- OFFERS ----------------------------------- */
-.offers__grid { margin-bottom: var(--space-8); }
-.offer-card { padding: var(--space-6); display: flex; flex-direction: column; }
-.offer-card__title { font-size: var(--fs-h3); font-weight: 600; margin-bottom: var(--space-3); }
+.offers__grid { margin-bottom: var(--space-8); align-items: stretch; }
+.offer-card { padding: var(--space-6); display: flex; flex-direction: column; height: 100%; }
+.offer-card__title {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .offer-card__desc {
   color: var(--color-text-muted);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: var(--space-5);
+  margin-bottom: 0;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  /* Hauteur fixe identique sur les 3 cartes → la ligne démarre au même niveau */
+  min-height: calc(4 * 1.6em);
+  max-height: calc(4 * 1.6em);
 }
 .offer-card__meta {
   display: flex;
@@ -152,16 +173,19 @@
   color: var(--color-text-soft);
   padding-top: var(--space-5);
   border-top: 1px solid var(--color-border);
-  margin-top: auto;
+  margin-top: var(--space-5);
+  min-height: 3.4em;
+  align-content: flex-start;
 }
 .offer-card__meta .meta { display: inline-flex; align-items: center; gap: 0.4em; }
 .offer-card__meta .icon { width: 1em; height: 1em; color: var(--color-primary); }
-.offer-card__actions { display: flex; flex-wrap: nowrap; gap: var(--space-2); margin-top: var(--space-5); }
+.offer-card__actions { display: flex; flex-wrap: nowrap; gap: var(--space-2); margin-top: auto; }
 .offer-card__actions .btn { flex: 1 1 0; padding: 0.7rem 0.9rem; font-size: var(--fs-small); white-space: nowrap; }
 .offer-card__actions .btn .icon { width: 1em; height: 1em; }
 
-/* ----------------------------- SECTORS (BTP) ---------------------------- */
+/* --------------------------- NOS EXPERTISES (carousel) ------------------ */
 .sector {
+  --accent: #F59E0B;
   background: var(--color-primary);
   color: #fff;
   position: relative;
@@ -185,7 +209,7 @@
   z-index: 1;
 }
 .sector__title { color: #fff; margin-bottom: var(--space-4); }
-.sector__text { color: rgba(255, 255, 255, 0.85); max-width: 38ch; margin-bottom: var(--space-6); }
+.sector__text { color: rgba(255, 255, 255, 0.85); max-width: 40ch; margin-bottom: var(--space-6); min-height: 3.4em; }
 .sector__list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -197,24 +221,49 @@
   display: inline-flex; align-items: center; justify-content: center;
   width: 26px; height: 26px; flex: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--accent);
   color: #fff;
+  transition: background-color var(--dur) var(--ease);
 }
 .sector__list .tick .icon { width: 14px; height: 14px; }
+
+.sector__foot { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+.sector__dots { display: flex; gap: 0.5rem; }
+.sector__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: background-color var(--dur) var(--ease), width var(--dur) var(--ease);
+}
+.sector__dot.is-active { background: var(--accent); width: 26px; border-radius: 999px; }
+
+/* Stacked-images media */
 .sector__media {
+  position: relative;
   align-self: center;
-  display: flex;
-  justify-content: center;
 }
-.sector__media img {
+.sector-stack {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-width: 620px;
-  display: block;
+  max-width: 580px;
+  margin-inline: auto;
+  aspect-ratio: 4 / 3.1;
 }
-.sector .deco-circle--fill {
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.16), rgba(255,255,255,0));
+.sector-stack__img {
+  position: absolute;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  will-change: transform, top, left, right, bottom, width, height, opacity;
+  transition: top 0.6s var(--ease), bottom 0.6s var(--ease),
+              left 0.6s var(--ease), right 0.6s var(--ease),
+              width 0.6s var(--ease), height 0.6s var(--ease),
+              transform 0.6s var(--ease), opacity 0.6s var(--ease);
 }
+.sector-stack__img.is-main   { left: 0;   top: 6%;   width: 64%; height: 88%; z-index: 3; opacity: 1; transform: scale(1); cursor: default; }
+.sector-stack__img.is-top    { right: 0;  top: 0;    width: 47%; height: 48%; z-index: 2; opacity: 0.96; transform: scale(0.97); }
+.sector-stack__img.is-bottom { right: 4%; bottom: 0; width: 47%; height: 48%; z-index: 1; opacity: 0.88; transform: scale(0.94); }
 
 /* ----------------------------- PROCESS ---------------------------------- */
 .process__steps {

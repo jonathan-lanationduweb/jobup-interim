@@ -129,6 +129,38 @@
 .dropzone.has-file .dropzone__file { display: inline-flex; }
 .dropzone__remove { color: #DC2626; font-size: var(--fs-small); font-weight: 600; }
 
+/* Récap candidature (depuis une offre) */
+.apply-recap {
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.apply-recap__label {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.apply-recap__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--color-text); margin-top: 2px; }
+.apply-recap__meta { font-size: var(--fs-small); color: var(--color-text-soft); margin-top: 2px; }
+
+/* Compact uploads (CV / Diplômes / Lettre de motivation) */
+.uploads { display: grid; gap: var(--space-4); margin-top: var(--space-5); }
+.upload__label { display: block; font-size: var(--fs-small); font-weight: 600; color: var(--color-text); margin-bottom: 0.4rem; }
+.upload__opt { color: var(--color-text-muted); font-weight: 400; }
+.upload__req { color: var(--color-primary); font-weight: 600; }
+.dropzone--compact { padding: var(--space-4) var(--space-5); text-align: left; }
+.dropzone--compact .dropzone__prompt { display: flex; align-items: center; gap: var(--space-4); }
+.dropzone--compact .dropzone__icon { margin-bottom: 0; width: 38px; height: 38px; flex: none; }
+.dropzone--compact .dropzone__icon .icon { width: 18px; height: 18px; }
+.dropzone--compact .dropzone__body { display: flex; flex-direction: column; }
+.dropzone--compact .dropzone__hint { margin-top: 0; }
+.dropzone--compact .dropzone__file { justify-content: flex-start; }
+.dropzone.has-error { border-color: #DC2626; background: #FEF2F2; }
+
 .form-actions {
   display: flex;
   justify-content: space-between;

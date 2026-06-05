@@ -73,7 +73,9 @@
       else if (sort === "salaire") list = list.slice().sort(function (a, b) { return b.salaryMonth - a.salaryMonth; });
 
       if (els.count) {
-        els.count.innerHTML = "<b>" + list.length + "</b> offre" + (list.length > 1 ? "s" : "") + " trouvée" + (list.length > 1 ? "s" : "");
+        var plural = list.length > 1 ? "s" : "";
+        els.count.innerHTML = "<b>" + list.length + "</b> offre" + plural + " trouvée" + plural +
+          ' <span class="jobs-toolbar__sectors">en BTP &amp; Construction · Tertiaire · Environnement</span>';
       }
       window.JobBoard.render(list);
     }
@@ -116,6 +118,16 @@
       var t;
       return function () { clearTimeout(t); t = setTimeout(fn, wait); };
     }
+
+    /* ---- Pre-select sector from URL (?secteur=btp|tertiaire|environnement) ---- */
+    (function () {
+      var map = { btp: "BTP", tertiaire: "Tertiaire", environnement: "Environnement" };
+      var param = new URLSearchParams(window.location.search).get("secteur");
+      if (!param) return;
+      var value = map[param.toLowerCase()];
+      if (!value) return;
+      els.sector.forEach(function (c) { c.checked = c.value === value; });
+    })();
 
     apply();
   });
