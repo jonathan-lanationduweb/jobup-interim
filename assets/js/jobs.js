@@ -45,7 +45,7 @@ window.JobBoard = (function () {
     },
     {
       id: "cariste", title: "Cariste CACES 1-3-5 H/F", company: "LogiDis France",
-      city: "Lille", dept: "59", contract: "Intérim", duration: "6 mois", sector: "Logistique",
+      city: "Lille", dept: "59", contract: "Intérim", duration: "6 mois", sector: "Environnement",
       salary: "14,20 €/h", salaryMonth: 2155, tags: ["CACES 1-3-5", "2×8"], tagStyle: "amber",
       ageDays: 3, posted: "Publié il y a 3j", isNew: false,
       desc: "Préparation de commandes, chargement/déchargement de camions, gerbage sur racks. Entrepôt de 12 000 m². Horaires en 2×8.",
@@ -75,7 +75,7 @@ window.JobBoard = (function () {
     },
     {
       id: "chauffeur", title: "Chauffeur PL/SPL H/F", company: "Trans Express",
-      city: "Lyon", dept: "69", contract: "CDI", duration: "", sector: "Logistique",
+      city: "Lyon", dept: "69", contract: "CDI", duration: "", sector: "Environnement",
       salary: "2 400 €/mois", salaryMonth: 2400, tags: ["Permis CE", "FIMO/FCO"],
       ageDays: 6, posted: "Publié il y a 6j", isNew: false,
       desc: "Livraison régionale de marchandises en messagerie. Chargement, contrôle et déchargement. Relation client sur les points de livraison.",
@@ -105,7 +105,7 @@ window.JobBoard = (function () {
     },
     {
       id: "preparateur", title: "Préparateur de commandes H/F", company: "Logistock",
-      city: "Rungis", dept: "94", contract: "Intérim", duration: "2 mois", sector: "Logistique",
+      city: "Rungis", dept: "94", contract: "Intérim", duration: "2 mois", sector: "Environnement",
       salary: "12,50 €/h", salaryMonth: 1900, tags: ["CACES 1", "Frais"],
       ageDays: 10, posted: "Publié il y a 10j", isNew: false,
       desc: "Préparation de commandes en environnement frais (2–4°C). Utilisation du scan et du transpalette électrique.",
@@ -125,7 +125,7 @@ window.JobBoard = (function () {
     },
     {
       id: "magasinier", title: "Magasinier gestionnaire stock H/F", company: "IndusPro",
-      city: "Strasbourg", dept: "67", contract: "CDD", duration: "8 mois", sector: "Logistique",
+      city: "Strasbourg", dept: "67", contract: "CDD", duration: "8 mois", sector: "Environnement",
       salary: "2 050 €/mois", salaryMonth: 2050, tags: ["ERP", "CACES 3"],
       ageDays: 15, posted: "Publié il y a 15j", isNew: false,
       desc: "Gestion des stocks de pièces industrielles, réception et expédition, inventaires tournants et saisie sur ERP.",
@@ -164,7 +164,6 @@ window.JobBoard = (function () {
           '<div class="job-card__top">' +
             "<div><h3 class=\"job-card__title\">" + job.title + "</h3>" +
             '<p class="job-card__company">' + job.company + "</p></div>" +
-            '<button class="icon-btn" type="button" aria-label="Sauvegarder l\'offre" data-bookmark>' + I.bookmark + "</button>" +
           "</div>" +
           '<div class="meta-row job-card__meta">' + metaIcons(job) + "</div>" +
           '<div class="job-card__tags">' + tagsHtml(job) + "</div>" +
@@ -178,26 +177,30 @@ window.JobBoard = (function () {
 
     // wire selection
     listEl.querySelectorAll(".job-card").forEach(function (card) {
-      var act = function (e) {
-        if (e.target.closest("[data-bookmark]")) return;
-        selectJob(card.getAttribute("data-id"));
-      };
+      var act = function () { selectJob(card.getAttribute("data-id")); };
       card.addEventListener("click", act);
       card.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(e); }
-      });
-    });
-    listEl.querySelectorAll("[data-bookmark]").forEach(function (b) {
-      b.addEventListener("click", function () {
-        b.classList.toggle("is-saved");
-        b.style.color = b.classList.contains("is-saved") ? "var(--color-primary)" : "";
-        b.style.borderColor = b.classList.contains("is-saved") ? "var(--color-primary)" : "";
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); }
       });
     });
 
     // keep active selection if still present, else select first
     var stillThere = jobs.some(function (j) { return j.id === state.activeId; });
     selectJob(stillThere ? state.activeId : jobs[0].id);
+  }
+
+  function applyUrl(job) {
+    var params = new URLSearchParams({
+      apply: "1",
+      job: job.id,
+      poste: job.title,
+      entreprise: job.company,
+      lieu: job.city + " (" + job.dept + ")",
+      contrat: job.contract + (job.duration ? " · " + job.duration : ""),
+      remu: job.salary,
+      secteur: job.sector
+    });
+    return "contact.html?" + params.toString();
   }
 
   function renderDetail(job) {
@@ -210,8 +213,7 @@ window.JobBoard = (function () {
         '<span class="meta-row__item">' + I.case + job.posted + "</span>" +
       "</div>" +
       '<div class="job-detail__actions">' +
-        '<a class="btn btn--deep" href="contact.html#postuler">Postuler ' + I.arrow + "</a>" +
-        '<button class="icon-btn" type="button" aria-label="Sauvegarder">' + I.bookmark + "</button>" +
+        '<a class="btn btn--deep" href="' + applyUrl(job) + '">Postuler ' + I.arrow + "</a>" +
       "</div>" +
       '<dl class="job-detail__summary">' +
         "<div><dt>Contrat</dt><dd>" + job.contract + (job.duration ? " · " + job.duration : "") + "</dd></div>" +

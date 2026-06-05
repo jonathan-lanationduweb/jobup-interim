@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JOBUP Intérim — Agence d'intérim BTP, tertiaire &amp; logistique en Île-de-France</title>
-  <meta name="description" content="JOBUP Intérim connecte les talents avec les entreprises qui avancent. Agence d'intérim spécialisée BTP, tertiaire et logistique : placement en 48h, accompagnement humain et missions adaptées à votre profil." />
+  <title>JOBUP Intérim — Agence d'intérim BTP, tertiaire &amp; environnement en Île-de-France</title>
+  <meta name="description" content="JOBUP Intérim connecte les talents avec les entreprises qui avancent. Agence d'intérim spécialisée BTP, tertiaire et environnement : placement en 48h, accompagnement humain et missions adaptées à votre profil." />
   <meta name="theme-color" content="#0D5BD7" />
   <link rel="canonical" href="https://www.jobup-interim.fr/" />
 
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="JOBUP Intérim" />
   <meta property="og:title" content="JOBUP Intérim — Votre prochaine mission commence ici" />
-  <meta property="og:description" content="Agence d'intérim spécialisée BTP, tertiaire et logistique. Placement en 48h et accompagnement humain partout en Île-de-France." />
+  <meta property="og:description" content="Agence d'intérim spécialisée BTP, tertiaire et environnement. Placement en 48h et accompagnement humain partout en Île-de-France." />
   <meta property="og:url" content="https://www.jobup-interim.fr/" />
   <meta property="og:image" content="assets/images/og-image.png" />
   <meta property="og:locale" content="fr_FR" />
@@ -26,7 +26,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="JOBUP Intérim — Votre prochaine mission commence ici" />
-  <meta name="twitter:description" content="Agence d'intérim spécialisée BTP, tertiaire et logistique. Placement en 48h, accompagnement humain." />
+  <meta name="twitter:description" content="Agence d'intérim spécialisée BTP, tertiaire et environnement. Placement en 48h, accompagnement humain." />
   <meta name="twitter:image" content="assets/images/og-image.png" />
 
   <!-- Fonts -->
@@ -55,7 +55,7 @@
     "name": "JOBUP Intérim",
     "url": "https://www.jobup-interim.fr/",
     "logo": "https://www.jobup-interim.fr/assets/images/logo-jobup-full.png",
-    "description": "Agence d'intérim spécialisée BTP, tertiaire et logistique en Île-de-France.",
+    "description": "Agence d'intérim spécialisée BTP, tertiaire et environnement en Île-de-France.",
     "slogan": "Confiance, accompagnement, évolution",
     "telephone": "+33607080910",
     "email": "contact@jobup-interim.fr",
@@ -145,8 +145,8 @@
       </div>
     </section>
 
-    <!-- ============================= HISTOIRE ============================= -->
-    <section class="section section--white histoire" aria-labelledby="histoire-title">
+    <!-- ============================= HISTOIRE (masquée) ============================= -->
+    <section class="section section--white histoire" aria-labelledby="histoire-title" hidden style="display:none">
       <span class="deco-circle deco-circle--concentric deco-circle--xl deco-circle--br" aria-hidden="true"></span>
       <div class="container split">
         <div class="histoire__media" data-animate>
@@ -269,24 +269,30 @@
       </div>
     </section>
 
-    <!-- ============================= SECTEUR BTP ============================= -->
-    <section class="section sector" aria-labelledby="sector-title">
+    <!-- ============================= NOS EXPERTISES (carousel secteurs) ============================= -->
+    <section class="section sector" id="expertises" aria-labelledby="sector-title" data-sector-carousel>
       <img class="sector__bg" src="assets/images/bg-blue-2.png" alt="" aria-hidden="true" width="1366" height="768" />
       <div class="container sector__inner">
-        <div data-animate>
+        <div class="sector__content" data-animate>
           <span class="eyebrow eyebrow--invert">Nos expertises</span>
-          <h2 id="sector-title" class="sector__title h2">BTP &amp; Construction</h2>
-          <p class="sector__text">Rejoignez nos équipes sur des chantiers variés, en neuf comme en rénovation.</p>
-          <ul class="sector__list">
-            <li><span class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Gros œuvre</li>
-            <li><span class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Travaux publics</li>
-            <li><span class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Second œuvre</li>
-            <li><span class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Encadrement de chantier</li>
-          </ul>
-          <a class="btn btn--white" href="offres.html">Voir les offres <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h2 id="sector-title" class="sector__title h2" data-sector-name>BTP &amp; Construction</h2>
+          <p class="sector__text" data-sector-text>Rejoignez nos équipes sur des chantiers variés, en neuf comme en rénovation.</p>
+          <ul class="sector__list" data-sector-points></ul>
+          <div class="sector__foot">
+            <a class="btn btn--white sector__cta" href="offres.html?secteur=btp" data-sector-cta>Voir les offres <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <div class="sector__dots" role="tablist" aria-label="Choisir un secteur">
+              <button class="sector__dot is-active" type="button" data-sector-dot="0" aria-label="BTP & Construction" aria-selected="true"></button>
+              <button class="sector__dot" type="button" data-sector-dot="1" aria-label="Tertiaire" aria-selected="false"></button>
+              <button class="sector__dot" type="button" data-sector-dot="2" aria-label="Environnement" aria-selected="false"></button>
+            </div>
+          </div>
         </div>
         <div class="sector__media" data-animate data-animate-delay="1">
-          <img src="assets/images/expertises.png" alt="Nos expertises : ouvrier du BTP, métiers du tertiaire et de l'environnement" loading="lazy" width="657" height="440" />
+          <div class="sector-stack" data-sector-stack>
+            <img class="sector-stack__img is-main" data-sector-img="0" src="assets/images/secteurs/btp-construction.png" alt="BTP & Construction" loading="lazy" />
+            <img class="sector-stack__img is-top" data-sector-img="1" src="assets/images/secteurs/tertiaire.png" alt="Tertiaire" loading="lazy" />
+            <img class="sector-stack__img is-bottom" data-sector-img="2" src="assets/images/secteurs/environnement.png" alt="Environnement" loading="lazy" />
+          </div>
         </div>
       </div>
     </section>
@@ -414,7 +420,6 @@
       </div>
       <div class="footer-bottom">
         <span>© <span data-year>2026</span> JOBUP Intérim · Tous droits réservés</span>
-        <span>Agrément n° IDF/2014/00891</span>
         <span class="footer-credit">Site créé par <a href="https://lanationduweb.fr" target="_blank" rel="noopener">La Nation du Web</a></span>
       </div>
     </div>
@@ -422,6 +427,7 @@
 
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/sectors.js" defer></script>
   <script src="assets/js/reviews.js" defer></script>
 </body>
 </html>
