@@ -6,7 +6,7 @@
 .jobs-hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
 }
 .jobs-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .jobs-hero__overlay {

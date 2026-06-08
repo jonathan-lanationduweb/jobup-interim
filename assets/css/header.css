@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  height: 84px;
+  height: 74px;
 }
 
 /* Logo */
@@ -33,7 +33,7 @@
   flex: none;
 }
 .brand img {
-  height: 62px;
+  height: 54px;
   width: auto;
   object-fit: contain;
 }
