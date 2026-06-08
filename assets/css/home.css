@@ -30,7 +30,9 @@
   display: grid;
   grid-template-columns: 1fr minmax(360px, 460px);
   align-items: center;
-  min-height: clamp(360px, 40vh, 460px);
+  /* Hauteur fluide : suit la hauteur d'écran, plancher 420px, plafond 600px.
+     header (~74px) + hero restent visibles à 100% sur 1366→1920. */
+  min-height: clamp(420px, 62vh, 600px);
   padding-top: var(--space-6);
   padding-bottom: clamp(4.5rem, 3.5rem + 3vw, 6rem);
 }
