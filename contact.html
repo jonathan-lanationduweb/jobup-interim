@@ -66,7 +66,7 @@
   <header class="site-header" data-screen-label="Contact — header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="JOBUP Intérim — Accueil">
-        <img src="assets/images/logo-jobup-header.png" alt="JOBUP Intérim" width="1020" height="700" />
+        <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim — Confiance, accompagnement, évolution" width="1026" height="860" />
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
         <ul class="main-nav__list">
@@ -199,8 +199,8 @@
             <div class="uploads">
               <!-- CV (optionnel) -->
               <div class="upload">
-                <span class="upload__label">CV <span class="upload__opt">— optionnel</span></span>
-                <div class="dropzone dropzone--compact" data-dropzone tabindex="0" role="button" aria-label="Téléverser votre CV">
+                <span class="upload__label">CV <span class="upload__req">— obligatoire</span></span>
+                <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser votre CV">
                   <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
                   <div class="dropzone__prompt">
                     <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
@@ -212,12 +212,13 @@
                     <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
                   </div>
                 </div>
+                <span class="field-error" hidden>Merci de joindre votre CV.</span>
               </div>
 
-              <!-- Diplômes (optionnel) -->
+              <!-- Diplômes (obligatoire) -->
               <div class="upload">
-                <span class="upload__label">Diplômes <span class="upload__opt">— optionnel</span></span>
-                <div class="dropzone dropzone--compact" data-dropzone tabindex="0" role="button" aria-label="Téléverser vos diplômes">
+                <span class="upload__label">Diplômes <span class="upload__req">— obligatoire</span></span>
+                <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser vos diplômes">
                   <input type="file" name="diplomes" accept=".pdf,.doc,.docx" hidden />
                   <div class="dropzone__prompt">
                     <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
@@ -229,6 +230,7 @@
                     <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
                   </div>
                 </div>
+                <span class="field-error" hidden>Merci de joindre vos diplômes.</span>
               </div>
 
               <!-- Lettre de motivation (obligatoire) -->

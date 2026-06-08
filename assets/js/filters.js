@@ -24,6 +24,36 @@
       form: document.querySelector("[data-search-form]")
     };
 
+    /* ---- Custom dropdown "Tous types" (options centrées) ---- */
+    (function () {
+      var dd = document.querySelector("[data-dd]");
+      if (!dd) return;
+      var btn = dd.querySelector("[data-dd-btn]");
+      var label = dd.querySelector("[data-dd-label]");
+      var hidden = dd.querySelector("[data-search-type]");
+      var opts = Array.prototype.slice.call(dd.querySelectorAll(".search-dd__opt"));
+      function setOpen(o) { dd.classList.toggle("is-open", o); if (btn) btn.setAttribute("aria-expanded", o ? "true" : "false"); }
+      if (btn) btn.addEventListener("click", function (e) { e.preventDefault(); setOpen(!dd.classList.contains("is-open")); });
+      opts.forEach(function (opt) {
+        opt.addEventListener("click", function () {
+          opts.forEach(function (o) { o.classList.remove("is-active"); o.setAttribute("aria-selected", "false"); });
+          opt.classList.add("is-active"); opt.setAttribute("aria-selected", "true");
+          if (hidden) hidden.value = opt.getAttribute("data-value");
+          if (label) label.textContent = opt.textContent;
+          setOpen(false);
+          if (hidden) hidden.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+      });
+      document.addEventListener("click", function (e) { if (!dd.contains(e.target)) setOpen(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+      var resetBtn = document.querySelector("[data-reset]");
+      if (resetBtn) resetBtn.addEventListener("click", function () {
+        opts.forEach(function (o) { var a = o.getAttribute("data-value") === "all"; o.classList.toggle("is-active", a); o.setAttribute("aria-selected", a ? "true" : "false"); });
+        if (label) label.textContent = "Tous types";
+        if (hidden) hidden.value = "all";
+      });
+    })();
+
     /* ---- Inject dynamic category counts ---- */
     function countBy(field, value) {
       return JOBS.filter(function (j) { return j[field] === value; }).length;
@@ -130,5 +160,15 @@
     })();
 
     apply();
+
+    /* ---- Mettre en évidence l'offre ouverte depuis l'accueil (?job=) ---- */
+    (function () {
+      var jobParam = new URLSearchParams(window.location.search).get("job");
+      if (!jobParam) return;
+      setTimeout(function () {
+        var card = document.querySelector('.job-card.is-active');
+        if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 350);
+    })();
   });
 })();

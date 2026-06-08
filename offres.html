@@ -69,7 +69,7 @@
   <header class="site-header" data-screen-label="Offres — header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="JOBUP Intérim — Accueil">
-        <img src="assets/images/logo-jobup-header.png" alt="JOBUP Intérim" width="1020" height="700" />
+        <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim — Confiance, accompagnement, évolution" width="1026" height="860" />
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
         <ul class="main-nav__list">
@@ -118,16 +118,21 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               <input type="text" data-search-ville placeholder="Ville, département" />
             </label>
-            <label class="search-field">
+            <div class="search-field search-dd" data-dd>
               <span class="visually-hidden">Type de contrat</span>
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              <select data-search-type>
-                <option value="all">Tous types</option>
-                <option value="Intérim">Intérim</option>
-                <option value="CDD">CDD</option>
-                <option value="CDI">CDI</option>
-              </select>
-            </label>
+              <button type="button" class="search-dd__btn" data-dd-btn aria-haspopup="listbox" aria-expanded="false">
+                <span class="search-dd__label" data-dd-label>Tous types</span>
+                <svg class="search-dd__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <ul class="search-dd__menu" data-dd-menu role="listbox" aria-label="Type de contrat">
+                <li class="search-dd__opt is-active" role="option" data-value="all" aria-selected="true">Tous types</li>
+                <li class="search-dd__opt" role="option" data-value="Intérim" aria-selected="false">Intérim</li>
+                <li class="search-dd__opt" role="option" data-value="CDD" aria-selected="false">CDD</li>
+                <li class="search-dd__opt" role="option" data-value="CDI" aria-selected="false">CDI</li>
+              </ul>
+              <input type="hidden" data-search-type value="all" />
+            </div>
             <button class="btn btn--deep" type="submit" data-search-btn>Rechercher</button>
           </div>
           <div class="search-chips">
