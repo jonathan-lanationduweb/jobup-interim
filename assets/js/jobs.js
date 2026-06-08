@@ -150,6 +150,18 @@ window.JobBoard = (function () {
     return job.tags.map(function (t) { return '<span class="chip ' + cls + '">' + t + "</span>"; }).join("");
   }
 
+  /* Secteurs → couleur + libellé affiché */
+  var SECTOR = {
+    "BTP": { label: "BTP & Construction", color: "#F59E0B" },
+    "Tertiaire": { label: "Tertiaire", color: "#D946EF" },
+    "Environnement": { label: "Environnement", color: "#22C55E" }
+  };
+  function sectorOf(job) { return SECTOR[job.sector] || { label: job.sector, color: "#0D5BD7" }; }
+  function sectorBadge(job) {
+    var s = sectorOf(job);
+    return '<span class="sector-badge" style="--sc:' + s.color + '">' + s.label + "</span>";
+  }
+
   function renderList(jobs) {
     if (!listEl) return;
     if (!jobs.length) {
@@ -160,13 +172,13 @@ window.JobBoard = (function () {
     if (detailEl) detailEl.style.display = "";
     listEl.innerHTML = jobs.map(function (job) {
       return (
-        '<article class="card card--hover job-card" data-id="' + job.id + '" tabindex="0" role="button" aria-label="Voir l\'offre ' + job.title + '">' +
+        '<article class="card card--hover job-card" data-id="' + job.id + '" style="--sc:' + sectorOf(job).color + '" tabindex="0" role="button" aria-label="Voir l\'offre ' + job.title + '">' +
           '<div class="job-card__top">' +
             "<div><h3 class=\"job-card__title\">" + job.title + "</h3>" +
             '<p class="job-card__company">' + job.company + "</p></div>" +
           "</div>" +
           '<div class="meta-row job-card__meta">' + metaIcons(job) + "</div>" +
-          '<div class="job-card__tags">' + tagsHtml(job) + "</div>" +
+          '<div class="job-card__tags">' + sectorBadge(job) + tagsHtml(job) + "</div>" +
           '<p class="job-card__desc">' + job.desc + "</p>" +
           '<div class="job-card__foot"><span>' + job.posted + "</span>" +
             (job.isNew ? '<span class="badge--new">Nouveau</span>' : "") +
@@ -205,7 +217,9 @@ window.JobBoard = (function () {
 
   function renderDetail(job) {
     if (!detailEl || !job) return;
+    detailEl.style.setProperty("--sc", sectorOf(job).color);
     detailEl.innerHTML =
+      '<div class="job-detail__sector">' + sectorBadge(job) + "</div>" +
       '<h2 class="job-detail__title">' + job.title + "</h2>" +
       '<p class="job-detail__company">' + job.company + "</p>" +
       '<div class="meta-row job-detail__meta">' +
@@ -241,6 +255,9 @@ window.JobBoard = (function () {
     listEl = document.querySelector("[data-jobs-list]");
     detailEl = document.querySelector("[data-job-detail]");
     if (!listEl) return;
+    // Pré-sélection d'une offre depuis l'accueil (?job=ID)
+    var jobParam = new URLSearchParams(window.location.search).get("job");
+    if (jobParam && JOBS.some(function (j) { return j.id === jobParam; })) state.activeId = jobParam;
     renderList(JOBS);
   }
 
