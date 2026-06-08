@@ -8,9 +8,6 @@
   isolation: isolate;
   color: #fff;
   overflow: hidden;
-  border-radius: 24px;
-  width: min(1280px, calc(100% - clamp(1.5rem, 3vw, 3rem)));
-  margin: clamp(0.75rem, 0.5rem + 0.5vw, 1.25rem) auto 0;
 }
 .hero__bg {
   position: absolute;
@@ -84,7 +81,6 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   background: linear-gradient(180deg, rgba(11, 38, 86, 0.0), rgba(11, 38, 86, 0.7));
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 .hero-stats__grid {
   display: grid;
