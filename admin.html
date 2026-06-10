@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backoffice — Offres JOBUP Intérim</title>
+  <!-- Page d'administration : non liée publiquement, non indexée -->
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body class="admin">
+  <!-- ============ Écran de connexion (DÉMO — voir admin.js / sécurité) ============ -->
+  <div class="admin-gate" data-gate>
+    <form class="admin-gate__card" data-gate-form>
+      <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim" width="120" />
+      <h1>Espace administration</h1>
+      <p>Gestion des offres d'emploi.</p>
+      <label class="field">
+        <span class="field__label">Mot de passe</span>
+        <input class="input" type="password" data-gate-input placeholder="••••••••" autocomplete="current-password" />
+      </label>
+      <p class="admin-gate__error" data-gate-error hidden>Mot de passe incorrect.</p>
+      <button class="btn btn--primary btn--block" type="submit">Se connecter</button>
+      <p class="admin-gate__note">⚠️ Démo : authentification côté client uniquement. En production, brancher Supabase Auth / Firebase Auth.</p>
+    </form>
+  </div>
+
+  <!-- ============ Application admin ============ -->
+  <div class="admin-app" data-app hidden>
+    <header class="admin-header">
+      <div class="admin-header__brand">
+        <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim" width="110" />
+        <span>Backoffice — Offres</span>
+      </div>
+      <div class="admin-header__actions">
+        <a class="btn btn--ghost btn--sm" href="index.html" target="_blank" rel="noopener">Voir le site</a>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-seed>Réinitialiser (démo)</button>
+        <button class="btn btn--deep btn--sm" type="button" data-add>+ Ajouter une offre</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-note">
+        <strong>Note technique :</strong> les modifications sont enregistrées dans le navigateur (localStorage) — pour une vraie publication visible par tous les visiteurs, connecter Supabase/Firebase (voir <code>assets/js/jobs-store.js</code>).
+      </div>
+
+      <div class="admin-tablewrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Poste</th><th>Entreprise</th><th>Secteur</th><th>Contrat</th><th>Lieu</th><th>Statut</th><th class="admin-table__actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody data-rows></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============ Modale formulaire offre ============ -->
+  <div class="admin-modal" data-modal hidden>
+    <div class="admin-modal__backdrop" data-modal-close></div>
+    <form class="admin-modal__card" data-job-form>
+      <div class="admin-modal__head">
+        <h2 data-form-title>Ajouter une offre</h2>
+        <button class="admin-modal__x" type="button" data-modal-close aria-label="Fermer">✕</button>
+      </div>
+      <div class="admin-modal__body">
+        <input type="hidden" name="id" />
+        <div class="form-grid">
+          <label class="field"><span class="field__label">Titre du poste *</span><input class="input" name="title" required placeholder="Maçon traditionnel H/F" /></label>
+          <label class="field"><span class="field__label">Entreprise *</span><input class="input" name="company" required placeholder="BTP Solutions Group" /></label>
+          <label class="field"><span class="field__label">Secteur *</span>
+            <select class="select" name="sector"><option value="BTP">BTP &amp; Construction</option><option value="Tertiaire">Tertiaire</option><option value="Environnement">Environnement</option></select>
+          </label>
+          <label class="field"><span class="field__label">Type de contrat *</span>
+            <select class="select" name="contract"><option>Intérim</option><option>CDD</option><option>CDI</option></select>
+          </label>
+          <label class="field"><span class="field__label">Durée du contrat</span><input class="input" name="duration" placeholder="3 mois" /></label>
+          <label class="field"><span class="field__label">Ville</span><input class="input" name="city" placeholder="Lyon" /></label>
+          <label class="field"><span class="field__label">Département</span><input class="input" name="dept" placeholder="69" /></label>
+          <label class="field"><span class="field__label">Rémunération</span><input class="input" name="salary" placeholder="13,50 €/h" /></label>
+          <label class="field"><span class="field__label">Salaire mensuel (€, pour le filtre)</span><input class="input" type="number" name="salaryMonth" placeholder="2050" /></label>
+          <label class="field"><span class="field__label">Date de publication (texte)</span><input class="input" name="posted" placeholder="Publié aujourd'hui" /></label>
+          <label class="field"><span class="field__label">Statut</span>
+            <select class="select" name="status"><option value="publié">Publié</option><option value="brouillon">Brouillon</option></select>
+          </label>
+        </div>
+        <label class="field"><span class="field__label">Description courte</span><textarea class="textarea" name="desc" rows="2"></textarea></label>
+        <label class="field"><span class="field__label">À propos de la mission</span><textarea class="textarea" name="missions" rows="2"></textarea></label>
+        <label class="field"><span class="field__label">Profil recherché (une ligne par point)</span><textarea class="textarea" name="profile" rows="4"></textarea></label>
+        <label class="field"><span class="field__label">Ce que nous offrons (une ligne par point)</span><textarea class="textarea" name="perks" rows="4"></textarea></label>
+        <label class="field"><span class="field__label">Badges / certifications (séparés par des virgules)</span><input class="input" name="tags" placeholder="CACES R408, Permis B" /></label>
+      </div>
+      <div class="admin-modal__foot">
+        <button class="btn btn--ghost" type="button" data-modal-close>Annuler</button>
+        <button class="btn btn--deep" type="submit">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/js/jobs-store.js" defer></script>
+  <script src="assets/js/admin.js" defer></script>
+</body>
+</html>

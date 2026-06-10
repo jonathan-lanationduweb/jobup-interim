@@ -24,6 +24,17 @@
       form: document.querySelector("[data-search-form]")
     };
 
+    /* ---- Bouton "Filtres" (mobile) ---- */
+    (function () {
+      var toggle = document.querySelector("[data-filters-toggle]");
+      var panel = document.querySelector("[data-filters]");
+      if (!toggle || !panel) return;
+      toggle.addEventListener("click", function () {
+        var open = panel.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+
     /* ---- Custom dropdown "Tous types" (options centrées) ---- */
     (function () {
       var dd = document.querySelector("[data-dd]");

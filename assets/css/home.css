@@ -116,6 +116,16 @@
 .stat__icon { height: 2rem; width: 2rem; object-fit: contain; flex: none; }
 .stat__label { color: rgba(255, 255, 255, 0.74); font-size: var(--fs-small); margin: 0; }
 
+/* Mini-accueil compact : la page enchaîne directement sur les offres */
+.hero--mini .hero__inner {
+  min-height: clamp(300px, 38vh, 400px);
+  padding-bottom: clamp(4rem, 3rem + 2vw, 5.5rem);
+}
+/* Section offres (#offres) sur l'accueil */
+#offres { scroll-margin-top: 84px; }
+.jobs-hero__inner--flat { padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
+.header-reco { white-space: nowrap; }
+
 /* ----------------------------- HISTOIRE --------------------------------- */
 .histoire__media {
   border-radius: var(--radius-xl);
