@@ -6,7 +6,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     if (!window.JobBoard) return;
-    var JOBS = window.JobBoard.JOBS;
+    function getJOBS() { return (window.JobBoard && window.JobBoard.JOBS) || []; }
 
     var els = {
       contract: Array.prototype.slice.call(document.querySelectorAll("[name='contract']")),
@@ -67,12 +67,14 @@
 
     /* ---- Inject dynamic category counts ---- */
     function countBy(field, value) {
-      return JOBS.filter(function (j) { return j[field] === value; }).length;
+      return getJOBS().filter(function (j) { return j[field] === value; }).length;
     }
-    document.querySelectorAll("[data-count-for]").forEach(function (el) {
-      var spec = el.getAttribute("data-count-for").split(":"); // field:value
-      el.textContent = countBy(spec[0], spec[1]);
-    });
+    function injectCounts() {
+      document.querySelectorAll("[data-count-for]").forEach(function (el) {
+        var spec = el.getAttribute("data-count-for").split(":"); // field:value
+        el.textContent = countBy(spec[0], spec[1]);
+      });
+    }
 
     /* ---- Salary slider live label ---- */
     function fmtEuro(n) { return n.toLocaleString("fr-FR") + " €"; }
@@ -92,7 +94,7 @@
       var ville = (els.ville && els.ville.value || "").trim().toLowerCase();
       var type = els.type && els.type.value || "all";
 
-      var list = JOBS.filter(function (j) {
+      var list = getJOBS().filter(function (j) {
         if (contracts.length && contracts.indexOf(j.contract) === -1) return false;
         if (sectors.length && sectors.indexOf(j.sector) === -1) return false;
         if (type !== "all" && j.contract !== type) return false;
@@ -170,7 +172,10 @@
       els.sector.forEach(function (c) { c.checked = c.value === value; });
     })();
 
-    apply();
+    // Exposé pour jobs.js : (ré)injecte les compteurs + applique le filtrage
+    // une fois les offres chargées (Supabase async ou localStorage).
+    window.JobFilters = { refresh: function () { injectCounts(); apply(); } };
+    window.JobFilters.refresh();
 
     /* ---- Mettre en évidence l'offre ouverte depuis l'accueil (?job=) ---- */
     (function () {
