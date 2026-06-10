@@ -177,6 +177,33 @@ img.value-card__icon { width: auto; height: 26px; object-fit: contain; }
 .stars { display: inline-flex; gap: 2px; color: var(--color-star); }
 .stars .icon { width: 18px; height: 18px; }
 
+/* Bulle Contact flottante */
+.floating-contact {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.85em 1.25em;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-blue);
+  transition: transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.floating-contact:hover { background: var(--color-primary-dark); transform: translateY(-2px); color: #fff; }
+.floating-contact .icon { width: 20px; height: 20px; }
+@media (max-width: 560px) {
+  .floating-contact { right: 16px; bottom: 16px; padding: 0.8em 1em; }
+}
+
+/* Bouton "Filtres" (mobile uniquement) */
+.filters-toggle { display: none; align-items: center; gap: 0.5em; }
+
 /* Sector badge (coloured per --sc) — accueil + offres */
 .sector-badge {
   display: inline-flex;

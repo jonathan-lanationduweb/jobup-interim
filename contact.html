@@ -63,37 +63,14 @@
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
 
-  <header class="site-header" data-screen-label="Contact — header">
+  <header class="site-header site-header--bare" data-screen-label="Contact — header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="JOBUP Intérim — Accueil">
         <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim — Confiance, accompagnement, évolution" width="1026" height="860" />
       </a>
-      <nav class="main-nav" aria-label="Navigation principale">
-        <ul class="main-nav__list">
-          <li><a class="main-nav__link" href="index.html">Accueil</a></li>
-          <li><a class="main-nav__link" href="offres.html">Offres d'emploi</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <a class="btn btn--primary" href="contact.html" aria-current="page">
-          Contact
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-        </a>
-      </div>
-      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span>
-      </button>
+      <a class="btn btn--ghost btn--sm" href="index.html#offres">← Voir les offres</a>
     </div>
   </header>
-
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
-    <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html">Accueil</a></li>
-      <li><a class="mobile-nav__link" href="offres.html">Offres d'emploi</a></li>
-      <li><a class="mobile-nav__link" href="contact.html" aria-current="page">Contact</a></li>
-    </ul>
-    <a class="btn btn--primary btn--block" href="contact.html">Contactez-nous</a>
-  </nav>
 
   <main id="main" data-screen-label="Contact">
     <!-- ===================== COORDONNÉES + FORMULAIRE ===================== -->
@@ -127,7 +104,6 @@
         <!-- Formulaire multi-étapes -->
         <!-- Formulaire multi-étapes -->
         <form class="form-card" data-multistep novalidate aria-label="Formulaire de contact">
-          <!-- Récapitulatif candidature (pré-rempli depuis une offre) -->
           <div class="apply-recap" data-apply-recap hidden>
             <p class="apply-recap__label">Vous postulez pour</p>
             <p class="apply-recap__title" data-apply-poste></p>
@@ -143,9 +119,8 @@
           <!-- Step 1 : Profil -->
           <div class="form-step is-active" data-step="1">
             <p class="form-step__kicker">Étape <span data-step-current>1</span> / <span data-step-total>3</span></p>
-            <h2 class="form-step__title">Votre profil</h2>
-            <p class="form-step__subtitle">Dites-nous qui vous êtes pour mieux vous orienter.</p>
-
+            <h2 class="form-step__title">Vous êtes…</h2>
+            <p class="form-step__subtitle">Choisissez votre profil pour adapter le formulaire.</p>
             <div class="segmented-block">
               <span class="field__label">Vous êtes</span>
               <div class="segmented" data-segmented role="group" aria-label="Vous êtes">
@@ -156,100 +131,95 @@
             </div>
           </div>
 
-          <!-- Step 2 : Votre besoin -->
+          <!-- Step 2 : Besoin (varie selon le profil) -->
           <div class="form-step" data-step="2">
             <p class="form-step__kicker">Étape <span data-step-current>2</span> / <span data-step-total>3</span></p>
-            <h2 class="form-step__title">Votre besoin</h2>
-            <p class="form-step__subtitle">Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.</p>
 
-            <div class="segmented-block">
-              <span class="field__label">Métier / domaine</span>
-              <div class="segmented" data-segmented role="group" aria-label="Métier ou domaine">
-                <button type="button" class="segmented__option is-active" aria-pressed="true" data-value="BTP &amp; Construction">BTP &amp; Construction</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Tertiaire">Tertiaire</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Environnement">Environnement</button>
-                <button type="button" class="segmented__option" aria-pressed="false" data-value="Autre">Autre</button>
+            <!-- ===== CANDIDAT ===== -->
+            <div data-profil-panel="Candidat">
+              <h2 class="form-step__title">Votre besoin</h2>
+              <p class="form-step__subtitle">Donnez-nous le contexte. Plus c'est précis, mieux on vous répond.</p>
+              <div class="segmented-block">
+                <span class="field__label">Métier / domaine</span>
+                <div class="segmented" data-segmented role="group" aria-label="Métier ou domaine">
+                  <button type="button" class="segmented__option is-active" aria-pressed="true" data-value="BTP &amp; Construction">BTP &amp; Construction</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Tertiaire">Tertiaire</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Environnement">Environnement</button>
+                  <button type="button" class="segmented__option" aria-pressed="false" data-value="Autre">Autre</button>
+                </div>
+                <input type="hidden" name="metier" value="BTP &amp; Construction" />
               </div>
-              <input type="hidden" name="metier" value="BTP &amp; Construction" />
+              <label class="field">
+                <span class="field__label">Poste actuel ou recherché</span>
+                <input class="input" type="text" name="poste" placeholder="Maçon" required />
+                <span class="field-error" hidden>Merci d'indiquer un poste.</span>
+              </label>
+              <div class="form-row form-row--2">
+                <label class="field">
+                  <span class="field__label">Expérience</span>
+                  <select class="select" name="experience"><option>Débutant (moins de 1 an)</option><option>1 à 3 ans</option><option>3 à 5 ans</option><option>5 à 10 ans</option><option>Plus de 10 ans</option></select>
+                </label>
+                <label class="field">
+                  <span class="field__label">Lieu souhaité</span>
+                  <input class="input" type="text" name="lieu" placeholder="91130" />
+                </label>
+              </div>
+              <div class="uploads">
+                <div class="upload">
+                  <span class="upload__label">CV <span class="upload__req">— obligatoire</span></span>
+                  <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser votre CV">
+                    <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
+                    <div class="dropzone__prompt"><span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span><span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span></div>
+                    <div class="dropzone__file"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span data-file-name>document.pdf</span><button type="button" class="dropzone__remove" data-file-remove>Retirer</button></div>
+                  </div>
+                  <span class="field-error" hidden>Merci de joindre votre CV.</span>
+                </div>
+                <div class="upload">
+                  <span class="upload__label">Diplômes <span class="upload__req">— obligatoire</span></span>
+                  <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser vos diplômes">
+                    <input type="file" name="diplomes" accept=".pdf,.doc,.docx" hidden />
+                    <div class="dropzone__prompt"><span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span></div>
+                    <div class="dropzone__file"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span data-file-name>document.pdf</span><button type="button" class="dropzone__remove" data-file-remove>Retirer</button></div>
+                  </div>
+                  <span class="field-error" hidden>Merci de joindre vos diplômes.</span>
+                </div>
+                <div class="upload">
+                  <span class="upload__label">Lettre de motivation <span class="upload__opt">— optionnel</span></span>
+                  <div class="dropzone dropzone--compact" data-dropzone tabindex="0" role="button" aria-label="Téléverser votre lettre de motivation">
+                    <input type="file" name="lettre_motivation" accept=".pdf,.doc,.docx" hidden />
+                    <div class="dropzone__prompt"><span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span><span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span></div>
+                    <div class="dropzone__file"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span data-file-name>document.pdf</span><button type="button" class="dropzone__remove" data-file-remove>Retirer</button></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <label class="field">
-              <span class="field__label">Poste actuel ou recherché</span>
-              <input class="input" type="text" name="poste" placeholder="Maçon" required />
-              <span class="field-error" hidden>Merci d'indiquer un poste.</span>
-            </label>
-
-            <div class="form-row form-row--2">
-              <label class="field">
-                <span class="field__label">Expérience</span>
-                <select class="select" name="experience">
-                  <option>Débutant (moins de 1 an)</option>
-                  <option>1 à 3 ans</option>
-                  <option>3 à 5 ans</option>
-                  <option>5 à 10 ans</option>
-                  <option>Plus de 10 ans</option>
-                </select>
-              </label>
-              <label class="field">
-                <span class="field__label">Lieu souhaité</span>
-                <input class="input" type="text" name="lieu" placeholder="91130" />
-              </label>
-            </div>
-
-            <div class="uploads">
-              <!-- CV (optionnel) -->
-              <div class="upload">
-                <span class="upload__label">CV <span class="upload__req">— obligatoire</span></span>
-                <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser votre CV">
-                  <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
-                  <div class="dropzone__prompt">
-                    <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
-                    <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span>
-                  </div>
-                  <div class="dropzone__file">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-                    <span data-file-name>document.pdf</span>
-                    <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
-                  </div>
-                </div>
-                <span class="field-error" hidden>Merci de joindre votre CV.</span>
+            <!-- ===== ENTREPRISE ===== -->
+            <div data-profil-panel="Entreprise" hidden>
+              <h2 class="form-step__title">Votre offre / besoin de recrutement</h2>
+              <p class="form-step__subtitle">Décrivez le poste à pourvoir : nous vous proposons des profils qualifiés sous 48h.</p>
+              <div class="form-row form-row--2">
+                <label class="field"><span class="field__label">Nom de l'entreprise</span><input class="input" type="text" name="entreprise" placeholder="Votre société" required /><span class="field-error" hidden>Merci d'indiquer le nom de l'entreprise.</span></label>
+                <label class="field"><span class="field__label">Secteur</span><select class="select" name="secteur_entreprise"><option value="BTP &amp; Construction">BTP &amp; Construction</option><option value="Tertiaire">Tertiaire</option><option value="Environnement">Environnement</option></select></label>
               </div>
-
-              <!-- Diplômes (obligatoire) -->
-              <div class="upload">
-                <span class="upload__label">Diplômes <span class="upload__req">— obligatoire</span></span>
-                <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser vos diplômes">
-                  <input type="file" name="diplomes" accept=".pdf,.doc,.docx" hidden />
-                  <div class="dropzone__prompt">
-                    <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-                    <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span>
-                  </div>
-                  <div class="dropzone__file">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-                    <span data-file-name>document.pdf</span>
-                    <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
-                  </div>
-                </div>
-                <span class="field-error" hidden>Merci de joindre vos diplômes.</span>
+              <div class="form-row form-row--2" style="margin-top:1.5rem">
+                <label class="field"><span class="field__label">Poste recherché</span><input class="input" type="text" name="poste_entreprise" placeholder="2 maçons coffreurs" required /><span class="field-error" hidden>Merci d'indiquer le poste.</span></label>
+                <label class="field"><span class="field__label">Type de contrat</span><select class="select" name="contrat_entreprise"><option>Intérim</option><option>CDD</option><option>CDI</option></select></label>
               </div>
-
-              <!-- Lettre de motivation (obligatoire) -->
-              <div class="upload">
-                <span class="upload__label">Lettre de motivation <span class="upload__req">— obligatoire</span></span>
-                <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser votre lettre de motivation">
-                  <input type="file" name="lettre_motivation" accept=".pdf,.doc,.docx" hidden />
-                  <div class="dropzone__prompt">
-                    <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
-                    <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span>
-                  </div>
-                  <div class="dropzone__file">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-                    <span data-file-name>document.pdf</span>
-                    <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
-                  </div>
-                </div>
-                <span class="field-error" hidden>Merci de joindre votre lettre de motivation.</span>
+              <div class="form-row form-row--2" style="margin-top:1.5rem">
+                <label class="field"><span class="field__label">Nombre de postes</span><input class="input" type="text" name="nb_postes" placeholder="2" /></label>
+                <label class="field"><span class="field__label">Lieu de la mission</span><input class="input" type="text" name="lieu_mission" placeholder="91130 Ris-Orangis" /></label>
               </div>
+              <div class="form-row form-row--2" style="margin-top:1.5rem">
+                <label class="field"><span class="field__label">Démarrage souhaité</span><select class="select" name="demarrage"><option>Dès que possible</option><option>Sous 48h (urgent)</option><option>Dans la semaine</option><option>Dans le mois</option></select></label>
+                <label class="field"><span class="field__label">Durée de mission</span><input class="input" type="text" name="duree_mission" placeholder="3 mois renouvelable" /></label>
+              </div>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Rémunération proposée</span><input class="input" type="text" name="remu_entreprise" placeholder="13,50 €/h ou 2 200 €/mois" /></label>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Description du poste</span><textarea class="textarea" name="desc_entreprise" placeholder="Présentez le poste et le contexte de la mission…"></textarea></label>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Missions principales</span><textarea class="textarea" name="missions_entreprise" placeholder="Les tâches principales…"></textarea></label>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Profil recherché</span><textarea class="textarea" name="profil_entreprise" placeholder="Expérience, diplômes, qualités…"></textarea></label>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Compétences / habilitations nécessaires</span><input class="input" type="text" name="habilitations" placeholder="CACES, Permis B, habilitation B1V…" /></label>
+              <label class="field" style="margin-top:1.5rem"><span class="field__label">Message complémentaire <span class="upload__opt">— optionnel</span></span><textarea class="textarea" name="message_entreprise" placeholder="Toute information utile…"></textarea></label>
             </div>
           </div>
 
@@ -258,38 +228,18 @@
             <p class="form-step__kicker">Étape <span data-step-current>3</span> / <span data-step-total>3</span></p>
             <h2 class="form-step__title">Vos coordonnées</h2>
             <p class="form-step__subtitle">Pour que l'on puisse vous recontacter rapidement.</p>
-
             <div class="form-row form-row--2">
-              <label class="field">
-                <span class="field__label">Prénom</span>
-                <input class="input" type="text" name="prenom" placeholder="Votre prénom" required />
-                <span class="field-error" hidden>Merci d'indiquer votre prénom.</span>
-              </label>
-              <label class="field">
-                <span class="field__label">Nom</span>
-                <input class="input" type="text" name="nom" placeholder="Votre nom" required />
-                <span class="field-error" hidden>Merci d'indiquer votre nom.</span>
-              </label>
+              <label class="field"><span class="field__label">Prénom</span><input class="input" type="text" name="prenom" placeholder="Votre prénom" required /><span class="field-error" hidden>Merci d'indiquer votre prénom.</span></label>
+              <label class="field"><span class="field__label">Nom</span><input class="input" type="text" name="nom" placeholder="Votre nom" required /><span class="field-error" hidden>Merci d'indiquer votre nom.</span></label>
             </div>
-
-            <div class="form-row form-row--2">
-              <label class="field">
-                <span class="field__label">Email</span>
-                <input class="input" type="email" name="email" placeholder="vous@email.fr" required />
-                <span class="field-error" hidden>Merci d'indiquer un email valide.</span>
-              </label>
-              <label class="field">
-                <span class="field__label">Téléphone</span>
-                <input class="input" type="tel" name="telephone" placeholder="06 12 34 56 78" required />
-                <span class="field-error" hidden>Merci d'indiquer un téléphone.</span>
-              </label>
+            <div class="form-row form-row--2" style="margin-top:1.5rem">
+              <label class="field"><span class="field__label">Email</span><input class="input" type="email" name="email" placeholder="vous@email.fr" required /><span class="field-error" hidden>Merci d'indiquer un email valide.</span></label>
+              <label class="field"><span class="field__label">Téléphone</span><input class="input" type="tel" name="telephone" placeholder="06 12 34 56 78" required /><span class="field-error" hidden>Merci d'indiquer un téléphone.</span></label>
             </div>
-
-            <label class="field" style="margin-top:1.5rem">
-              <span class="field__label">Votre message <span class="upload__opt">— optionnel</span></span>
-              <textarea class="textarea" name="message" placeholder="Quelques mots sur vous, vos disponibilités, vos certifications…"></textarea>
-            </label>
-
+            <div data-profil-panel="Entreprise" hidden style="margin-top:1.5rem">
+              <label class="field"><span class="field__label">Fonction dans l'entreprise</span><input class="input" type="text" name="fonction" placeholder="Responsable RH, dirigeant…" required /><span class="field-error" hidden>Merci d'indiquer votre fonction.</span></label>
+            </div>
+            <label class="field" style="margin-top:1.5rem"><span class="field__label">Votre message <span class="upload__opt">— optionnel</span></span><textarea class="textarea" name="message" placeholder="Un mot à nous transmettre…"></textarea></label>
             <label class="check" style="margin-top:1.5rem; align-items:flex-start">
               <input type="checkbox" name="consent" required />
               <span class="check__box"></span>
@@ -298,7 +248,6 @@
             <span class="field-error" hidden>Merci d'accepter pour continuer.</span>
           </div>
 
-          <!-- Success -->
           <div class="form-success" data-success>
             <span class="form-success__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
             <h2 class="form-step__title">Demande envoyée !</h2>
