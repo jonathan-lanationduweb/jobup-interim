@@ -22,6 +22,10 @@
       <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim" width="120" />
       <h1>Espace administration</h1>
       <p>Gestion des offres d'emploi.</p>
+      <label class="field" data-gate-email-wrap>
+        <span class="field__label">Email</span>
+        <input class="input" type="email" data-gate-email placeholder="admin@jobup-interim.fr" autocomplete="username" />
+      </label>
       <label class="field">
         <span class="field__label">Mot de passe</span>
         <input class="input" type="password" data-gate-input placeholder="••••••••" autocomplete="current-password" />
@@ -106,6 +110,8 @@
     </form>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
   <script src="assets/js/jobs-store.js" defer></script>
   <script src="assets/js/admin.js" defer></script>
 </body>

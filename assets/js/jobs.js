@@ -12,7 +12,7 @@ window.JobBoard = (function () {
     arrow: '<svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
   };
 
-  var JOBS = (window.JobStore ? window.JobStore.getPublishedJobs() : []);
+  var JOBS = [];
 
   var listEl, detailEl, state = { activeId: null };
 
@@ -134,18 +134,26 @@ window.JobBoard = (function () {
     listEl = document.querySelector("[data-jobs-list]");
     detailEl = document.querySelector("[data-job-detail]");
     if (!listEl) return;
-    // Pré-sélection d'une offre depuis l'accueil (?job=ID)
-    var jobParam = new URLSearchParams(window.location.search).get("job");
-    if (jobParam && JOBS.some(function (j) { return j.id === jobParam; })) state.activeId = jobParam;
-    renderList(JOBS);
+    if (listEl) listEl.innerHTML = '<div class="card jobs-empty">Chargement des offres…</div>';
+    (window.JobStore ? window.JobStore.getPublishedJobs() : Promise.resolve([])).then(function (jobs) {
+      JOBS = jobs || [];
+      api.JOBS = JOBS;
+      var jobParam = new URLSearchParams(window.location.search).get("job");
+      if (jobParam && JOBS.some(function (j) { return j.id === jobParam; })) state.activeId = jobParam;
+      // Si les filtres sont présents, ils pilotent le rendu ; sinon rendu direct.
+      if (window.JobFilters && window.JobFilters.refresh) window.JobFilters.refresh();
+      else renderList(JOBS);
+      document.dispatchEvent(new CustomEvent("jobs:ready"));
+    });
   }
 
   document.addEventListener("DOMContentLoaded", init);
 
-  return {
+  var api = {
     JOBS: JOBS,
     render: renderList,
     selectJob: selectJob,
     state: state
   };
+  return api;
 })();

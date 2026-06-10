@@ -89,12 +89,6 @@ window.JobStore = (function () {
       perks: ["2 050 €/mois", "Tickets restaurant", "Prime d'objectifs", "Horaires de journée"] }
   ];
 
-  /* ---- Couche de persistance (localStorage = démo) ---- */
-  function load() {
-    try { var raw = localStorage.getItem(KEY); if (raw) return JSON.parse(raw); } catch (e) {}
-    return clone(SEED);
-  }
-  function persist(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} }
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
   function slugify(s) {
     return (s || "offre").toString().toLowerCase()
@@ -102,34 +96,93 @@ window.JobStore = (function () {
       .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 40) || ("offre-" + Date.now());
   }
 
-  /* ---- API service (à remplacer par Supabase en production) ---- */
-  function getJobs() { return load(); }
-  function getPublishedJobs() { return load().filter(function (j) { return j.status !== "brouillon"; }); }
-  function getJobById(id) { return load().filter(function (j) { return j.id === id; })[0] || null; }
+  /* ---- Fallback localStorage (démo, si Supabase indisponible) ---- */
+  function lkLoad() { try { var r = localStorage.getItem(KEY); if (r) return JSON.parse(r); } catch (e) {} return clone(SEED); }
+  function lkSave(l) { try { localStorage.setItem(KEY, JSON.stringify(l)); } catch (e) {} }
 
+  /* ---- Client Supabase (clé publique uniquement) ---- */
+  var cfg = window.SUPABASE_CONFIG || {};
+  var TABLE = cfg.table || "jobs";
+  var sb = (window.supabase && cfg.url && cfg.anonKey) ? window.supabase.createClient(cfg.url, cfg.anonKey) : null;
+  function rowToJob(row) { var j = Object.assign({}, row.data || {}); j.id = row.id; if (row.status) j.status = row.status; return j; }
+  function jobToRow(job) { return { id: job.id, status: job.status || "publié", data: job }; }
+
+  /* ---- API service (async — Supabase si configuré, sinon localStorage) ---- */
+  function getPublishedJobs() {
+    if (sb) {
+      return sb.from(TABLE).select("id,status,data").eq("status", "publié").then(function (res) {
+        if (res.error) throw res.error;
+        if (res.data && res.data.length) return res.data.map(rowToJob);
+        return lkLoad().filter(function (j) { return j.status !== "brouillon"; });
+      }).catch(function (e) {
+        console.warn("[JobStore] Supabase indisponible → fallback local:", (e && e.message) || e);
+        return lkLoad().filter(function (j) { return j.status !== "brouillon"; });
+      });
+    }
+    return Promise.resolve(lkLoad().filter(function (j) { return j.status !== "brouillon"; }));
+  }
+  function getJobs() {
+    if (sb) {
+      return sb.from(TABLE).select("id,status,data").then(function (res) {
+        if (res.error) throw res.error;
+        return (res.data || []).map(rowToJob);
+      }).catch(function (e) { console.warn("[JobStore] fallback local:", (e && e.message) || e); return lkLoad(); });
+    }
+    return Promise.resolve(lkLoad());
+  }
+  function getJobById(id) {
+    if (sb) {
+      return sb.from(TABLE).select("id,status,data").eq("id", id).maybeSingle().then(function (res) {
+        if (res.error) throw res.error; return res.data ? rowToJob(res.data) : null;
+      }).catch(function () { return lkLoad().filter(function (j) { return j.id === id; })[0] || null; });
+    }
+    return Promise.resolve(lkLoad().filter(function (j) { return j.id === id; })[0] || null);
+  }
   function createJob(job) {
-    var list = load();
-    if (!job.id) job.id = slugify(job.title);
-    // éviter les collisions d'id
-    var base = job.id, n = 2;
-    while (list.some(function (j) { return j.id === job.id; })) { job.id = base + "-" + n++; }
+    if (!job.id) job.id = slugify(job.title) + "-" + Date.now().toString(36).slice(-4);
     if (!job.posted) job.posted = "Publié aujourd'hui";
     if (job.salaryMonth == null) job.salaryMonth = 0;
     if (!job.tags) job.tags = [];
-    list.unshift(job);
-    persist(list);
-    return job;
+    if (!job.status) job.status = "publié";
+    if (sb) { return sb.from(TABLE).insert(jobToRow(job)).then(function (res) { if (res.error) throw res.error; return job; }); }
+    var list = lkLoad(); list.unshift(job); lkSave(list); return Promise.resolve(job);
   }
   function updateJob(id, patch) {
-    var list = load().map(function (j) { return j.id === id ? Object.assign({}, j, patch) : j; });
-    persist(list);
-    return getJobById(id);
+    if (sb) {
+      return getJobById(id).then(function (cur) {
+        var merged = Object.assign({}, cur || {}, patch); merged.id = id;
+        return sb.from(TABLE).update({ status: merged.status || "publié", data: merged }).eq("id", id).then(function (res) { if (res.error) throw res.error; return merged; });
+      });
+    }
+    var list = lkLoad().map(function (j) { return j.id === id ? Object.assign({}, j, patch) : j; });
+    lkSave(list); return Promise.resolve(list.filter(function (j) { return j.id === id; })[0]);
   }
-  function deleteJob(id) { persist(load().filter(function (j) { return j.id !== id; })); }
+  function deleteJob(id) {
+    if (sb) { return sb.from(TABLE).delete().eq("id", id).then(function (res) { if (res.error) throw res.error; }); }
+    lkSave(lkLoad().filter(function (j) { return j.id !== id; })); return Promise.resolve();
+  }
   function setStatus(id, status) { return updateJob(id, { status: status }); }
-  function resetSeed() { persist(clone(SEED)); }
+  function pushSeed() {
+    if (sb) { return sb.from(TABLE).upsert(SEED.map(jobToRow)).then(function (res) { if (res.error) throw res.error; }); }
+    lkSave(clone(SEED)); return Promise.resolve();
+  }
+  function resetSeed() { return pushSeed(); }
+
+  /* ---- Auth admin (Supabase Auth) ---- */
+  var auth = {
+    signIn: function (email, password) {
+      if (sb) return sb.auth.signInWithPassword({ email: email, password: password });
+      return Promise.resolve({ data: { demo: true }, error: null });
+    },
+    signOut: function () { return sb ? sb.auth.signOut() : Promise.resolve(); },
+    getUser: function () {
+      if (!sb) return Promise.resolve(null);
+      return sb.auth.getSession().then(function (r) { return r.data && r.data.session ? r.data.session.user : null; });
+    }
+  };
 
   return {
+    isRemote: !!sb,
     getJobs: getJobs,
     getPublishedJobs: getPublishedJobs,
     getJobById: getJobById,
@@ -137,8 +190,10 @@ window.JobStore = (function () {
     updateJob: updateJob,
     deleteJob: deleteJob,
     setStatus: setStatus,
+    pushSeed: pushSeed,
     resetSeed: resetSeed,
     slugify: slugify,
+    auth: auth,
     SEED: SEED
   };
 })();
