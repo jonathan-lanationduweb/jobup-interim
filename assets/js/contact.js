@@ -67,7 +67,7 @@
         if (!valid) { ok = false; field.classList.add("has-error"); if (err) err.hidden = false; }
         else { field.classList.remove("has-error"); if (err) err.hidden = true; }
       });
-      // Required file uploads (e.g. lettre de motivation)
+      // Required file uploads (e.g. CV)
       stepEl.querySelectorAll("[data-dropzone][data-required-file]").forEach(function (dz) {
         var wrap = dz.closest(".upload") || dz.parentElement;
         var err = wrap.querySelector(".field-error");
@@ -115,7 +115,7 @@
       });
     });
 
-    /* ---- Dropzones (CV / Diplômes / Lettre de motivation) ---- */
+    /* ---- Dropzones (CV / Lettre de motivation) ---- */
     var ALLOWED = [".pdf", ".doc", ".docx"];
     var MAX = 5 * 1024 * 1024;
     form.querySelectorAll("[data-dropzone]").forEach(function (dropzone) {
