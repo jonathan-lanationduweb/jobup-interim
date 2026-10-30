@@ -6,7 +6,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     if (!window.JobBoard) return;
-    function getJOBS() { return (window.JobBoard && window.JobBoard.JOBS) || []; }
+    var JOBS = window.JobBoard.JOBS;
 
     var els = {
       contract: Array.prototype.slice.call(document.querySelectorAll("[name='contract']")),
@@ -23,17 +23,6 @@
       searchBtn: document.querySelector("[data-search-btn]"),
       form: document.querySelector("[data-search-form]")
     };
-
-    /* ---- Bouton "Filtres" (mobile) ---- */
-    (function () {
-      var toggle = document.querySelector("[data-filters-toggle]");
-      var panel = document.querySelector("[data-filters]");
-      if (!toggle || !panel) return;
-      toggle.addEventListener("click", function () {
-        var open = panel.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    })();
 
     /* ---- Custom dropdown "Tous types" (options centrées) ---- */
     (function () {
@@ -67,14 +56,12 @@
 
     /* ---- Inject dynamic category counts ---- */
     function countBy(field, value) {
-      return getJOBS().filter(function (j) { return j[field] === value; }).length;
+      return JOBS.filter(function (j) { return j[field] === value; }).length;
     }
-    function injectCounts() {
-      document.querySelectorAll("[data-count-for]").forEach(function (el) {
-        var spec = el.getAttribute("data-count-for").split(":"); // field:value
-        el.textContent = countBy(spec[0], spec[1]);
-      });
-    }
+    document.querySelectorAll("[data-count-for]").forEach(function (el) {
+      var spec = el.getAttribute("data-count-for").split(":"); // field:value
+      el.textContent = countBy(spec[0], spec[1]);
+    });
 
     /* ---- Salary slider live label ---- */
     function fmtEuro(n) { return n.toLocaleString("fr-FR") + " €"; }
@@ -94,7 +81,7 @@
       var ville = (els.ville && els.ville.value || "").trim().toLowerCase();
       var type = els.type && els.type.value || "all";
 
-      var list = getJOBS().filter(function (j) {
+      var list = JOBS.filter(function (j) {
         if (contracts.length && contracts.indexOf(j.contract) === -1) return false;
         if (sectors.length && sectors.indexOf(j.sector) === -1) return false;
         if (type !== "all" && j.contract !== type) return false;
@@ -172,10 +159,7 @@
       els.sector.forEach(function (c) { c.checked = c.value === value; });
     })();
 
-    // Exposé pour jobs.js : (ré)injecte les compteurs + applique le filtrage
-    // une fois les offres chargées (Supabase async ou localStorage).
-    window.JobFilters = { refresh: function () { injectCounts(); apply(); } };
-    window.JobFilters.refresh();
+    apply();
 
     /* ---- Mettre en évidence l'offre ouverte depuis l'accueil (?job=) ---- */
     (function () {

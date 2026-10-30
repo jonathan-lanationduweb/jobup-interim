@@ -20,27 +20,6 @@
     var submitBtn = form.querySelector("[data-submit]");
     var success = form.querySelector("[data-success]");
 
-    /* ---- Profil Candidat / Entreprise ---- */
-    var profilInput = form.querySelector("input[name='profil_type']");
-    function currentProfil() { return profilInput ? profilInput.value : "Candidat"; }
-    function applyProfil() {
-      var p = currentProfil();
-      form.querySelectorAll("[data-profil-panel]").forEach(function (panel) {
-        panel.hidden = panel.getAttribute("data-profil-panel") !== p;
-      });
-    }
-    function setProfil(value) {
-      if (!profilInput) return;
-      profilInput.value = value;
-      var grp = profilInput.parentElement.querySelector("[data-segmented]");
-      if (grp) grp.querySelectorAll(".segmented__option").forEach(function (o) {
-        var on = o.getAttribute("data-value") === value;
-        o.classList.toggle("is-active", on);
-        o.setAttribute("aria-pressed", on ? "true" : "false");
-      });
-      applyProfil();
-    }
-
     /* ---- Segmented controls (Vous êtes / Métier) ---- */
     form.querySelectorAll("[data-segmented]").forEach(function (group) {
       var hidden = group.parentElement.querySelector("input[type='hidden']");
@@ -53,11 +32,9 @@
           opt.setAttribute("aria-pressed", "true");
           opt.classList.add("is-active");
           if (hidden) hidden.value = opt.getAttribute("data-value");
-          if (hidden === profilInput) applyProfil();
         });
       });
     });
-    applyProfil();
 
     /* ---- Step visibility & buttons ---- */
     function show(i, animate) {
@@ -79,14 +56,9 @@
     }
 
     /* ---- Per-step validation ---- */
-    function inHiddenPanel(el) {
-      var panel = el.closest("[data-profil-panel]");
-      return panel && panel.hidden;
-    }
     function validate(stepEl) {
       var ok = true;
       stepEl.querySelectorAll("[required]").forEach(function (field) {
-        if (inHiddenPanel(field)) return; // ignorer le panneau du profil non sélectionné
         var wrap = field.closest(".field") || field.parentElement;
         var err = wrap.querySelector(".field-error");
         var valid = field.value && field.value.trim() !== "";
@@ -95,9 +67,8 @@
         if (!valid) { ok = false; field.classList.add("has-error"); if (err) err.hidden = false; }
         else { field.classList.remove("has-error"); if (err) err.hidden = true; }
       });
-      // Uploads obligatoires (CV, Diplômes) — la lettre de motivation est optionnelle
+      // Required file uploads (e.g. lettre de motivation)
       stepEl.querySelectorAll("[data-dropzone][data-required-file]").forEach(function (dz) {
-        if (inHiddenPanel(dz)) return;
         var wrap = dz.closest(".upload") || dz.parentElement;
         var err = wrap.querySelector(".field-error");
         if (!dz.classList.contains("has-file")) {
@@ -214,13 +185,6 @@
       return true;
     }
 
-    // Profil depuis l'URL (?profil=candidat|entreprise)
-    var profilParam = (new URLSearchParams(window.location.search).get("profil") || "").toLowerCase();
-    if (profilParam === "entreprise") setProfil("Entreprise");
-    else if (profilParam === "candidat") setProfil("Candidat");
-
-    // Candidature depuis une offre → profil Candidat + étape 2
-    if (applyFromOffer()) { setProfil("Candidat"); show(1); }
-    else { show(0); }
+    if (applyFromOffer()) show(1); else show(0);
   });
 })();

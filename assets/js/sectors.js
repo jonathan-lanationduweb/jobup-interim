@@ -13,7 +13,7 @@
       color: "#F59E0B",
       text: "Rejoignez nos équipes sur des chantiers variés, en neuf comme en rénovation.",
       points: ["Gros œuvre", "Travaux publics", "Second œuvre", "Encadrement de chantier"],
-      href: "offres.html?secteur=btp"
+      href: "contact.html#postuler"
     },
     {
       key: "tertiaire",
@@ -21,7 +21,7 @@
       color: "#D946EF",
       text: "Comptabilité, administration, accueil, ressources humaines : des postes pour tous les métiers de bureau.",
       points: ["Comptabilité & gestion", "Administration", "Accueil & secrétariat", "Ressources humaines"],
-      href: "offres.html?secteur=tertiaire"
+      href: "contact.html#postuler"
     },
     {
       key: "environnement",
@@ -29,7 +29,7 @@
       color: "#22C55E",
       text: "Espaces verts, propreté, tri et valorisation : engagez-vous dans des métiers utiles et durables.",
       points: ["Espaces verts", "Propreté & tri", "Valorisation des déchets", "Entretien des sites"],
-      href: "offres.html?secteur=environnement"
+      href: "contact.html#postuler"
     }
   ];
 
