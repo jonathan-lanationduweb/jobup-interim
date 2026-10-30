@@ -135,13 +135,15 @@ window.JobBoard = (function () {
     }
   ];
 
-  var listEl, detailEl, state = { activeId: null };
+  var PAGE_SIZE = 8;
+  var listEl, detailEl, backdropEl, lastTrigger;
+  var state = { activeId: null, jobs: [], limit: PAGE_SIZE };
+  var compactMq = window.matchMedia("(max-width: 1180px)");
 
   function metaIcons(job) {
     return (
       '<span class="meta">' + I.pin + job.city + " (" + job.dept + ")</span>" +
-      '<span class="meta">' + I.case + job.contract + (job.duration ? " · " + job.duration : "") + "</span>" +
-      '<span class="meta">' + I.euro + job.salary + "</span>"
+      '<span class="meta">' + I.case + job.contract + (job.duration ? " · " + job.duration : "") + "</span>"
     );
   }
 
@@ -162,43 +164,62 @@ window.JobBoard = (function () {
     return '<span class="sector-badge" style="--sc:' + s.color + '">' + s.label + "</span>";
   }
 
-  function renderList(jobs) {
+  function cardHtml(job) {
+    return (
+      '<article class="card job-card" data-id="' + job.id + '" style="--sc:' + sectorOf(job).color + '" tabindex="0" role="button" aria-label="Voir l\'offre ' + job.title + '">' +
+        '<div class="job-card__top">' +
+          '<div class="job-card__heading"><h3 class="job-card__title">' + job.title + "</h3>" +
+          '<p class="job-card__company">' + job.company + "</p></div>" +
+          '<div class="job-card__aside"><p class="job-card__salary">' + job.salary + "</p>" +
+          '<span class="job-card__posted">' + (job.isNew ? '<span class="badge--new">Nouveau</span>' : job.posted.replace("Publié il y a ", "il y a ")) + "</span></div>" +
+        "</div>" +
+        '<div class="meta-row job-card__meta">' + metaIcons(job) + "</div>" +
+        '<p class="job-card__desc">' + job.desc + "</p>" +
+        '<div class="job-card__tags">' + sectorBadge(job) + tagsHtml(job) + "</div>" +
+      "</article>"
+    );
+  }
+
+  /* Liste paginée : PAGE_SIZE offres, puis bouton « Voir plus ». */
+  function renderList(jobs, keepLimit) {
     if (!listEl) return;
+    state.jobs = jobs;
+    if (!keepLimit) state.limit = PAGE_SIZE;
     if (!jobs.length) {
       listEl.innerHTML = '<div class="card jobs-empty">Aucune offre ne correspond à vos critères.<br>Essayez d\'élargir votre recherche.</div>';
       if (detailEl) detailEl.style.display = "none";
       return;
     }
     if (detailEl) detailEl.style.display = "";
-    listEl.innerHTML = jobs.map(function (job) {
-      return (
-        '<article class="card card--hover job-card" data-id="' + job.id + '" style="--sc:' + sectorOf(job).color + '" tabindex="0" role="button" aria-label="Voir l\'offre ' + job.title + '">' +
-          '<div class="job-card__top">' +
-            "<div><h3 class=\"job-card__title\">" + job.title + "</h3>" +
-            '<p class="job-card__company">' + job.company + "</p></div>" +
-          "</div>" +
-          '<div class="meta-row job-card__meta">' + metaIcons(job) + "</div>" +
-          '<div class="job-card__tags">' + sectorBadge(job) + tagsHtml(job) + "</div>" +
-          '<p class="job-card__desc">' + job.desc + "</p>" +
-          '<div class="job-card__foot"><span>' + job.posted + "</span>" +
-            (job.isNew ? '<span class="badge--new">Nouveau</span>' : "") +
-          "</div>" +
-        "</article>"
-      );
-    }).join("");
 
-    // wire selection
+    // L'offre active (ex. ouverte depuis l'accueil) doit rester visible.
+    var activeIndex = -1;
+    jobs.forEach(function (j, i) { if (j.id === state.activeId) activeIndex = i; });
+    state.limit = Math.max(state.limit, activeIndex + 1);
+
+    var visible = jobs.slice(0, state.limit);
+    var rest = jobs.length - visible.length;
+    listEl.innerHTML = visible.map(cardHtml).join("") +
+      (rest > 0 ? '<button type="button" class="btn btn--ghost jobs-more" data-jobs-more>Voir plus d\'offres <span>(' + rest + ")</span></button>" : "");
+
     listEl.querySelectorAll(".job-card").forEach(function (card) {
-      var act = function () { selectJob(card.getAttribute("data-id")); };
+      var act = function () { lastTrigger = card; selectJob(card.getAttribute("data-id"), true); };
       card.addEventListener("click", act);
       card.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); }
       });
     });
+    var more = listEl.querySelector("[data-jobs-more]");
+    if (more) more.addEventListener("click", function () {
+      var firstNew = state.limit;
+      state.limit += PAGE_SIZE;
+      renderList(state.jobs, true);
+      var next = listEl.querySelectorAll(".job-card")[firstNew];
+      if (next) next.focus({ preventScroll: true });
+    });
 
-    // keep active selection if still present, else select first
-    var stillThere = jobs.some(function (j) { return j.id === state.activeId; });
-    selectJob(stillThere ? state.activeId : jobs[0].id);
+    // Garde la sélection si elle est encore présente, sinon la première offre.
+    selectJob(activeIndex >= 0 ? state.activeId : jobs[0].id);
   }
 
   function applyUrl(job) {
@@ -219,28 +240,51 @@ window.JobBoard = (function () {
     if (!detailEl || !job) return;
     detailEl.style.setProperty("--sc", sectorOf(job).color);
     detailEl.innerHTML =
-      '<div class="job-detail__sector">' + sectorBadge(job) + "</div>" +
-      '<h2 class="job-detail__title">' + job.title + "</h2>" +
-      '<p class="job-detail__company">' + job.company + "</p>" +
-      '<div class="meta-row job-detail__meta">' +
-        '<span class="meta-row__item">' + I.pin + job.city + " (" + job.dept + ")</span>" +
-        '<span class="meta-row__item">' + I.case + job.posted + "</span>" +
+      '<div class="job-detail__head">' +
+        '<button type="button" class="job-detail__close" data-detail-close aria-label="Fermer l\'offre">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
+        '<div class="job-detail__sector">' + sectorBadge(job) + "</div>" +
+        '<h2 class="job-detail__title">' + job.title + "</h2>" +
+        '<p class="job-detail__company">' + job.company + "</p>" +
+        '<div class="meta-row job-detail__meta">' +
+          '<span class="meta-row__item">' + I.pin + job.city + " (" + job.dept + ")</span>" +
+          '<span class="meta-row__item">' + I.case + job.posted + "</span>" +
+        "</div>" +
+        '<div class="job-detail__actions">' +
+          '<a class="btn btn--deep" href="' + applyUrl(job) + '">Postuler ' + I.arrow + "</a>" +
+        "</div>" +
       "</div>" +
-      '<div class="job-detail__actions">' +
-        '<a class="btn btn--deep" href="' + applyUrl(job) + '">Postuler ' + I.arrow + "</a>" +
-      "</div>" +
-      '<dl class="job-detail__summary">' +
-        "<div><dt>Contrat</dt><dd>" + job.contract + (job.duration ? " · " + job.duration : "") + "</dd></div>" +
-        "<div><dt>Rémunération</dt><dd>" + job.salary + "</dd></div>" +
-      "</dl>" +
-      "<h3>À propos de la mission</h3><p>" + job.desc + "</p>" +
-      "<h3>Vos missions</h3><p>" + job.missions + "</p>" +
-      "<h3>Profil recherché</h3><ul class=\"ticked\">" + job.profile.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>" +
-      "<h3>Ce que nous offrons</h3><ul class=\"ticked\">" + job.perks.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>";
+      '<div class="job-detail__body">' +
+        '<dl class="job-detail__summary">' +
+          "<div><dt>Contrat</dt><dd>" + job.contract + (job.duration ? " · " + job.duration : "") + "</dd></div>" +
+          "<div><dt>Rémunération</dt><dd>" + job.salary + "</dd></div>" +
+        "</dl>" +
+        "<h3>À propos de la mission</h3><p>" + job.desc + "</p>" +
+        "<h3>Vos missions</h3><p>" + job.missions + "</p>" +
+        "<h3>Profil recherché</h3><ul class=\"ticked\">" + job.profile.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>" +
+        "<h3>Ce que nous offrons</h3><ul class=\"ticked\">" + job.perks.map(function (p) { return "<li>" + p + "</li>"; }).join("") + "</ul>" +
+      "</div>";
+    detailEl.querySelector("[data-detail-close]").addEventListener("click", closeSheet);
     detailEl.scrollTop = 0;
   }
 
-  function selectJob(id) {
+  /* Sur tablette et mobile, le détail s'ouvre en panneau par-dessus la liste. */
+  function openSheet() {
+    if (!detailEl || !compactMq.matches) return;
+    detailEl.classList.add("is-open");
+    if (backdropEl) backdropEl.classList.add("is-open");
+    document.documentElement.classList.add("has-job-sheet");
+    detailEl.focus({ preventScroll: true });
+  }
+  function closeSheet() {
+    if (!detailEl || !detailEl.classList.contains("is-open")) return;
+    detailEl.classList.remove("is-open");
+    if (backdropEl) backdropEl.classList.remove("is-open");
+    document.documentElement.classList.remove("has-job-sheet");
+    if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+  }
+
+  function selectJob(id, fromUser) {
     state.activeId = id;
     var job = JOBS.filter(function (j) { return j.id === id; })[0];
     if (listEl) {
@@ -249,12 +293,31 @@ window.JobBoard = (function () {
       });
     }
     renderDetail(job);
+    if (fromUser) openSheet();
   }
 
   function init() {
     listEl = document.querySelector("[data-jobs-list]");
     detailEl = document.querySelector("[data-job-detail]");
     if (!listEl) return;
+
+    backdropEl = document.createElement("div");
+    backdropEl.className = "job-sheet-backdrop";
+    backdropEl.addEventListener("click", closeSheet);
+    document.body.appendChild(backdropEl);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSheet(); });
+    var onMq = function () { if (!compactMq.matches) closeSheet(); };
+    if (compactMq.addEventListener) compactMq.addEventListener("change", onMq);
+
+    // Filtres repliables sur tablette / mobile.
+    var toggle = document.querySelector("[data-filters-toggle]");
+    var filters = toggle && toggle.closest(".filters");
+    if (toggle && filters) toggle.addEventListener("click", function () {
+      var open = !filters.classList.contains("is-open");
+      filters.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.firstChild.nodeValue = open ? "Masquer " : "Afficher ";
+    });
     // Pré-sélection d'une offre depuis l'accueil (?job=ID)
     var jobParam = new URLSearchParams(window.location.search).get("job");
     if (jobParam && JOBS.some(function (j) { return j.id === jobParam; })) state.activeId = jobParam;

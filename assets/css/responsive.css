@@ -21,8 +21,42 @@
 
 /* ============================ <= 1180px ================================== */
 @media (max-width: 1180px) {
+  /* Liste seule ; le détail s'ouvre en panneau au toucher d'une offre. */
   .jobs-results { grid-template-columns: 1fr; }
-  .job-detail { position: static; max-height: none; order: -1; }
+  .job-detail {
+    position: fixed;
+    inset: auto 0 0 0;
+    top: auto;
+    z-index: 120;
+    max-height: min(88vh, 88dvh);
+    width: min(720px, 100%);
+    margin-inline: auto;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: 0 -12px 40px rgba(17, 24, 39, 0.18);
+    transform: translateY(105%);
+    visibility: hidden;
+    transition: transform 0.32s var(--ease), visibility 0s linear 0.32s;
+    overscroll-behavior: contain;
+  }
+  .job-detail.is-open { transform: none; visibility: visible; transition: transform 0.32s var(--ease); }
+  .job-detail__close { display: inline-flex; }
+  .job-detail__head { padding-right: 4rem; }
+  .job-sheet-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background: rgba(9, 28, 66, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+  }
+  .job-sheet-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  .has-job-sheet, .has-job-sheet body { overflow: hidden; }
+  .job-card.is-active { border-color: transparent; box-shadow: var(--shadow-sm); }
+}
+@media (max-width: 1180px) and (prefers-reduced-motion: reduce) {
+  .job-detail, .job-sheet-backdrop { transition: none; }
 }
 
 /* ============================ <= 1024px (laptop) ======================== */
@@ -36,11 +70,17 @@
   .search-field:nth-child(2) { border-right: none; }
   .search-row .btn { grid-column: 1 / -1; }
 
-  .jobs-layout { grid-template-columns: 1fr; }
+  .jobs-layout { grid-template-columns: 1fr; gap: var(--space-4); }
   .filters {
     position: static;
     top: auto;
+    max-height: none;
+    padding: var(--space-4) var(--space-5);
   }
+  .filters__head { margin-bottom: 0; }
+  .filters__toggle { display: inline-flex; }
+  .filters__body { display: none; margin-top: var(--space-4); }
+  .filters.is-open .filters__body { display: block; }
 }
 
 /* ============================ <= 900px ================================== */
@@ -90,6 +130,13 @@
   .offer-card__actions { flex-direction: column; }
 
   .search-row { grid-template-columns: 1fr; }
+
+  .jobs-toolbar { flex-wrap: wrap; gap: var(--space-2); }
+  .jobs-toolbar__sectors { display: none; }
+  .job-card { padding: var(--space-4); }
+  .job-card__top { flex-direction: column; gap: 4px; }
+  .job-card__aside { flex-direction: row; align-items: center; gap: var(--space-3); }
+  .job-detail { max-height: 92dvh; }
   .search-field { border-right: none; border-bottom: 1px solid var(--color-border); }
   .search-field:last-of-type { border-bottom: none; }
 

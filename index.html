@@ -79,12 +79,6 @@
       <a class="brand" href="index.html" aria-label="JOBUP Intérim — Accueil">
         <img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim — Confiance, accompagnement, évolution" width="1026" height="860" />
       </a>
-      <nav class="main-nav" aria-label="Navigation principale">
-        <ul class="main-nav__list">
-          <li><a class="main-nav__link" href="index.html" aria-current="page">Accueil</a></li>
-          <li><a class="main-nav__link" href="offres.html">Offres d'emploi</a></li>
-        </ul>
-      </nav>
       <div class="header-actions">
         <a class="btn btn--primary" href="contact.html">
           Contact
@@ -99,8 +93,6 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html" aria-current="page">Accueil</a></li>
-      <li><a class="mobile-nav__link" href="offres.html">Offres d'emploi</a></li>
       <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
     </ul>
     <a class="btn btn--primary btn--block" href="contact.html">Contactez-nous</a>
@@ -120,8 +112,7 @@
           <h1 class="hero__title">Votre prochaine mission,<br /><em>commence ici.</em></h1>
           <p class="hero__subtitle">Nous connectons les talents avec les entreprises qui avancent, partout en Île-de-France.</p>
           <div class="hero__actions">
-            <a class="btn btn--white" href="offres.html">Voir les offres</a>
-            <a class="btn btn--outline-invert" href="contact.html#postuler">Déposer mon CV</a>
+            <a class="btn btn--white" href="contact.html#postuler">Déposer mon CV</a>
           </div>
         </div>
       </div>
@@ -214,7 +205,8 @@
     </section>
 
     <!-- ============================= OFFRES ============================= -->
-    <section class="section section--white offers" aria-labelledby="offers-title">
+    <!-- Slide 3 « Offres à la une » désactivée tant que la page Offres est fermée. -->
+    <section class="section section--white offers" aria-labelledby="offers-title" hidden style="display:none">
       <span class="deco-circle deco-circle--soft deco-circle--xl deco-circle--br" aria-hidden="true"></span>
       <div class="container">
         <div class="section-head section-head--center" data-animate="fade">
@@ -282,7 +274,7 @@
           <p class="sector__text" data-sector-text>Rejoignez nos équipes sur des chantiers variés, en neuf comme en rénovation.</p>
           <ul class="sector__list" data-sector-points></ul>
           <div class="sector__foot">
-            <a class="btn btn--white sector__cta" href="offres.html?secteur=btp" data-sector-cta>Voir les offres <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--white sector__cta" href="contact.html#postuler" data-sector-cta>Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <div class="sector__dots" role="tablist" aria-label="Choisir un secteur">
               <button class="sector__dot is-active" type="button" data-sector-dot="0" aria-label="BTP & Construction" aria-selected="true"></button>
               <button class="sector__dot" type="button" data-sector-dot="1" aria-label="Tertiaire" aria-selected="false"></button>
@@ -326,7 +318,7 @@
           </div>
         </div>
         <div class="process__actions" data-animate="fade">
-          <a class="btn btn--ghost" href="offres.html">Voir les offres <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="contact.html#postuler">Déposer un CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn--deep" href="contact.html">Contactez-nous <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a>
         </div>
       </div>
@@ -372,7 +364,7 @@
           <p class="cta-banner__text">Décrivez-nous votre besoin et un consultant vous rappelle sous 60 minutes ouvrées.</p>
           <div class="cta-banner__actions">
             <a class="btn btn--white btn--lg" href="contact.html">Contactez-nous <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a>
-            <a class="btn btn--outline-invert btn--lg" href="offres.html">Voir les offres</a>
+            <a class="btn btn--outline-invert btn--lg" href="contact.html#postuler">Déposer mon CV</a>
           </div>
         </div>
       </div>
@@ -392,16 +384,15 @@
           <h2 class="footer-col__title">Navigation</h2>
           <ul class="footer-col__list">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="offres.html">Offres d'emploi</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h2 class="footer-col__title">Secteurs</h2>
           <ul class="footer-col__list">
-            <li><a href="offres.html">BTP &amp; Construction</a></li>
-            <li><a href="offres.html">Tertiaire</a></li>
-            <li><a href="offres.html">Environnement</a></li>
+            <li><a href="index.html#expertises">BTP &amp; Construction</a></li>
+            <li><a href="index.html#expertises">Tertiaire</a></li>
+            <li><a href="index.html#expertises">Environnement</a></li>
           </ul>
         </div>
         <div class="footer-col">
