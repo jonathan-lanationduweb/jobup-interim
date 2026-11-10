@@ -14,7 +14,7 @@
   border-bottom-color: var(--color-border);
 }
 
-/* v3 : logo centré, bouton Contact (ou menu mobile) à droite. */
+/* Logo centré, bouton Contact (ou menu mobile) à droite. */
 .site-header__inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
