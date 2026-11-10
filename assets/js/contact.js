@@ -19,6 +19,32 @@
     var nextBtn = form.querySelector("[data-next]");
     var submitBtn = form.querySelector("[data-submit]");
     var success = form.querySelector("[data-success]");
+    var alertEl = form.querySelector("[data-form-alert]");
+
+    /* ---- Profil Candidat / Entreprise : chaque profil a ses propres champs ---- */
+    var profilInput = form.querySelector("input[name='profil_type']");
+    function currentProfil() { return profilInput ? profilInput.value : "Candidat"; }
+    function applyProfil() {
+      var p = currentProfil();
+      form.querySelectorAll("[data-profil-panel]").forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-profil-panel") !== p;
+      });
+    }
+    function setProfil(value) {
+      if (!profilInput) return;
+      profilInput.value = value;
+      var grp = profilInput.parentElement.querySelector("[data-segmented]");
+      if (grp) grp.querySelectorAll(".segmented__option").forEach(function (o) {
+        var on = o.getAttribute("data-value") === value;
+        o.classList.toggle("is-active", on);
+        o.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      applyProfil();
+    }
+    function inHiddenPanel(el) {
+      var panel = el.closest("[data-profil-panel]");
+      return panel && panel.hidden;
+    }
 
     /* ---- Segmented controls (Vous êtes / Métier) ---- */
     form.querySelectorAll("[data-segmented]").forEach(function (group) {
@@ -32,9 +58,11 @@
           opt.setAttribute("aria-pressed", "true");
           opt.classList.add("is-active");
           if (hidden) hidden.value = opt.getAttribute("data-value");
+          if (hidden === profilInput) applyProfil();
         });
       });
     });
+    applyProfil();
 
     /* ---- Step visibility & buttons ---- */
     function show(i, animate) {
@@ -59,6 +87,7 @@
     function validate(stepEl) {
       var ok = true;
       stepEl.querySelectorAll("[required]").forEach(function (field) {
+        if (inHiddenPanel(field)) return; // champs de l'autre profil
         var wrap = field.closest(".field") || field.parentElement;
         var err = wrap.querySelector(".field-error");
         var valid = field.value && field.value.trim() !== "";
@@ -69,6 +98,7 @@
       });
       // Required file uploads (e.g. CV)
       stepEl.querySelectorAll("[data-dropzone][data-required-file]").forEach(function (dz) {
+        if (inHiddenPanel(dz)) return;
         var wrap = dz.closest(".upload") || dz.parentElement;
         var err = wrap.querySelector(".field-error");
         if (!dz.classList.contains("has-file")) {
@@ -88,9 +118,24 @@
     }
     if (backBtn) backBtn.addEventListener("click", function () { show(Math.max(current - 1, 0), true); });
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!validate(steps[current])) { focusFirstError(steps[current]); return; }
+    /* ---- Envoi vers le back-office ---- */
+    var API = (window.JOBUP_CONFIG || {}).apiUrl;
+    // Nom renvoyé par l'API → champ du formulaire (entreprise).
+    var FIELD_ALIASES = { poste: "poste_entreprise", contrat: "contrat_entreprise", remuneration: "remu_entreprise", description: "desc_entreprise", missions: "missions_entreprise", profil: "profil_entreprise", duree: "duree_mission" };
+
+    function contactFallback() {
+      var tel = document.querySelector("[data-site-tel]");
+      var mail = document.querySelector("[data-site-email]");
+      return " Vous pouvez aussi nous joindre au " + (tel ? tel.textContent : "") + " ou à " + (mail ? mail.textContent : "") + ".";
+    }
+
+    function showAlert(message) {
+      if (!alertEl) return;
+      alertEl.textContent = message;
+      alertEl.hidden = false;
+    }
+
+    function showSuccess() {
       steps.forEach(function (s) { s.classList.remove("is-active"); });
       var actions = form.querySelector(".form-actions");
       if (actions) actions.style.display = "none";
@@ -98,7 +143,71 @@
       if (stepperEl) stepperEl.style.display = "none";
       var recap = form.querySelector("[data-apply-recap]");
       if (recap) recap.hidden = true;
+      if (alertEl) alertEl.hidden = true;
       if (success) success.classList.add("is-visible");
+    }
+
+    // Les champs du profil non choisi ne sont pas envoyés.
+    function buildData() {
+      var data = new FormData();
+      Array.prototype.forEach.call(form.elements, function (el) {
+        if (!el.name || el.disabled || inHiddenPanel(el)) return;
+        if (el.type === "file") { if (el.files[0]) data.append(el.name, el.files[0]); return; }
+        if (el.type === "checkbox") { if (el.checked) data.append(el.name, "1"); return; }
+        data.append(el.name, el.value);
+      });
+      data.set("type", currentProfil() === "Entreprise" ? "entreprise" : "candidat");
+      return data;
+    }
+
+    // Erreurs renvoyées par l'API : on revient à l'étape du premier champ en défaut.
+    function showFieldErrors(fields) {
+      var firstStep = -1;
+      Object.keys(fields || {}).forEach(function (name) {
+        var input = form.querySelector("[name='" + name + "']:not([type='hidden'])");
+        if ((!input || inHiddenPanel(input)) && FIELD_ALIASES[name]) input = form.querySelector("[name='" + FIELD_ALIASES[name] + "']");
+        if (!input || inHiddenPanel(input)) return;
+        var target = input.type === "file" ? input.closest("[data-dropzone]") : input;
+        target.classList.add("has-error");
+        var wrap = input.closest(".field") || input.closest(".upload") || input.parentElement;
+        var err = wrap && wrap.querySelector(".field-error");
+        if (err) { err.textContent = fields[name]; err.hidden = false; }
+        var idx = steps.indexOf(input.closest(".form-step"));
+        if (idx !== -1 && (firstStep === -1 || idx < firstStep)) firstStep = idx;
+      });
+      if (firstStep !== -1 && firstStep !== current) show(firstStep, true);
+      focusFirstError(steps[current]);
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!validate(steps[current])) { focusFirstError(steps[current]); return; }
+      if (alertEl) alertEl.hidden = true;
+
+      if (!API) {
+        showAlert("L'envoi en ligne n'est pas encore disponible." + contactFallback());
+        return;
+      }
+
+      var label = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Envoi en cours…"; }
+
+      fetch(API + "/demandes", { method: "POST", body: buildData() })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (body) { return { status: res.status, body: body }; });
+        })
+        .then(function (r) {
+          if (r.status === 201) { showSuccess(); return; }
+          var data = r.body.data || {};
+          if (r.status === 422 && data.fields) showFieldErrors(data.fields);
+          showAlert((r.body.message || "Votre demande n'a pas pu être envoyée.") + (r.status >= 500 ? contactFallback() : ""));
+        })
+        .catch(function () {
+          showAlert("Connexion impossible pour le moment." + contactFallback());
+        })
+        .then(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = label; }
+        });
     });
 
     function focusFirstError(stepEl) {
@@ -185,6 +294,11 @@
       return true;
     }
 
-    if (applyFromOffer()) show(1); else show(0);
+    // Profil depuis l'URL (?profil=candidat|entreprise)
+    var profilParam = (new URLSearchParams(window.location.search).get("profil") || "").toLowerCase();
+    if (profilParam === "entreprise") setProfil("Entreprise");
+    else if (profilParam === "candidat") setProfil("Candidat");
+
+    if (applyFromOffer()) { setProfil("Candidat"); show(1); } else show(0);
   });
 })();

@@ -109,3 +109,27 @@ strong { font-weight: 600; color: var(--color-text); }
   white-space: nowrap;
   border: 0;
 }
+
+/* Mode maintenance activé depuis le back-office */
+.is-maintenance, .is-maintenance body { overflow: hidden; }
+.site-maintenance {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--color-bg);
+}
+.site-maintenance__box {
+  max-width: 560px;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+.site-maintenance__box h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, 2.2rem); margin-bottom: var(--space-4); }
+.site-maintenance__box p { color: var(--color-text-soft); margin-bottom: var(--space-5); }

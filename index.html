@@ -107,10 +107,10 @@
         <div class="hero__panel">
           <span class="hero__badge">
             <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2Z"/></svg>
-            BTP &amp; Construction · Tertiaire · Environnement
+            <span data-site="accueil.surtitre">BTP &amp; Construction · Tertiaire · Environnement</span>
           </span>
-          <h1 class="hero__title">Votre prochaine mission,<br /><em>commence ici.</em></h1>
-          <p class="hero__subtitle">Nous connectons les talents avec les entreprises qui avancent, partout en Île-de-France.</p>
+          <h1 class="hero__title" data-site-title="accueil.titre">Votre prochaine mission,<br /><em>commence ici.</em></h1>
+          <p class="hero__subtitle" data-site="accueil.texte">Nous connectons les talents avec les entreprises qui avancent, partout en Île-de-France.</p>
           <div class="hero__actions">
             <a class="btn btn--white" href="contact.html#postuler">Déposer mon CV</a>
           </div>
@@ -120,16 +120,16 @@
         <div class="container">
           <div class="hero-stats__grid">
             <div class="stat">
-              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-delai.png" alt="" width="34" height="34" />48h</div>
-              <p class="stat__label">Délai de placement</p>
+              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-delai.png" alt="" width="34" height="34" /><span data-site="accueil.chiffres.0.valeur">48h</span></div>
+              <p class="stat__label" data-site="accueil.chiffres.0.libelle">Délai de placement</p>
             </div>
             <div class="stat">
-              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-offres.png" alt="" width="38" height="45" />+200</div>
-              <p class="stat__label">offres actives en ligne</p>
+              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-offres.png" alt="" width="38" height="45" /><span data-site="accueil.chiffres.1.valeur">+200</span></div>
+              <p class="stat__label" data-site="accueil.chiffres.1.libelle">offres actives en ligne</p>
             </div>
             <div class="stat">
-              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-entreprises.png" alt="" width="42" height="40" />+100</div>
-              <p class="stat__label">entreprises partenaires</p>
+              <div class="stat__value"><img class="stat__icon" src="assets/images/stat-entreprises.png" alt="" width="42" height="40" /><span data-site="accueil.chiffres.2.valeur">+100</span></div>
+              <p class="stat__label" data-site="accueil.chiffres.2.libelle">entreprises partenaires</p>
             </div>
           </div>
         </div>
@@ -398,9 +398,9 @@
         <div class="footer-col">
           <h2 class="footer-col__title">Contact</h2>
           <ul class="footer-col__list">
-            <li><a href="tel:+33607080910">+33 6 07 08 09 10</a></li>
-            <li><a href="mailto:contact@jobinterim.com">contact@<wbr>jobinterim.com</a></li>
-            <li><span>Bobigny</span></li>
+            <li><a href="tel:+33607080910" data-site-tel>+33 6 07 08 09 10</a></li>
+            <li><a href="mailto:contact@jobinterim.com" data-site-email>contact@<wbr>jobinterim.com</a></li>
+            <li><span data-site="coordonnees.adresse">Bobigny</span></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -419,6 +419,8 @@
     </div>
   </footer>
 
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/site.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
   <script src="assets/js/sectors.js" defer></script>
