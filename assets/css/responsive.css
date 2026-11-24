@@ -161,19 +161,34 @@
     object-position: 30% 20%;
   }
   .hero__overlay { display: none; }
+  /* Sous la photo : la même photo floutée en fond, et l'encadré « verre » comme sur ordinateur. */
   .hero__inner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     min-height: 0;
     padding-top: var(--space-6);
     padding-bottom: var(--space-6);
   }
+  .hero__inner::before {
+    content: "";
+    position: absolute;
+    inset: -24px;
+    z-index: -2;
+    background: url("../images/hero-accueil.png") 30% 100% / cover no-repeat;
+    filter: blur(16px);
+    transform: scale(1.08);
+  }
+  .hero__inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(9, 28, 66, 0.25), rgba(9, 28, 66, 0.55));
+  }
   .hero__panel {
-    background: none;
-    border: 0;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    border-radius: 0;
-    padding: 0;
     max-width: none;
+    padding: var(--space-5);
   }
   /* Surtitre et « commence ici. » toujours sur une seule ligne. */
   .hero__badge { white-space: nowrap; max-width: 100%; font-size: min(0.78rem, 3.1vw); padding: 0.45em 0.8em; }
@@ -230,7 +245,7 @@
 
 /* ============================ <= 400px (petits téléphones) ============== */
 @media (max-width: 400px) {
-  .hero__panel { padding: 0; }
+  .hero__panel { padding: var(--space-5) var(--space-4); }
   .hero__title { font-size: 1.75rem; }
   .hero__badge .icon { display: none; }
   .contact-card,
