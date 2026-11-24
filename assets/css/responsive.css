@@ -129,6 +129,8 @@
   .hero__inner { padding-bottom: var(--space-8); min-height: auto; }
 
   .contact-grid { grid-template-columns: 1fr; }
+  /* Contact : le formulaire passe au-dessus de l'encadré bleu des coordonnées. */
+  .contact-grid .form-card { order: -1; }
   .form-row--2 { grid-template-columns: 1fr; }
 
   /* Processus : les boutons « Déposer un CV » / « Contactez-nous » ne s'affichent que sur ordinateur. */
