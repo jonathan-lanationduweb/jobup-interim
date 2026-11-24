@@ -161,7 +161,7 @@
   .hero__inner {
     min-height: 740px;
     align-items: start;
-    padding-top: 410px;
+    padding-top: 440px;
     padding-bottom: var(--space-5);
   }
   /* Encadré compact pour rester sur la chemise. */
@@ -174,8 +174,9 @@
   /* Surtitre et « commence ici. » toujours sur une seule ligne. */
   .hero__badge { white-space: nowrap; max-width: 100%; font-size: min(0.78rem, 3.1vw); padding: 0.45em 0.8em; }
   .hero__title em { white-space: nowrap; }
-  .hero__title { font-size: clamp(1.6rem, 1.2rem + 2vw, 1.85rem); }
-  .hero__subtitle { font-size: 0.92rem; line-height: 1.45; margin-bottom: var(--space-4); }
+  /* « Votre prochaine mission, » tient sur une ligne, « commence ici. » sur la suivante. */
+  .hero__title { font-size: min(1.85rem, 6vw); }
+  .hero__subtitle { font-size: min(0.95rem, 3.75vw); line-height: 1.45; max-width: none; margin-bottom: var(--space-4); }
 
   /* Chiffres clés : 3 colonnes compactes au lieu de 3 lignes. */
   .hero-stats__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
@@ -227,7 +228,7 @@
 /* ============================ <= 400px (petits téléphones) ============== */
 @media (max-width: 400px) {
   .hero__panel { padding: var(--space-5) var(--space-4); }
-  .hero__title { font-size: 1.75rem; }
+  .hero__title { font-size: min(1.75rem, 6vw); }
   .hero__badge .icon { display: none; }
   .contact-card,
   .form-card { padding: var(--space-6) var(--space-4); }
