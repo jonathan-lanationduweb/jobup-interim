@@ -27,7 +27,9 @@
   function filled(v) { return typeof v === "string" && v.trim() !== ""; }
 
   // Texte multi-lignes : chaque ligne devient un saut de ligne, sans HTML injecté.
+  // Les séparateurs « · », « ? » et « ! » restent attachés au mot précédent.
   function setLines(el, text) {
+    text = text.replace(/ ([·?!:])/g, " $1");
     el.textContent = "";
     text.split(/\r?\n/).forEach(function (line, i) {
       if (i) el.appendChild(document.createElement("br"));
@@ -46,7 +48,7 @@
     var c = data.coordonnees || {};
     if (filled(c.telephone)) {
       document.querySelectorAll("[data-site-tel]").forEach(function (a) {
-        a.textContent = c.telephone;
+        a.textContent = c.telephone.replace(/ /g, "\u00a0"); // numéro jamais coupé
         a.href = "tel:" + c.telephone.replace(/[^0-9+]/g, "");
       });
     }
@@ -56,7 +58,7 @@
         a.textContent = "";
         a.appendChild(document.createTextNode(c.email.slice(0, at + 1)));
         a.appendChild(document.createElement("wbr"));
-        a.appendChild(document.createTextNode(c.email.slice(at + 1)));
+        a.appendChild(document.createTextNode(c.email.slice(at + 1).replace(/-/g, "\u2011"))); // pas de coupure au tiret
         a.href = "mailto:" + c.email;
       });
     }

@@ -74,18 +74,8 @@
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
         </a>
       </div>
-      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span>
-      </button>
     </div>
   </header>
-
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile">
-    <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="contact.html" aria-current="page">Contact</a></li>
-    </ul>
-    <a class="btn btn--primary btn--block" href="contact.html">Contactez-nous</a>
-  </nav>
 
   <main id="main" data-screen-label="Contact">
     <!-- ===================== COORDONNÉES + FORMULAIRE ===================== -->
@@ -95,15 +85,15 @@
         <div class="contact-card">
           <span class="deco-circle deco-circle--fill" style="width:320px;height:320px;right:-120px;bottom:-120px"></span>
           <h1 id="contact-title" class="contact-card__title">Contactez-nous</h1>
-          <p class="contact-card__intro">Vous préférez le téléphone ou l'email ? Nous restons joignables.</p>
+          <p class="contact-card__intro">Vous préférez le téléphone ou l'email&nbsp;? Nous restons joignables.</p>
           <ul class="contact-list">
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
-              <div><p class="contact-list__label">Téléphone</p><p class="contact-list__value"><a href="tel:+33180000000" data-site-tel>+33 1 80 00 00 00</a></p></div>
+              <div><p class="contact-list__label">Téléphone</p><p class="contact-list__value"><a href="tel:+33180000000" data-site-tel>+33&nbsp;1&nbsp;80&nbsp;00&nbsp;00&nbsp;00</a></p></div>
             </li>
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
-              <div><p class="contact-list__label">Email</p><p class="contact-list__value"><a href="mailto:contact@jobup-interim.fr" data-site-email>contact@jobup-interim.fr</a></p></div>
+              <div><p class="contact-list__label">Email</p><p class="contact-list__value"><a href="mailto:contact@jobup-interim.fr" data-site-email>contact@<wbr>jobup&#8209;interim.fr</a></p></div>
             </li>
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -111,7 +101,7 @@
             </li>
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-              <div><p class="contact-list__label">Horaires</p><p class="contact-list__value" data-site="coordonnees.horaires">Lun — Ven · 8h30 — 19h00</p></div>
+              <div><p class="contact-list__label">Horaires</p><p class="contact-list__value" data-site="coordonnees.horaires">Lun — Ven · 8h30&nbsp;—&nbsp;19h00</p></div>
             </li>
           </ul>
         </div>
@@ -179,7 +169,7 @@
                 <label class="field">
                   <span class="field__label">Expérience</span>
                   <select class="select" name="experience">
-                    <option>Débutant (moins de 1 an)</option>
+                    <option>Moins d’un an</option>
                     <option>1 à 3 ans</option>
                     <option>3 à 5 ans</option>
                     <option>5 à 10 ans</option>
@@ -200,7 +190,7 @@
                     <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
                     <div class="dropzone__prompt">
                       <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
-                      <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span>
+                      <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX&nbsp;— 5&nbsp;Mo&nbsp;max</span></span>
                     </div>
                     <div class="dropzone__file">
                       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
@@ -218,7 +208,7 @@
                     <input type="file" name="lettre_motivation" accept=".pdf,.doc,.docx" hidden />
                     <div class="dropzone__prompt">
                       <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
-                      <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX — 5 Mo max</span></span>
+                      <span class="dropzone__body"><span class="dropzone__title">Téléverser</span><span class="dropzone__hint">PDF, DOC, DOCX&nbsp;— 5&nbsp;Mo&nbsp;max</span></span>
                     </div>
                     <div class="dropzone__file">
                       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
@@ -316,8 +306,8 @@
           <!-- Success -->
           <div class="form-success" data-success>
             <span class="form-success__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <h2 class="form-step__title">Demande envoyée !</h2>
-            <p class="form-step__subtitle">Merci ! Un consultant JOBUP Intérim vous recontacte dans l'heure (jours ouvrés).</p>
+            <h2 class="form-step__title">Demande envoyée&nbsp;!</h2>
+            <p class="form-step__subtitle">Merci&nbsp;! Un consultant JOBUP Intérim vous recontacte dans l'heure (jours ouvrés).</p>
           </div>
 
           <p class="form-alert" data-form-alert role="alert" hidden></p>
@@ -341,35 +331,35 @@
         <div class="faq-list" data-faq-list>
           <div class="faq-item is-open">
             <button class="faq-item__btn" type="button" aria-expanded="true">
-              Combien de temps pour avoir un retour ?
+              Combien de temps pour avoir un retour&nbsp;?
               <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30–19h). Pour les demandes urgentes hors horaires, laissez un message vocal au +33 1 80 00 00 00.</p></div></div>
+            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30–19h). Pour les demandes urgentes hors horaires, laissez un message vocal au +33&nbsp;1&nbsp;80&nbsp;00&nbsp;00&nbsp;00.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-item__btn" type="button" aria-expanded="false">
-              Est-ce que vos services sont gratuits pour les candidats ?
+              Est-ce que vos services sont gratuits pour les candidats&nbsp;?
               <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             </button>
             <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Oui, totalement. Nos services sont facturés aux entreprises clientes. Aucun frais ne vous sera jamais demandé en tant que candidat — c'est la loi en France.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-item__btn" type="button" aria-expanded="false">
-              Quels secteurs couvrez-vous ?
+              Quels secteurs couvrez-vous&nbsp;?
               <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             </button>
             <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Nous sommes spécialisés BTP (gros œuvre, second œuvre, TP) et tertiaire (comptabilité, administration, accueil). Nous gérons aussi la logistique (caristes, magasiniers, chauffeurs).</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-item__btn" type="button" aria-expanded="false">
-              Vous intervenez dans toute la France ?
+              Vous intervenez dans toute la France&nbsp;?
               <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             </button>
             <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Oui, sur tout le territoire métropolitain. Nous avons des agences à Paris, Lyon, Bordeaux et Lille, et un réseau de partenaires partout en France.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-item__btn" type="button" aria-expanded="false">
-              Quelle est votre garantie sur les missions ?
+              Quelle est votre garantie sur les missions&nbsp;?
               <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
             </button>
             <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Pour les entreprises : garantie de remplacement gratuite pendant 7 jours sur intérim, 30 jours sur CDD/CDI. Suivi hebdomadaire le premier mois.</p></div></div>
@@ -381,7 +371,7 @@
 
   <footer class="site-footer" data-screen-label="Footer">
     <div class="container">
-      <p class="footer-claim">Votre prochaine mission, commence ici.</p>
+      <p class="footer-claim">Votre prochaine mission, commence&nbsp;ici.</p>
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="footer-brand__logo"><img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim" width="120" height="100" /></span>
@@ -405,7 +395,7 @@
         <div class="footer-col">
           <h2 class="footer-col__title">Contact</h2>
           <ul class="footer-col__list">
-            <li><a href="tel:+33607080910" data-site-tel>+33 6 07 08 09 10</a></li>
+            <li><a href="tel:+33607080910" data-site-tel>+33&nbsp;6&nbsp;07&nbsp;08&nbsp;09&nbsp;10</a></li>
             <li><a href="mailto:contact@jobinterim.com" data-site-email>contact@<wbr>jobinterim.com</a></li>
             <li><span data-site="coordonnees.adresse">Bobigny</span></li>
           </ul>

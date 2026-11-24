@@ -243,11 +243,14 @@
 .sector__foot { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
 .sector__dots { display: flex; gap: 0.5rem; }
 .sector__dot {
+  position: relative;
   width: 10px; height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
   transition: background-color var(--dur) var(--ease), width var(--dur) var(--ease);
 }
+/* Zone tactile élargie (44 px de haut) sans changer l'apparence du point. */
+.sector__dot::before { content: ""; position: absolute; inset: -17px -4px; }
 .sector__dot.is-active { background: var(--accent); width: 26px; border-radius: 999px; }
 
 /* Stacked-images media */

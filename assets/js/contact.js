@@ -76,7 +76,7 @@
         seg.classList.toggle("is-done", idx < i);
         seg.classList.toggle("is-current", idx === i);
       });
-      if (backBtn) backBtn.style.visibility = i === 0 ? "hidden" : "visible";
+      if (backBtn) backBtn.hidden = i === 0;
       if (nextBtn) nextBtn.style.display = i === steps.length - 1 ? "none" : "inline-flex";
       if (submitBtn) submitBtn.style.display = i === steps.length - 1 ? "inline-flex" : "none";
       form.querySelectorAll("[data-step-current]").forEach(function (el) { el.textContent = i + 1; });

@@ -168,8 +168,10 @@
   gap: var(--space-4);
   margin-top: var(--space-7);
 }
-.form-actions .btn--back { visibility: hidden; }
-.form-step:not([data-step="1"]) ~ .form-actions .btn--back { visibility: visible; }
+/* « Précédent » est retiré à l'étape 1 ; les boutons d'avancée restent à droite. */
+.form-actions .btn--back[hidden] { display: none; }
+.form-actions [data-next],
+.form-actions [data-submit] { margin-left: auto; }
 
 .form-success {
   display: none;
