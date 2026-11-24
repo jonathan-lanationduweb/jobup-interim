@@ -156,10 +156,12 @@
      la chemise passe sous l'encadré. */
   .hero__bg { top: 0; bottom: auto; height: 740px; object-position: 40% 0; }
   .hero__overlay { display: none; }
+  /* L'encadré démarre toujours sous le menton (à 410 px du haut de la photo), quelle que soit
+     la taille du texte du téléphone : la photo est fixe, l'encadré ne peut plus remonter sur le visage. */
   .hero__inner {
     min-height: 740px;
-    align-items: end;
-    padding-top: var(--space-6);
+    align-items: start;
+    padding-top: 410px;
     padding-bottom: var(--space-5);
   }
   /* Encadré compact pour rester sur la chemise. */
