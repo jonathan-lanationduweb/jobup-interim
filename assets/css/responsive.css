@@ -152,9 +152,9 @@
 
   /* Accueil : photo agrandie (visage en haut), encadré flouté posé sur le bas de la photo (la chemise). */
   .hero { background: rgb(11, 38, 86); }
-  /* Photo calée sur la zone de 740 px (hors bande de chiffres), légèrement agrandie et remontée :
-     le visage reste en haut, la chemise passe sous l'encadré. */
-  .hero__bg { top: 0; bottom: auto; height: calc(740px * 1.08); transform: translateY(calc(740px * -0.08)); object-position: 42% 0; }
+  /* Photo calée sur la zone de 740 px (hors bande de chiffres) : le visage reste en haut,
+     la chemise passe sous l'encadré. */
+  .hero__bg { top: 0; bottom: auto; height: 740px; object-position: 40% 0; }
   .hero__overlay { display: none; }
   .hero__inner {
     min-height: 740px;
