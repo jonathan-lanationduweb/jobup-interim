@@ -150,51 +150,30 @@
   .footer-col__list span { font-size: 0.88rem; overflow-wrap: break-word; }
   .footer-claim { text-align: left; margin-bottom: var(--space-6); }
 
-  /* Accueil : la photo en entier en haut, puis le bloc de texte juste avant la bande de chiffres. */
+  /* Accueil : photo agrandie (visage en haut), encadré flouté posé sur le bas de la photo (la chemise). */
   .hero { background: rgb(11, 38, 86); }
-  .hero__bg {
-    position: static;
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3.4;
-    object-position: 30% 20%;
-  }
+  /* Photo calée sur la zone de 740 px (hors bande de chiffres), légèrement agrandie et remontée :
+     le visage reste en haut, la chemise passe sous l'encadré. */
+  .hero__bg { top: 0; bottom: auto; height: calc(740px * 1.08); transform: translateY(calc(740px * -0.08)); object-position: 42% 0; }
   .hero__overlay { display: none; }
-  /* Sous la photo : la même photo floutée en fond, et l'encadré « verre » comme sur ordinateur. */
   .hero__inner {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    min-height: 0;
+    min-height: 740px;
+    align-items: end;
     padding-top: var(--space-6);
-    padding-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
   }
-  .hero__inner::before {
-    content: "";
-    position: absolute;
-    inset: -24px;
-    z-index: -2;
-    background: url("../images/hero-accueil.png") 30% 100% / cover no-repeat;
-    filter: blur(16px);
-    transform: scale(1.08);
-  }
-  .hero__inner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, rgba(9, 28, 66, 0.25), rgba(9, 28, 66, 0.55));
-  }
+  /* Encadré compact pour rester sur la chemise. */
   .hero__panel {
     max-width: none;
-    padding: var(--space-5);
+    padding: var(--space-4) var(--space-4) var(--space-5);
   }
+  .hero__badge { margin-bottom: var(--space-3); }
+  .hero__title { line-height: 1.08; margin-bottom: var(--space-2); }
   /* Surtitre et « commence ici. » toujours sur une seule ligne. */
   .hero__badge { white-space: nowrap; max-width: 100%; font-size: min(0.78rem, 3.1vw); padding: 0.45em 0.8em; }
   .hero__title em { white-space: nowrap; }
-  .hero__title { font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2rem); }
-  .hero__subtitle { font-size: 0.95rem; margin-bottom: var(--space-5); }
+  .hero__title { font-size: clamp(1.6rem, 1.2rem + 2vw, 1.85rem); }
+  .hero__subtitle { font-size: 0.92rem; line-height: 1.45; margin-bottom: var(--space-4); }
 
   /* Chiffres clés : 3 colonnes compactes au lieu de 3 lignes. */
   .hero-stats__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
