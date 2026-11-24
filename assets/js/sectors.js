@@ -91,6 +91,51 @@
     root.addEventListener("mouseenter", stop);
     root.addEventListener("mouseleave", start);
 
+    /* ---- Glisser au doigt (ou à la souris) pour changer de secteur ----
+       Les points et le toucher des photos restent possibles : un simple
+       appui n'est pas un glissement. Le défilement vertical de la page
+       n'est pas bloqué (touch-action: pan-y). */
+    var SWIPE_MIN = 40;
+    var drag = null;
+    var swiped = false;
+    function mainImg() { return root.querySelector(".sector-stack__img.is-main"); }
+
+    root.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      drag = { x: e.clientX, y: e.clientY, id: e.pointerId, horizontal: null };
+      swiped = false;
+      stop();
+    });
+    root.addEventListener("pointermove", function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x;
+      var dy = e.clientY - drag.y;
+      if (drag.horizontal === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) drag.horizontal = Math.abs(dx) > Math.abs(dy);
+      if (!drag.horizontal) return;
+      // La photo principale suit légèrement le doigt.
+      var img = mainImg();
+      if (img) { img.style.transition = "none"; img.style.transform = "translateX(" + dx * 0.35 + "px)"; }
+    });
+    function endDrag(e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x;
+      var horizontal = drag.horizontal;
+      drag = null;
+      var img = mainImg();
+      if (img) { img.style.transition = ""; img.style.transform = ""; }
+      if (horizontal && Math.abs(dx) >= SWIPE_MIN) {
+        swiped = true;
+        render(current + (dx < 0 ? 1 : -1));
+      }
+      start();
+    }
+    root.addEventListener("pointerup", endDrag);
+    root.addEventListener("pointercancel", endDrag);
+    // Après un glissement, le « clic » qui suit n'ouvre ni lien ni photo.
+    root.addEventListener("click", function (e) {
+      if (swiped) { e.preventDefault(); e.stopPropagation(); swiped = false; }
+    }, true);
+
     render(0);
     if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) start();
   });

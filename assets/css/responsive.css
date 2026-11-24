@@ -130,6 +130,10 @@
 
   .contact-grid { grid-template-columns: 1fr; }
   .form-row--2 { grid-template-columns: 1fr; }
+
+  /* Processus : les boutons « Déposer un CV » / « Contactez-nous » ne s'affichent que sur ordinateur. */
+  .process__actions { display: none; }
+  .process__steps { margin-bottom: 0; }
   .job-detail__summary { grid-template-columns: 1fr 1fr; }
 }
 
@@ -145,6 +149,21 @@
   .footer-col__list a,
   .footer-col__list span { font-size: 0.88rem; overflow-wrap: break-word; }
   .footer-claim { text-align: left; margin-bottom: var(--space-6); }
+
+  /* Accueil : la photo reste visible, le bloc de texte descend en bas de l'image. */
+  .hero__bg { object-position: 40% 0; }
+  .hero__inner {
+    min-height: max(720px, calc(100svh - 72px));
+    align-items: end;
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-5);
+  }
+  /* Surtitre et « commence ici. » toujours sur une seule ligne. */
+  .hero__badge { white-space: nowrap; max-width: 100%; font-size: min(0.78rem, 2.85vw); padding: 0.45em 0.8em; }
+  .hero__title em { white-space: nowrap; }
+  .hero__panel { padding: var(--space-5); }
+  .hero__title { font-size: clamp(1.6rem, 1.2rem + 2vw, 1.9rem); }
+  .hero__subtitle { font-size: 0.95rem; margin-bottom: var(--space-4); }
 
   /* Chiffres clés : 3 colonnes compactes au lieu de 3 lignes. */
   .hero-stats__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
@@ -197,7 +216,7 @@
 @media (max-width: 400px) {
   .hero__panel { padding: var(--space-5) var(--space-4); }
   .hero__title { font-size: 1.75rem; }
-  .hero__badge { font-size: 0.78rem; }
+  .hero__badge .icon { display: none; }
   .contact-card,
   .form-card { padding: var(--space-6) var(--space-4); }
 }
