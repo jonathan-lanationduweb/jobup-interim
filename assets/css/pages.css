@@ -32,8 +32,64 @@
   padding-block: var(--space-8);
 }
 .page-hero .hero__panel { grid-column: 2; }
+/* Variante « photo à gauche » (ordinateur) : la photo est affichée entière, sans recadrage,
+   et se fond dans le bleu nuit ; l'encadré se pose à côté, sans cacher personne. */
+@media (min-width: 768.01px) {
+  .page-hero--photo-left .page-hero__bg {
+    right: auto;
+    width: auto;
+    max-width: none;
+    height: 100%;
+    aspect-ratio: 1448 / 1086;
+    object-fit: cover;
+    -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+  }
+  .page-hero--photo-left .page-hero__overlay { display: none; }
+}
+@media (min-width: 950px) and (max-width: 1279.98px) {
+  /* Écran moyen : encadré plus étroit, poussé à droite, à côté de la photo ;
+     titre réduit pour que « accompagnement, » tienne sans être coupé. */
+  .page-hero--photo-left .page-hero__inner { padding-block: var(--space-6); }
+  .page-hero--photo-left .hero__panel { max-width: 360px; justify-self: end; }
+  .page-hero.page-hero--photo-left .hero__title { font-size: 1.7rem; }
+}
+@media (min-width: 768.01px) and (max-width: 949.98px) {
+  /* Tablette : pas la place de mettre l'encadré à côté de la photo, on reprend la mise en page
+     du téléphone (photo pleine largeur, encadré flouté sous les visages). */
+  .page-hero--photo-left { display: block; }
+  .page-hero--photo-left .page-hero__bg {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 104%;
+    height: auto;
+    aspect-ratio: auto;
+    margin-left: -2%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .page-hero--photo-left .page-hero__overlay {
+    display: block;
+    inset: 0 0 auto 0;
+    z-index: 0;
+    height: 0;
+    padding-top: calc(104% * var(--ph-ratio, 0.75));
+    background: linear-gradient(180deg, rgba(11, 38, 86, 0) 58%, rgba(11, 38, 86, 0.75) 84%, rgb(11, 38, 86) 100%);
+  }
+  .page-hero--photo-left .page-hero__inner {
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    justify-items: stretch;
+    margin-top: calc(-104% * var(--ph-ratio, 0.75) * (1 - var(--ph-face, 0.5)));
+    padding-block: 0 var(--space-7);
+  }
+  .page-hero--photo-left .hero__panel { max-width: none; }
+}
+
 /* Titre un peu plus petit que l'accueil : « accompagnement, » tient dans l'encadré. */
-.page-hero .hero__title { font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.45rem); overflow-wrap: break-word; }
+.page-hero .hero__title { font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.45rem); }
 
 /* ---- Liste à coches ---- */
 .check-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
