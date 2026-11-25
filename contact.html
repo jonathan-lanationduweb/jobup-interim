@@ -28,15 +28,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" />
 
-  <link rel="stylesheet" href="assets/css/variables.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/reset.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/global.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/layout.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/components.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/header.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/footer.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/contact.css?v=20261125g" />
-  <link rel="stylesheet" href="assets/css/responsive.css?v=20261125g" />
+  <link rel="stylesheet" href="assets/css/variables.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/reset.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/global.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/layout.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/components.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/header.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/footer.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/contact.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/responsive.css?v=20261125h" />
 
   <script type="application/ld+json">
   {
@@ -48,7 +48,7 @@
       "@type": "Organization",
       "name": "JOBUP Intérim",
       "telephone": "+33148302902",
-      "email": "contact@jobup-interim.fr",
+      "email": "contact@jobinterim.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "4 rue d'Alembert",
@@ -93,7 +93,7 @@
             </li>
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
-              <div><p class="contact-list__label">Email</p><p class="contact-list__value"><a href="mailto:contact@jobup-interim.fr" data-site-email>contact@<wbr>jobup&#8209;interim.fr</a></p></div>
+              <div><p class="contact-list__label">Email</p><p class="contact-list__value"><a href="mailto:contact@jobinterim.com" data-site-email>contact@<wbr>jobinterim.com</a></p></div>
             </li>
             <li class="contact-list__item">
               <span class="contact-list__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -307,7 +307,7 @@
           <div class="form-success" data-success>
             <span class="form-success__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
             <h2 class="form-step__title">Demande envoyée&nbsp;!</h2>
-            <p class="form-step__subtitle">Merci&nbsp;! Un consultant JOBUP Intérim vous recontacte dans l'heure (jours ouvrés).</p>
+            <p class="form-step__subtitle">Merci&nbsp;! Notre équipe étudie votre demande et revient vers vous pour en parler.</p>
           </div>
 
           <p class="form-alert" data-form-alert role="alert" hidden></p>
@@ -321,49 +321,132 @@
       </div>
     </section>
 
+    <!-- ===================== APRÈS L'ENVOI ===================== -->
+    <section class="section section--white next-steps" aria-labelledby="next-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Ce qui se passe ensuite</span>
+          <h2 id="next-title" class="h2">Après l’envoi <span class="text-accent">de votre demande.</span></h2>
+        </div>
+        <ol class="next-steps__list">
+          <li class="next-step">
+            <span class="next-step__num" aria-hidden="true">1</span>
+            <div><h3 class="next-step__title">Nous lisons votre dossier</h3><p>Il est étudié par l’équipe de l’agence.</p></div>
+          </li>
+          <li class="next-step">
+            <span class="next-step__num" aria-hidden="true">2</span>
+            <div><h3 class="next-step__title">Nous vous appelons</h3><p>Un échange pour préciser votre situation.</p></div>
+          </li>
+          <li class="next-step">
+            <span class="next-step__num" aria-hidden="true">3</span>
+            <div><h3 class="next-step__title">Nous cherchons</h3><p>Nous identifions ce qui correspond à votre profil.</p></div>
+          </li>
+          <li class="next-step">
+            <span class="next-step__num" aria-hidden="true">4</span>
+            <div><h3 class="next-step__title">Nous vous proposons</h3><p>Vous décidez en connaissance de cause.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <!-- ===================== FAQ ===================== -->
-    <section class="section faq-section" aria-labelledby="faq-title">
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-head section-head--center">
           <h2 id="faq-title" class="h2">Questions fréquentes</h2>
-          <p class="lead">Avant de nous contacter, vous y trouverez peut-être déjà la réponse.</p>
+          <p class="lead">Les réponses aux questions que l’on nous pose le plus souvent.</p>
         </div>
         <div class="faq-list" data-faq-list>
-          <div class="faq-item is-open">
-            <button class="faq-item__btn" type="button" aria-expanded="true">
-              Combien de temps pour avoir un retour&nbsp;?
-              <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-            </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Un consultant vous rappelle sous 60 minutes ouvrées (lun-ven · 8h30–19h). Pour les demandes urgentes hors horaires, laissez un message vocal au 01&nbsp;48&nbsp;30&nbsp;29&nbsp;02.</p></div></div>
+          <h3 class="faq-group__title">Candidats</h3>
+          <div class="faq-group">
+            <div class="faq-item is-open">
+              <button class="faq-item__btn" type="button" aria-expanded="true">
+                Comment s’inscrire dans votre agence&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Déposez votre CV depuis notre <a href="#postuler">formulaire</a>, ou passez directement à l’agence, 4 rue d’Alembert à Montreuil. Nous étudions votre dossier et nous vous recontactons.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Peut-on travailler sans expérience&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Oui. Plusieurs postes sont accessibles aux débutants, notamment en manœuvre sur chantier et dans les métiers de la propreté et de l’environnement.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Dans quels secteurs recrutez-vous&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Trois secteurs&nbsp;: le BTP et la construction, le tertiaire et l’environnement. Le détail des postes figure sur notre <a href="index.html#metiers">page d’accueil</a>.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Faut-il un CV à jour pour postuler&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>C’est préférable, mais pas obligatoire. Si vous n’en avez pas, venez nous rencontrer&nbsp;: nous le constituons avec vous.</p></div></div>
+            </div>
           </div>
-          <div class="faq-item">
-            <button class="faq-item__btn" type="button" aria-expanded="false">
-              Est-ce que vos services sont gratuits pour les candidats&nbsp;?
-              <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-            </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Oui, totalement. Nos services sont facturés aux entreprises clientes. Aucun frais ne vous sera jamais demandé en tant que candidat — c'est la loi en France.</p></div></div>
+          <h3 class="faq-group__title">Missions</h3>
+          <div class="faq-group">
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Comment fonctionne l’intérim&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Vous êtes salarié de l’agence, qui est votre employeur, et vous effectuez votre mission dans une entreprise utilisatrice qui organise votre travail au quotidien.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Combien de temps dure une mission&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>De quelques jours à plusieurs mois selon le besoin de l’entreprise. La durée figure sur votre contrat de mission.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Avez-vous des offres en ligne&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Pas encore. Nos missions se pourvoient à partir des candidatures que nous recevons. Déposez votre CV pour être contacté dès qu’un poste correspond à votre profil.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Suis-je obligé d’accepter une mission&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Non. Nous vous présentons le poste, le site, les horaires et les conditions. Vous restez libre de refuser.</p></div></div>
+            </div>
           </div>
-          <div class="faq-item">
-            <button class="faq-item__btn" type="button" aria-expanded="false">
-              Quels secteurs couvrez-vous&nbsp;?
-              <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-            </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Nous sommes spécialisés BTP (gros œuvre, second œuvre, TP) et tertiaire (comptabilité, administration, accueil). Nous gérons aussi la logistique (caristes, magasiniers, chauffeurs).</p></div></div>
+          <h3 class="faq-group__title">Entreprises</h3>
+          <div class="faq-group">
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Comment demander du personnel&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Appelez-nous au <a href="tel:+33148302902">01&nbsp;48&nbsp;30&nbsp;29&nbsp;02</a>, ou remplissez le <a href="contact.html?profil=Entreprise#postuler">formulaire</a> en choisissant le parcours entreprise. Nous échangeons ensuite sur le poste à pourvoir.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Quels profils pouvez-vous rechercher&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Des profils en BTP et construction, en tertiaire et en environnement, du débutant au candidat confirmé.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-item__btn" type="button" aria-expanded="false">
+                Dans quelles villes intervenez-vous&nbsp;?
+                <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Principalement à Montreuil, en Seine-Saint-Denis, à Paris et dans l’est parisien, et plus largement en Île-de-France selon les besoins.</p></div></div>
+            </div>
           </div>
-          <div class="faq-item">
-            <button class="faq-item__btn" type="button" aria-expanded="false">
-              Vous intervenez dans toute la France&nbsp;?
-              <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-            </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Oui, sur tout le territoire métropolitain. Nous avons des agences à Paris, Lyon, Bordeaux et Lille, et un réseau de partenaires partout en France.</p></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-item__btn" type="button" aria-expanded="false">
-              Quelle est votre garantie sur les missions&nbsp;?
-              <span class="faq-item__toggle"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-            </button>
-            <div class="faq-item__panel"><div class="faq-item__panel-inner"><p>Pour les entreprises : garantie de remplacement gratuite pendant 7 jours sur intérim, 30 jours sur CDD/CDI. Suivi hebdomadaire le premier mois.</p></div></div>
-          </div>
+        </div>
+        <div class="faq-more">
+          <p class="faq-more__title">Vous n’avez pas trouvé votre réponse&nbsp;?</p>
+          <p>Appelez-nous au <a href="tel:+33148302902">01&nbsp;48&nbsp;30&nbsp;29&nbsp;02</a> ou écrivez à <a href="mailto:contact@jobinterim.com">contact@<wbr>jobinterim.com</a>.</p>
         </div>
       </div>
     </section>
@@ -375,13 +458,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="footer-brand__logo"><img src="assets/images/logo-jobup-full.png" alt="JOBUP Intérim" width="120" height="100" /></span>
-          <p>Agence d’intérim spécialisée dans le BTP, le tertiaire et l’environnement</p>
+          <p>Agence d’intérim implantée à Montreuil, spécialisée dans le BTP, le tertiaire et l’environnement.</p>
         </div>
         <div class="footer-col">
           <h2 class="footer-col__title">Navigation</h2>
           <ul class="footer-col__list">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#faq">Questions fréquentes</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -416,11 +500,11 @@
     </div>
   </footer>
 
-  <script src="assets/js/config.js?v=20261125g" defer></script>
-  <script src="assets/js/site.js?v=20261125g" defer></script>
-  <script src="assets/js/main.js?v=20261125g" defer></script>
-  <script src="assets/js/animations.js?v=20261125g" defer></script>
-  <script src="assets/js/contact.js?v=20261125g" defer></script>
-  <script src="assets/js/faq.js?v=20261125g" defer></script>
+  <script src="assets/js/config.js?v=20261125h" defer></script>
+  <script src="assets/js/site.js?v=20261125h" defer></script>
+  <script src="assets/js/main.js?v=20261125h" defer></script>
+  <script src="assets/js/animations.js?v=20261125h" defer></script>
+  <script src="assets/js/contact.js?v=20261125h" defer></script>
+  <script src="assets/js/faq.js?v=20261125h" defer></script>
 </body>
 </html>

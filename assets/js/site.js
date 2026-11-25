@@ -49,7 +49,9 @@
     if (filled(c.telephone)) {
       document.querySelectorAll("[data-site-tel]").forEach(function (a) {
         a.textContent = c.telephone.replace(/ /g, "\u00a0"); // numéro jamais coupé
-        a.href = "tel:" + c.telephone.replace(/[^0-9+]/g, "");
+        // Le numéro peut être dans un <span> à l'intérieur du lien (bouton avec icône).
+        var link = a.tagName === "A" ? a : a.closest("a");
+        if (link) link.href = "tel:" + c.telephone.replace(/[^0-9+]/g, "");
       });
     }
     if (filled(c.email)) {

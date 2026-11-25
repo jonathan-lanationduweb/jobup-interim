@@ -247,3 +247,65 @@
   line-height: 1.5;
 }
 .form-actions .btn[disabled] { opacity: 0.7; cursor: progress; }
+
+/* ---- FAQ groupée (Candidats / Missions / Entreprises) ---- */
+.faq-group { display: flex; flex-direction: column; gap: var(--space-4); }
+.faq-group__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: var(--space-4);
+}
+.faq-group__title:first-child { margin-top: 0; }
+.faq-item__panel a { color: var(--color-primary); font-weight: 500; }
+.faq-more { max-width: 820px; margin: var(--space-8) auto 0; text-align: center; color: var(--color-text-muted); }
+.faq-more__title { font-family: var(--font-display); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-2); }
+.faq-more a { color: var(--color-primary); font-weight: 500; white-space: nowrap; }
+
+/* ---- Après l'envoi de la demande ---- */
+.next-steps__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.next-step { text-align: center; position: relative; }
+.next-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--color-primary-strong);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: var(--space-5);
+  position: relative;
+  z-index: 2;
+}
+.next-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: calc(50% + 30px);
+  right: calc(-50% + 30px);
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+.next-step__title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--color-text); margin-bottom: var(--space-2); }
+.next-step p { color: var(--color-text-muted); font-size: 0.95rem; }
+@media (max-width: 768px) {
+  .next-steps__list { grid-template-columns: 1fr 1fr; gap: var(--space-7) var(--space-5); }
+  .next-step:not(:last-child)::after { display: none; }
+}
+@media (max-width: 560px) {
+  .next-steps__list { grid-template-columns: 1fr; gap: var(--space-5); }
+  .next-step { display: flex; align-items: center; gap: var(--space-4); text-align: left; }
+  .next-step__num { flex: none; width: 44px; height: 44px; margin: 0; font-size: 1.05rem; }
+}

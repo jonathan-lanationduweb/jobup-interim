@@ -325,7 +325,62 @@
   background: var(--color-border);
   z-index: 1;
 }
+.process-step__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
 .process-step p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+/* ----------------------------- QUI SOMMES-NOUS -------------------------- */
+.histoire__actions { margin-top: var(--space-6); }
+
+/* ----------------------------- NOS MÉTIERS ------------------------------ */
+.job-families { position: relative; overflow: hidden; }
+.job-family { display: flex; flex-direction: column; height: 100%; }
+.job-family p { flex: 1; }
+.job-family__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  align-self: flex-start;
+  margin-top: var(--space-5);
+  padding-block: 0.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.job-family__link .icon { width: 16px; height: 16px; transition: transform var(--dur) var(--ease); }
+.job-family__link:hover .icon { transform: translateX(3px); }
+
+/* ----------------------------- ZONE D'INTERVENTION ---------------------- */
+.zone__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary-50);
+}
+.zone__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: 500;
+  color: var(--color-text);
+}
+.zone__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-primary-strong);
+  color: #fff;
+}
+.zone__tick .icon { width: 14px; height: 14px; }
 .process__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
 
 /* ----------------------------- TESTIMONIALS ----------------------------- */

@@ -27,8 +27,8 @@
       key: "environnement",
       name: "Environnement",
       color: "#22C55E",
-      text: "Espaces verts, propreté, tri et valorisation : engagez-vous dans des métiers utiles et durables.",
-      points: ["Espaces verts", "Propreté & tri", "Valorisation des déchets", "Entretien des sites"],
+      text: "Propreté, espaces verts et gestion des déchets, au service des collectivités et des entreprises.",
+      points: ["Collecte et tri", "Espaces verts", "Propreté urbaine", "Assainissement"],
       href: "contact.html#postuler"
     }
   ];
