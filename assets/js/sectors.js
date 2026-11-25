@@ -71,7 +71,7 @@
       dots.forEach(function (d, idx) {
         var active = idx === current;
         d.classList.toggle("is-active", active);
-        d.setAttribute("aria-selected", active ? "true" : "false");
+        d.setAttribute("aria-current", active ? "true" : "false");
       });
     }
 

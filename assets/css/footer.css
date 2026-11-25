@@ -66,7 +66,7 @@
   gap: var(--space-3) var(--space-6);
   align-items: center;
   font-size: var(--fs-small);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.70);
 }
 .footer-credit { margin-left: auto; }
 .footer-credit a { color: rgba(255, 255, 255, 0.62); transition: color var(--dur) var(--ease); }
