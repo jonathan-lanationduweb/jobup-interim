@@ -32,6 +32,8 @@
   padding-block: var(--space-8);
 }
 .page-hero .hero__panel { grid-column: 2; }
+/* Titre un peu plus petit que l'accueil : « accompagnement, » tient dans l'encadré. */
+.page-hero .hero__title { font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.45rem); overflow-wrap: break-word; }
 
 /* ---- Liste à coches ---- */
 .check-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
@@ -136,12 +138,37 @@
   .grid--4 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  /* Photo en haut, encadré dessous sur fond bleu nuit. */
-  .page-hero { display: flex; flex-direction: column; }
-  .page-hero__bg { position: relative; height: clamp(220px, 56vw, 340px); z-index: 0; }
-  .page-hero__overlay { display: none; }
-  .page-hero__inner { min-height: 0; justify-items: stretch; padding-block: var(--space-5) var(--space-6); }
-  .page-hero .hero__panel { max-width: none; background: transparent; border: 0; padding: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  /* Comme l'accueil : photo en haut, encadré flouté posé dessus juste sous les visages.
+     La photo garde presque toute sa largeur pour que toutes les personnes restent visibles ;
+     --ph-ratio = hauteur/largeur de l'image, --ph-face = hauteur (0 à 1) où s'arrêtent les visages. */
+  .page-hero { display: block; }
+  .page-hero__bg {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 104%;
+    max-width: none;
+    height: auto;
+    margin-left: -2%;
+  }
+  /* Le bas de la photo se fond dans le bleu nuit, sous l'encadré. */
+  .page-hero__overlay {
+    inset: 0 0 auto 0;
+    z-index: 0;
+    height: 0;
+    padding-top: calc(104% * var(--ph-ratio, 0.75));
+    background: linear-gradient(180deg, rgba(11, 38, 86, 0) 58%, rgba(11, 38, 86, 0.75) 84%, rgb(11, 38, 86) 100%);
+  }
+  .page-hero__inner {
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    justify-items: stretch;
+    /* Les % de marge se calculent sur la largeur : l'encadré remonte sur la photo jusque sous les visages. */
+    margin-top: calc(-104% * var(--ph-ratio, 0.75) * (1 - var(--ph-face, 0.5)));
+    padding-block: 0 var(--space-6);
+  }
+  .page-hero .hero__panel { max-width: none; }
   .sector-block .sector-block__media { order: -1; }
   .check-list--2 { grid-template-columns: 1fr; }
   /* Les anneaux décoratifs passeraient derrière les titres une fois la page en une colonne. */
@@ -150,5 +177,8 @@
 @media (max-width: 560px) {
   .grid--4 { grid-template-columns: 1fr; }
   .page-hero .hero__actions .btn { width: auto; }
+  .page-hero .hero__title { font-size: min(1.75rem, 7vw); }
+  /* Sur l'accueil la 2e ligne reste d'un bloc ; ici elle est plus longue, elle peut passer à la ligne. */
+  .page-hero .hero__title em { white-space: normal; }
   .choice-card { padding: var(--space-6) var(--space-5); }
 }
