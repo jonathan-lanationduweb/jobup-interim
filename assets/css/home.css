@@ -355,6 +355,45 @@
 .job-family__link .icon { width: 16px; height: 16px; transition: transform var(--dur) var(--ease); }
 .job-family__link:hover .icon { transform: translateX(3px); }
 
+/* ----------------------------- QUESTIONS AVANT DE POSTULER -------------- */
+.faq-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 1000px;
+  margin-inline: auto;
+}
+.faq-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5) var(--space-5) var(--space-6);
+}
+.faq-card__q {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.faq-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+.faq-card a { color: var(--color-primary); font-weight: 500; }
+.faq-cards__more { text-align: center; margin-top: var(--space-7); }
+.faq-cards__more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.faq-cards__more .icon { width: 16px; height: 16px; transition: transform var(--dur) var(--ease); }
+.faq-cards__more a:hover .icon { transform: translateX(3px); }
+@media (max-width: 768px) {
+  .faq-cards__grid { grid-template-columns: 1fr; }
+}
+
 /* ----------------------------- ZONE D'INTERVENTION ---------------------- */
 .zone__list {
   display: flex;
