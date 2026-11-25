@@ -19,46 +19,6 @@
   [data-animate] { opacity: 1 !important; transform: none !important; }
 }
 
-/* ============================ <= 1180px ================================== */
-@media (max-width: 1180px) {
-  /* Liste seule ; le détail s'ouvre en panneau au toucher d'une offre. */
-  .jobs-results { grid-template-columns: 1fr; }
-  .job-detail {
-    position: fixed;
-    inset: auto 0 0 0;
-    top: auto;
-    z-index: 120;
-    max-height: min(88vh, 88dvh);
-    width: min(720px, 100%);
-    margin-inline: auto;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    box-shadow: 0 -12px 40px rgba(17, 24, 39, 0.18);
-    transform: translateY(105%);
-    visibility: hidden;
-    transition: transform 0.32s var(--ease), visibility 0s linear 0.32s;
-    overscroll-behavior: contain;
-  }
-  .job-detail.is-open { transform: none; visibility: visible; transition: transform 0.32s var(--ease); }
-  .job-detail__close { display: inline-flex; }
-  .job-detail__head { padding-right: 4rem; }
-  .job-sheet-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 110;
-    background: rgba(9, 28, 66, 0.45);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s var(--ease);
-  }
-  .job-sheet-backdrop.is-open { opacity: 1; pointer-events: auto; }
-  .has-job-sheet, .has-job-sheet body { overflow: hidden; }
-  .job-card.is-active { border-color: transparent; box-shadow: var(--shadow-sm); }
-}
-@media (max-width: 1180px) and (prefers-reduced-motion: reduce) {
-  .job-detail, .job-sheet-backdrop { transition: none; }
-}
-
 /* ============================ <= 1366px ================================= */
 @media (max-width: 1366px) {
   /* Les 3 photos du carrousel restent dans l'écran, avec une marge. */
@@ -80,21 +40,6 @@
     padding-bottom: 8.5rem;
   }
   .hero__panel { grid-column: 1; max-width: 600px; }
-  .search-row { grid-template-columns: 1fr 1fr; }
-  .search-field:nth-child(2) { border-right: none; }
-  .search-row .btn { grid-column: 1 / -1; }
-
-  .jobs-layout { grid-template-columns: 1fr; gap: var(--space-4); }
-  .filters {
-    position: static;
-    top: auto;
-    max-height: none;
-    padding: var(--space-4) var(--space-5);
-  }
-  .filters__head { margin-bottom: 0; }
-  .filters__toggle { display: inline-flex; }
-  .filters__body { display: none; margin-top: var(--space-4); }
-  .filters.is-open .filters__body { display: block; }
 }
 
 /* ============================ <= 900px ================================== */
@@ -112,7 +57,6 @@
 
   .grid--3 { grid-template-columns: 1fr; }
   .grid--2 { grid-template-columns: 1fr; }
-
 
   .sector__inner { grid-template-columns: 1fr; }
   .sector__text { min-height: 0; }
@@ -137,7 +81,6 @@
   /* Processus : les boutons « Déposer un CV » / « Contactez-nous » ne s'affichent que sur ordinateur. */
   .process__actions { display: none; }
   .process__steps { margin-bottom: 0; }
-  .job-detail__summary { grid-template-columns: 1fr 1fr; }
 }
 
 /* ============================ <= 560px (mobile) ========================= */
@@ -199,20 +142,7 @@
   .hero .hero__actions { flex-wrap: nowrap; gap: var(--space-2); }
   .hero .hero__actions .btn { flex: 1 1 0; min-width: 0; padding-inline: 0.6rem; justify-content: center; white-space: nowrap; font-size: min(0.95rem, 3.7vw); }
   .cta-banner__actions .btn,
-  .process__actions .btn,
-  .offer-card__actions .btn { width: 100%; }
-  .offer-card__actions { flex-direction: column; }
-
-  .search-row { grid-template-columns: 1fr; }
-
-  .jobs-toolbar { flex-wrap: wrap; gap: var(--space-2); }
-  .jobs-toolbar__sectors { display: none; }
-  .job-card { padding: var(--space-4); }
-  .job-card__top { flex-direction: column; gap: 4px; }
-  .job-card__aside { flex-direction: row; align-items: center; gap: var(--space-3); }
-  .job-detail { max-height: 92dvh; }
-  .search-field { border-right: none; border-bottom: 1px solid var(--color-border); }
-  .search-field:last-of-type { border-bottom: none; }
+  .process__actions .btn { width: 100%; }
 
   .sector__list { grid-template-columns: 1fr; }
 
