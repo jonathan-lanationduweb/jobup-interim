@@ -10,7 +10,8 @@
     var btn = e.target.closest(".faq-item__btn");
     if (!btn) return;
     var item = btn.closest(".faq-item");
-    var list = item.parentElement;
+    // Une seule réponse ouverte sur toute la liste, même d'un thème à l'autre.
+    var list = item.closest("[data-faq-list]") || item.parentElement;
     var isOpen = item.classList.contains("is-open");
     // close all (single-open accordion)
     list.querySelectorAll(".faq-item").forEach(function (other) {

@@ -109,11 +109,11 @@
     list.textContent = "";
     questions.forEach(function (q, i) {
       var item = document.createElement("div");
-      item.className = "faq-item" + (i === 0 ? " is-open" : "");
+      item.className = "faq-item"; // toutes fermées : la réponse s'ouvre au clic
       var btn = document.createElement("button");
       btn.className = "faq-item__btn";
       btn.type = "button";
-      btn.setAttribute("aria-expanded", i === 0 ? "true" : "false");
+      btn.setAttribute("aria-expanded", "false");
       btn.appendChild(document.createTextNode(q.question));
       var toggle = document.createElement("span");
       toggle.className = "faq-item__toggle";

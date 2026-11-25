@@ -377,6 +377,23 @@
   color: var(--color-text);
   margin-bottom: var(--space-2);
 }
+/* Sur ordinateur, la question est un simple titre : la réponse reste visible. */
+.faq-card__btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: default;
+}
+.faq-card__btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; border-radius: var(--radius-sm, 6px); }
+.faq-card__toggle { display: none; }
 .faq-card p { color: var(--color-text-muted); font-size: 0.95rem; }
 .faq-card a { color: var(--color-primary); font-weight: 500; }
 .faq-cards__more { text-align: center; margin-top: var(--space-7); }
@@ -391,7 +408,26 @@
 .faq-cards__more .icon { width: 16px; height: 16px; transition: transform var(--dur) var(--ease); }
 .faq-cards__more a:hover .icon { transform: translateX(3px); }
 @media (max-width: 768px) {
-  .faq-cards__grid { grid-template-columns: 1fr; }
+  /* Sur téléphone : questions fermées, la réponse s'ouvre au toucher. */
+  .faq-cards__grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .faq-card { padding: 0; transition: border-color var(--dur) var(--ease); }
+  .faq-card.is-open { border-color: var(--color-primary-100); }
+  .faq-card__q { margin: 0; }
+  .faq-card__btn { align-items: center; min-height: 56px; padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5); cursor: pointer; }
+  .faq-card__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--color-primary-strong);
+    color: #fff;
+  }
+  .faq-card__toggle .icon { width: 15px; height: 15px; transition: transform var(--dur) var(--ease); }
+  .faq-card.is-open .faq-card__toggle .icon { transform: rotate(45deg); }
+  .faq-card__a { display: none; padding: 0 var(--space-5) var(--space-5); }
+  .faq-card.is-open .faq-card__a { display: block; }
 }
 
 /* ----------------------------- ZONE D'INTERVENTION ---------------------- */
