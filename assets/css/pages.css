@@ -114,7 +114,9 @@
   box-shadow: var(--shadow-md);
   aspect-ratio: 5 / 4;
 }
-.sector-block__media img { width: 100%; height: 100%; object-fit: cover; }
+/* Photos carrées dans un cadre 5:4 : on garde le haut (les visages sont en haut de l'image)
+   et on recadre seulement par le bas. */
+.sector-block__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .sector-block__actions { margin-top: var(--space-6); }
 .sector-block--reverse .sector-block__media { order: -1; }
 .split-media--plain img { width: 100%; height: auto; }
