@@ -113,7 +113,6 @@
   .grid--3 { grid-template-columns: 1fr; }
   .grid--2 { grid-template-columns: 1fr; }
 
-  .offers__grid { grid-template-columns: 1fr; }
 
   .sector__inner { grid-template-columns: 1fr; }
   .sector__text { min-height: 0; }

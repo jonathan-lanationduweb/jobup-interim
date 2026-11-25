@@ -1,7 +1,6 @@
 /* ==========================================================================
    contact.js — Formulaire multi-étapes, validation & uploads
    - Étape 1 : profil · Étape 2 : besoin + uploads · Étape 3 : coordonnées
-   - Candidature depuis une offre : ?apply=1&job=… ouvre directement l'étape 2
    ========================================================================== */
 (function () {
   "use strict";
@@ -149,8 +148,6 @@
       if (actions) actions.style.display = "none";
       var stepperEl = form.querySelector(".stepper");
       if (stepperEl) stepperEl.style.display = "none";
-      var recap = form.querySelector("[data-apply-recap]");
-      if (recap) recap.hidden = true;
       if (alertEl) alertEl.hidden = true;
       if (success) success.classList.add("is-visible");
     }
@@ -265,50 +262,12 @@
       if (removeBtn) removeBtn.addEventListener("click", function (e) { e.stopPropagation(); input.value = ""; dropzone.classList.remove("has-file"); });
     });
 
-    /* ---- Pré-remplissage depuis une offre (?apply=1&job=…) ---- */
-    function applyFromOffer() {
-      var q = new URLSearchParams(window.location.search);
-      if (q.get("apply") !== "1") return false;
-
-      var poste = q.get("poste") || "";
-      var recap = form.querySelector("[data-apply-recap]");
-      if (recap) {
-        var posteEl = recap.querySelector("[data-apply-poste]");
-        var metaEl = recap.querySelector("[data-apply-meta]");
-        if (posteEl) posteEl.textContent = poste || "Votre candidature";
-        var bits = [q.get("entreprise"), q.get("lieu"), q.get("contrat"), q.get("remu")].filter(Boolean);
-        if (metaEl) metaEl.textContent = bits.join(" · ");
-        recap.hidden = false;
-      }
-
-      // Préremplir le poste
-      var posteInput = form.querySelector("input[name='poste']");
-      if (posteInput && poste) posteInput.value = poste;
-
-      // Préremplir le métier selon le secteur
-      var secteurMap = { "BTP": "BTP & Construction", "BTP & Construction": "BTP & Construction", "Tertiaire": "Tertiaire", "Environnement": "Environnement" };
-      var secteur = secteurMap[q.get("secteur")] || "Autre";
-      var metierGroup = form.querySelector("input[name='metier']");
-      if (metierGroup) {
-        metierGroup.value = secteur;
-        var groupEl = metierGroup.parentElement.querySelector("[data-segmented]");
-        if (groupEl) {
-          groupEl.querySelectorAll(".segmented__option").forEach(function (o) {
-            var active = o.getAttribute("data-value") === secteur;
-            o.classList.toggle("is-active", active);
-            o.setAttribute("aria-pressed", active ? "true" : "false");
-          });
-        }
-      }
-      return true;
-    }
-
     // Profil depuis l'URL (?profil=candidat|entreprise)
     var profilParam = (new URLSearchParams(window.location.search).get("profil") || "").toLowerCase();
     if (profilParam === "entreprise") setProfil("Entreprise");
     else if (profilParam === "question") setProfil("Question");
 
     // Page Déposer un CV : pas d'étape « profil », le formulaire commence directement.
-    if (applyFromOffer() && profilInput) { setProfil("Candidat"); show(1); } else show(0);
+    show(0);
   });
 })();

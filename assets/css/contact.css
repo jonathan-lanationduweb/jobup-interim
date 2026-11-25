@@ -139,22 +139,6 @@
 .dropzone__remove { color: #DC2626; font-size: var(--fs-small); font-weight: 600; }
 
 /* Récap candidature (depuis une offre) */
-.apply-recap {
-  background: var(--color-primary-50);
-  border: 1px solid var(--color-primary-100);
-  border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-5);
-  margin-bottom: var(--space-6);
-}
-.apply-recap__label {
-  font-size: var(--fs-eyebrow);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-.apply-recap__title { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--color-text); margin-top: 2px; }
-.apply-recap__meta { font-size: var(--fs-small); color: var(--color-text-soft); margin-top: 2px; }
 
 /* Compact uploads (CV / Diplômes / Lettre de motivation) */
 .uploads { display: grid; gap: var(--space-4); margin-top: var(--space-5); }

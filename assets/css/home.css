@@ -154,7 +154,6 @@
 .method__grid { margin-top: var(--space-2); }
 
 /* ----------------------------- OFFERS ----------------------------------- */
-.offers__grid { margin-bottom: var(--space-8); align-items: stretch; }
 .offer-card { padding: var(--space-6); display: flex; flex-direction: column; height: 100%; border-left: 3px solid var(--sc, transparent); }
 .offer-card .sector-badge { align-self: flex-start; margin-bottom: var(--space-3); }
 .offer-card__title {
