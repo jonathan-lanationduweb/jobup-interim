@@ -10,18 +10,20 @@
     var onScroll = function () {
       header.classList.toggle("is-scrolled", window.scrollY > 8);
     };
-    onScroll();
+    // Première lecture au prochain rendu, quand les styles sont prêts (pas de recalcul forcé).
+    window.requestAnimationFrame(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   /* ---- Menu des pages : caché en descendant, visible dès qu'on remonte ---- */
   var subNav = document.querySelector(".sub-nav");
   if (subNav) {
-    var lastY = window.scrollY;
+    var lastY = 0;
     var ticking = false;
     // Le menu suit directement l'en-tête : sa place d'origine = hauteur de l'en-tête.
-    // Hauteur lue une fois, puis seulement après un redimensionnement (jamais pendant le défilement).
-    var navTop = header ? header.offsetHeight : 0;
+    // Hauteur lue une fois au premier rendu, puis seulement après un redimensionnement
+    // (jamais pendant le défilement).
+    var navTop = 0;
     var resizeTimer = null;
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
@@ -43,7 +45,11 @@
     }, { passive: true });
     // Le menu reprend sa place si on navigue au clavier dedans.
     subNav.addEventListener("focusin", function () { subNav.classList.remove("is-hidden"); });
-    updateNav();
+    window.requestAnimationFrame(function () {
+      navTop = header ? header.offsetHeight : 0;
+      lastY = window.scrollY;
+      updateNav();
+    });
   }
 
   /* ---- Mobile navigation drawer ---- */
