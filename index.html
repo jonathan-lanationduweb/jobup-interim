@@ -36,16 +36,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/variables.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/reset.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/global.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/layout.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/components.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/header.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/footer.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/home.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/reviews.css?v=20261125h" />
-  <link rel="stylesheet" href="assets/css/responsive.css?v=20261125h" />
+  <link rel="stylesheet" href="assets/css/variables.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/reset.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/global.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/layout.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/components.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/header.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/footer.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/home.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/reviews.css?v=20261125i" />
+  <link rel="stylesheet" href="assets/css/responsive.css?v=20261125i" />
 
   <!-- Schema.org Organization -->
   <script type="application/ld+json">
@@ -88,6 +88,18 @@
     </div>
   </header>
 
+  <!-- ============================= MENU ============================= -->
+  <nav class="sub-nav" aria-label="Pages du site">
+    <div class="container">
+      <ul class="sub-nav__list">
+        <li class="sub-nav__item--home"><a class="sub-nav__link" href="index.html" aria-current="page">Accueil</a></li>
+        <li><a class="sub-nav__link" href="metiers.html">Métiers</a></li>
+        <li><a class="sub-nav__link" href="accompagnement.html"><span class="sub-nav__long">Notre accompagnement</span><span class="sub-nav__short">Accompagnement</span></a></li>
+        <li><a class="sub-nav__link sub-nav__link--cta" href="contact.html#postuler">Déposer un CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <main id="main">
     <!-- ============================= HERO ============================= -->
     <section class="hero" data-screen-label="Hero">
@@ -103,6 +115,7 @@
           <p class="hero__subtitle" data-site="accueil.texte">Nous connectons les talents avec les entreprises qui avancent, partout en Île&#8209;de&#8209;France.</p>
           <div class="hero__actions">
             <a class="btn btn--white" href="contact.html#postuler">Déposer mon CV</a>
+            <a class="btn btn--outline-invert" href="metiers.html">Nos métiers</a>
           </div>
         </div>
       </div>
@@ -138,7 +151,7 @@
             <p>Nous sommes une équipe à taille humaine. Chaque candidat échange directement avec la personne qui suit son dossier, du premier appel jusqu’à la fin de mission.</p>
           </div>
           <div class="histoire__actions">
-            <a class="btn btn--ghost" href="contact.html#postuler">Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost" href="accompagnement.html">Notre accompagnement <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
         <div class="histoire__media" data-animate data-animate-delay="1">
@@ -317,7 +330,7 @@
               <h3 class="value-card__title">Bâtiment et travaux publics</h3>
             </div>
             <p>Maçon, coffreur, manœuvre, conducteur d’engins, chef d’équipe.</p>
-            <a class="job-family__link" href="contact.html#postuler">Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="job-family__link" href="metiers.html#btp">Voir les métiers <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </article>
           <article class="card card--hover value-card job-family" data-animate data-animate-delay="1">
             <div class="value-card__head">
@@ -325,7 +338,7 @@
               <h3 class="value-card__title">Métiers de bureau</h3>
             </div>
             <p>Assistant administratif, agent d’accueil, comptable, assistant RH.</p>
-            <a class="job-family__link" href="contact.html#postuler">Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="job-family__link" href="metiers.html#tertiaire">Voir les métiers <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </article>
           <article class="card card--hover value-card job-family" data-animate data-animate-delay="2">
             <div class="value-card__head">
@@ -333,8 +346,11 @@
               <h3 class="value-card__title">Propreté et environnement</h3>
             </div>
             <p>Agent de collecte, agent d’espaces verts, agent de propreté.</p>
-            <a class="job-family__link" href="contact.html#postuler">Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="job-family__link" href="metiers.html#environnement">Voir les métiers <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </article>
+        </div>
+        <div class="job-families__more" data-animate="fade">
+          <a class="btn btn--primary" href="metiers.html">Découvrir tous les métiers <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -400,7 +416,7 @@
           <p class="cta-banner__text">Déposez votre CV&nbsp;: notre équipe l’étudie et revient vers vous pour en parler.</p>
           <div class="cta-banner__actions">
             <a class="btn btn--white btn--lg" href="contact.html#postuler">Déposer mon CV <svg class="icon arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn btn--outline-invert btn--lg" href="tel:+33148302902"><span data-site-tel>01&nbsp;48&nbsp;30&nbsp;29&nbsp;02</span> <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a>
+            <a class="btn btn--outline-invert btn--lg" href="accompagnement.html">Notre accompagnement</a>
           </div>
         </div>
       </div>
@@ -420,16 +436,18 @@
           <h2 class="footer-col__title">Navigation</h2>
           <ul class="footer-col__list">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="contact.html#faq">Questions fréquentes</a></li>
+            <li><a href="metiers.html">Métiers</a></li>
+            <li><a href="accompagnement.html">Notre accompagnement</a></li>
+            <li><a href="contact.html#postuler">Déposer un CV</a></li>
+            <li><a href="faq.html">Questions fréquentes</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h2 class="footer-col__title">Secteurs</h2>
           <ul class="footer-col__list">
-            <li><a href="index.html#expertises">BTP &amp; Construction</a></li>
-            <li><a href="index.html#expertises">Tertiaire</a></li>
-            <li><a href="index.html#expertises">Environnement</a></li>
+            <li><a href="metiers.html#btp">BTP &amp; Construction</a></li>
+            <li><a href="metiers.html#tertiaire">Tertiaire</a></li>
+            <li><a href="metiers.html#environnement">Environnement</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -456,11 +474,11 @@
     </div>
   </footer>
 
-  <script src="assets/js/config.js?v=20261125h" defer></script>
-  <script src="assets/js/site.js?v=20261125h" defer></script>
-  <script src="assets/js/main.js?v=20261125h" defer></script>
-  <script src="assets/js/animations.js?v=20261125h" defer></script>
-  <script src="assets/js/sectors.js?v=20261125h" defer></script>
-  <script src="assets/js/reviews.js?v=20261125h" defer></script>
+  <script src="assets/js/config.js?v=20261125i" defer></script>
+  <script src="assets/js/site.js?v=20261125i" defer></script>
+  <script src="assets/js/main.js?v=20261125i" defer></script>
+  <script src="assets/js/animations.js?v=20261125i" defer></script>
+  <script src="assets/js/sectors.js?v=20261125i" defer></script>
+  <script src="assets/js/reviews.js?v=20261125i" defer></script>
 </body>
 </html>

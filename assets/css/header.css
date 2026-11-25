@@ -146,3 +146,71 @@
 }
 .mobile-nav__link[aria-current="page"] { color: var(--color-primary); }
 .mobile-nav .btn { margin-top: var(--space-5); }
+
+/* ---- Menu des pages (sous le logo, défile avec la page) ---- */
+.sub-nav {
+  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+.sub-nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-block: 0.55rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sub-nav__list::-webkit-scrollbar { display: none; }
+.sub-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.sub-nav__link:hover { color: var(--color-primary); background: var(--color-primary-50); }
+.sub-nav__link[aria-current="page"] { color: var(--color-primary); background: var(--color-primary-50); font-weight: 600; }
+.sub-nav__link--cta,
+.sub-nav__link--cta:hover,
+.sub-nav__link--cta[aria-current="page"] {
+  margin-left: var(--space-2);
+  background: var(--color-primary-strong);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(13, 91, 215, 0.25);
+}
+.sub-nav__short { display: none; }
+
+/* ---- Fil d’Ariane ---- */
+.breadcrumb { background: #fff; }
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-block: 0.6rem;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+.breadcrumb__list a { color: var(--color-text-muted); }
+.breadcrumb__list a:hover { color: var(--color-primary); }
+.breadcrumb__sep { opacity: 0.6; }
+
+@media (max-width: 560px) {
+  /* Sur téléphone, le logo ramène à l’accueil : le menu garde les 3 autres pages. */
+  .sub-nav__item--home { display: none; }
+  .sub-nav .container { padding-inline: 0.5rem; }
+  .sub-nav__list { justify-content: safe center; gap: 0.2rem; padding-block: 0.45rem; }
+  .sub-nav__link { font-size: 0.84rem; padding: 0.4rem 0.65rem; }
+  .sub-nav__link--cta { margin-left: 0.2rem; }
+  .sub-nav__long { display: none; }
+  .sub-nav__short { display: inline; }
+}
+@media (max-width: 359px) {
+  .sub-nav__link { font-size: 0.76rem; padding: 0.4rem 0.5rem; }
+}

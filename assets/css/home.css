@@ -351,6 +351,7 @@
   font-weight: 600;
   color: var(--color-primary);
 }
+.job-families__more { margin-top: var(--space-8); text-align: center; }
 .job-family__link .icon { width: 16px; height: 16px; transition: transform var(--dur) var(--ease); }
 .job-family__link:hover .icon { transform: translateX(3px); }
 

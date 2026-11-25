@@ -196,7 +196,9 @@
   .value-card { padding: var(--space-5); }
   .cta-banner__box { padding: var(--space-7) var(--space-5); }
   .cta-banner__title { font-size: clamp(1.45rem, 1.1rem + 2vw, 1.9rem); }
-  .hero__actions .btn,
+  /* Accueil : « Déposer mon CV » et « Nos métiers » côte à côte pour garder l'encadré compact. */
+  .hero .hero__actions { flex-wrap: nowrap; gap: var(--space-2); }
+  .hero .hero__actions .btn { flex: 1 1 0; min-width: 0; padding-inline: 0.6rem; justify-content: center; white-space: nowrap; font-size: min(0.95rem, 3.7vw); }
   .cta-banner__actions .btn,
   .process__actions .btn,
   .offer-card__actions .btn { width: 100%; }

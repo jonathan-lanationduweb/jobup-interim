@@ -1,0 +1,154 @@
+/* ==========================================================================
+   pages.css — Pages intérieures : Métiers, Notre accompagnement, FAQ
+   ========================================================================== */
+
+/* ---- En-tête de page (photo + encadré) ---- */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  background: rgb(11, 38, 86);
+  overflow: hidden;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(9, 28, 66, 0) 35%, rgba(9, 28, 66, 0.45) 70%, rgba(9, 28, 66, 0.65) 100%);
+}
+.page-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(340px, 470px);
+  align-items: center;
+  min-height: clamp(420px, 58vh, 560px);
+  padding-block: var(--space-8);
+}
+.page-hero .hero__panel { grid-column: 2; }
+
+/* ---- Liste à coches ---- */
+.check-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
+.check-list li { display: flex; align-items: center; gap: var(--space-3); font-weight: 500; color: var(--color-text); }
+.check-list__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-primary-strong);
+  color: #fff;
+}
+.check-list__tick .icon { width: 13px; height: 13px; }
+.check-list--2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-5); }
+
+/* ---- Bloc secteur (texte + photo) ---- */
+.sector-block__media {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 5 / 4;
+}
+.sector-block__media img { width: 100%; height: 100%; object-fit: cover; }
+.sector-block__actions { margin-top: var(--space-6); }
+.sector-block--reverse .sector-block__media { order: -1; }
+.split-media--plain img { width: 100%; height: auto; }
+
+/* ---- Encart centré ---- */
+.note-block { text-align: center; max-width: 680px; margin-inline: auto; position: relative; }
+.note-block .h2 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); }
+.note-block p { color: var(--color-text-muted); margin-block: var(--space-4) var(--space-6); }
+
+/* ---- Grilles de cartes ---- */
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+.value-card--sm { padding: var(--space-6) var(--space-5); }
+.value-card--sm .value-card__title { font-size: 1.05rem; }
+
+/* ---- Section entreprises (fond bleu) ---- */
+.section--blue { background: var(--color-primary-strong); color: #fff; position: relative; overflow: hidden; }
+.section--blue .h2 { color: #fff; }
+.section--blue .text-accent { color: #93C5FD; }
+.card--glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: none;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+.card--glass h3 { color: #fff; font-size: 1.1rem; font-weight: 600; margin-bottom: var(--space-2); font-family: var(--font-display); }
+.card--glass p { color: rgba(255, 255, 255, 0.85); }
+
+/* ---- Deux cartes d’orientation ---- */
+.choice-card { padding: var(--space-7) var(--space-6); display: flex; flex-direction: column; align-items: flex-start; height: 100%; }
+.choice-card__title { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-h3); font-weight: 700; margin-bottom: var(--space-2); }
+.choice-card__title .icon { width: 24px; height: 24px; flex: none; color: var(--color-primary); }
+.choice-card p { color: var(--color-text-muted); margin-bottom: var(--space-5); flex: 1; }
+
+/* ---- FAQ : en-tête avec recherche ---- */
+.faq-hero { background: var(--color-primary-50); text-align: center; position: relative; overflow: hidden; }
+.faq-hero__title { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem); }
+.faq-hero .lead { margin-top: var(--space-3); }
+.faq-search { max-width: 600px; margin: var(--space-6) auto 0; position: relative; }
+.faq-search .icon { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-text-muted); pointer-events: none; }
+.faq-search input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0.9rem 1.2rem 0.9rem 3rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+.faq-search input:focus { outline: none; border-color: var(--color-primary); }
+.faq-count { margin-top: var(--space-3); font-size: var(--fs-small); color: var(--color-text-muted); }
+.faq-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+.faq-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+.faq-chip:hover { color: var(--color-primary); }
+.faq-group[hidden], .faq-group__title[hidden], .faq-item[hidden], .faq-empty[hidden] { display: none; }
+.faq-empty { text-align: center; color: var(--color-text-muted); margin-top: var(--space-6); }
+.faq-page .faq-list { margin-top: 0; }
+.faq-group__title { scroll-margin-top: calc(var(--header-h) + 1rem); }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .page-hero__inner { grid-template-columns: 1fr; justify-items: end; }
+  .page-hero .hero__panel { grid-column: 1; }
+  .grid--4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  /* Photo en haut, encadré dessous sur fond bleu nuit. */
+  .page-hero { display: flex; flex-direction: column; }
+  .page-hero__bg { position: relative; height: clamp(220px, 56vw, 340px); z-index: 0; }
+  .page-hero__overlay { display: none; }
+  .page-hero__inner { min-height: 0; justify-items: stretch; padding-block: var(--space-5) var(--space-6); }
+  .page-hero .hero__panel { max-width: none; background: transparent; border: 0; padding: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .sector-block .sector-block__media { order: -1; }
+  .check-list--2 { grid-template-columns: 1fr; }
+  /* Les anneaux décoratifs passeraient derrière les titres une fois la page en une colonne. */
+  main .deco-circle--rings { display: none; }
+}
+@media (max-width: 560px) {
+  .grid--4 { grid-template-columns: 1fr; }
+  .page-hero .hero__actions .btn { width: auto; }
+  .choice-card { padding: var(--space-6) var(--space-5); }
+}
