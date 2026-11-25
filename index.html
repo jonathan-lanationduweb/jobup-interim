@@ -30,20 +30,11 @@
   <meta name="twitter:image" content="https://interimjobup.com/assets/images/og-image.jpg" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" />
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/variables.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/reset.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/global.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/layout.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/components.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/header.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/footer.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/home.css?v=20261126a" />
-  <link rel="stylesheet" href="assets/css/responsive.css?v=20261126a" />
+  <link rel="stylesheet" href="assets/css/app.css?v=20261126b" />
 
   <!-- Schema.org EmploymentAgency : identique à la fiche Google -->
   <script type="application/ld+json">
@@ -128,7 +119,7 @@
   <main id="main">
     <!-- ============================= HERO ============================= -->
     <section class="hero" data-screen-label="Hero">
-      <img class="hero__bg" src="assets/images/hero-accueil.webp" alt="Équipe de professionnels souriants en réunion dans des bureaux lumineux" fetchpriority="high" width="1366" height="768" />
+      <img class="hero__bg" src="assets/images/hero-accueil.webp" srcset="assets/images/hero-accueil-480.webp 480w, assets/images/hero-accueil-768.webp 768w, assets/images/hero-accueil.webp 1366w" sizes="100vw" alt="Équipe de professionnels souriants en réunion dans des bureaux lumineux" fetchpriority="high" width="1366" height="768" />
       <div class="hero__overlay"></div>
       <div class="container hero__inner">
         <div class="hero__panel">
@@ -447,10 +438,10 @@
     </div>
   </footer>
 
-  <script src="assets/js/config.js?v=20261126a" defer></script>
-  <script src="assets/js/site.js?v=20261126a" defer></script>
-  <script src="assets/js/main.js?v=20261126a" defer></script>
-  <script src="assets/js/animations.js?v=20261126a" defer></script>
-  <script src="assets/js/sectors.js?v=20261126a" defer></script>
+  <script src="assets/js/config.js?v=20261126b" defer></script>
+  <script src="assets/js/site.js?v=20261126b" defer></script>
+  <script src="assets/js/main.js?v=20261126b" defer></script>
+  <script src="assets/js/animations.js?v=20261126b" defer></script>
+  <script src="assets/js/sectors.js?v=20261126b" defer></script>
 </body>
 </html>

@@ -230,7 +230,7 @@
   .sector-block .sector-block__media { order: -1; }
   .check-list--2 { grid-template-columns: 1fr; }
   /* Les anneaux décoratifs passeraient derrière les titres une fois la page en une colonne. */
-  main .deco-circle--rings { display: none; }
+  .page-interieure main .deco-circle--rings { display: none; }
 }
 @media (max-width: 560px) {
   .grid--4 { grid-template-columns: 1fr; }

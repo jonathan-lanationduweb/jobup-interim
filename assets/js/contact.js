@@ -78,7 +78,10 @@
         s.classList.toggle("is-active", idx === i);
         s.classList.remove("is-entering");
       });
-      if (animate) { void steps[i].offsetWidth; steps[i].classList.add("is-entering"); }
+      if (animate) {
+        steps[i].classList.remove("is-entering");
+        requestAnimationFrame(function () { steps[i].classList.add("is-entering"); });
+      }
       segs.forEach(function (seg, idx) {
         seg.classList.toggle("is-done", idx < i);
         seg.classList.toggle("is-current", idx === i);

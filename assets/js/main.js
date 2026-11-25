@@ -19,11 +19,17 @@
   if (subNav) {
     var lastY = window.scrollY;
     var ticking = false;
+    // Le menu suit directement l'en-tête : sa place d'origine = hauteur de l'en-tête.
+    // Hauteur lue une fois, puis seulement après un redimensionnement (jamais pendant le défilement).
+    var navTop = header ? header.offsetHeight : 0;
+    var resizeTimer = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { navTop = header ? header.offsetHeight : 0; }, 150);
+    });
     var updateNav = function () {
       var y = window.scrollY;
       var delta = y - lastY;
-      // Le menu suit directement l'en-tête : sa place d'origine = hauteur de l'en-tête.
-      var navTop = header ? header.offsetHeight : 0;
       var stuck = y > 1;
       subNav.classList.toggle("is-stuck", stuck);
       if (y < navTop + 120) subNav.classList.remove("is-hidden"); // près du haut : toujours visible
