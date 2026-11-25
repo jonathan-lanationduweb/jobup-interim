@@ -14,6 +14,32 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* ---- Menu des pages : caché en descendant, visible dès qu'on remonte ---- */
+  var subNav = document.querySelector(".sub-nav");
+  if (subNav) {
+    var lastY = window.scrollY;
+    var ticking = false;
+    var updateNav = function () {
+      var y = window.scrollY;
+      var delta = y - lastY;
+      // Le menu suit directement l'en-tête : sa place d'origine = hauteur de l'en-tête.
+      var navTop = header ? header.offsetHeight : 0;
+      var stuck = y > 1;
+      subNav.classList.toggle("is-stuck", stuck);
+      if (y < navTop + 120) subNav.classList.remove("is-hidden"); // près du haut : toujours visible
+      else if (delta > 6) subNav.classList.add("is-hidden");      // on descend
+      else if (delta < -6) subNav.classList.remove("is-hidden");  // on remonte
+      if (Math.abs(delta) > 6) lastY = y;
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(updateNav); }
+    }, { passive: true });
+    // Le menu reprend sa place si on navigue au clavier dedans.
+    subNav.addEventListener("focusin", function () { subNav.classList.remove("is-hidden"); });
+    updateNav();
+  }
+
   /* ---- Mobile navigation drawer ---- */
   var burger = document.querySelector(".burger");
   var drawer = document.querySelector(".mobile-nav");

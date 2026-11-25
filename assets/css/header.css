@@ -147,11 +147,19 @@
 .mobile-nav__link[aria-current="page"] { color: var(--color-primary); }
 .mobile-nav .btn { margin-top: var(--space-5); }
 
-/* ---- Menu des pages (sous le logo, défile avec la page) ---- */
+/* ---- Menu des pages : collé sous l'en-tête, il se cache quand on descend
+        et réapparaît dès qu'on remonte (main.js ajoute .is-hidden). ---- */
 .sub-nav {
+  position: sticky;
+  top: calc(var(--header-h) + 1px);
+  z-index: calc(var(--z-header) - 1);
   background: #fff;
   border-bottom: 1px solid var(--color-border);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
 }
+.sub-nav.is-stuck { box-shadow: var(--shadow-sm); }
+.sub-nav.is-hidden { transform: translateY(calc(-100% - 2px)); box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .sub-nav { transition: none; } }
 .sub-nav__list {
   display: flex;
   align-items: center;
@@ -204,6 +212,7 @@
 @media (max-width: 560px) {
   /* Sur téléphone, le logo ramène à l’accueil : le menu garde les 3 autres pages. */
   .sub-nav__item--home { display: none; }
+  .sub-nav { top: 73px; } /* en-tête mobile : 72 px + bordure */
   .sub-nav .container { padding-inline: 0.5rem; }
   .sub-nav__list { justify-content: safe center; gap: 0.2rem; padding-block: 0.45rem; }
   .sub-nav__link { font-size: 0.84rem; padding: 0.4rem 0.65rem; }

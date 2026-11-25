@@ -29,6 +29,14 @@
       form.querySelectorAll("[data-profil-panel]").forEach(function (panel) {
         panel.hidden = panel.getAttribute("data-profil-panel") !== p;
       });
+      // Champs facultatifs pour un profil (ex. téléphone pour une simple question).
+      form.querySelectorAll("[data-optional-for]").forEach(function (field) {
+        field.required = field.getAttribute("data-optional-for") !== p;
+        if (!field.required) field.classList.remove("has-error");
+      });
+      form.querySelectorAll("[data-show-for]").forEach(function (el) {
+        el.hidden = el.getAttribute("data-show-for") !== p;
+      });
     }
     function setProfil(value) {
       if (!profilInput) return;
@@ -156,7 +164,8 @@
         if (el.type === "checkbox") { if (el.checked) data.append(el.name, "1"); return; }
         data.append(el.name, el.value);
       });
-      data.set("type", currentProfil() === "Entreprise" ? "entreprise" : "candidat");
+      var types = { Entreprise: "entreprise", Question: "question" };
+      data.set("type", types[currentProfil()] || "candidat");
       return data;
     }
 
@@ -297,8 +306,9 @@
     // Profil depuis l'URL (?profil=candidat|entreprise)
     var profilParam = (new URLSearchParams(window.location.search).get("profil") || "").toLowerCase();
     if (profilParam === "entreprise") setProfil("Entreprise");
-    else if (profilParam === "candidat") setProfil("Candidat");
+    else if (profilParam === "question") setProfil("Question");
 
-    if (applyFromOffer()) { setProfil("Candidat"); show(1); } else show(0);
+    // Page Déposer un CV : pas d'étape « profil », le formulaire commence directement.
+    if (applyFromOffer() && profilInput) { setProfil("Candidat"); show(1); } else show(0);
   });
 })();

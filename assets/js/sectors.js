@@ -13,7 +13,7 @@
       color: "#F59E0B",
       text: "Rejoignez nos équipes sur des chantiers variés, en neuf comme en rénovation.",
       points: ["Gros œuvre", "Travaux publics", "Second œuvre", "Encadrement de chantier"],
-      href: "contact.html#postuler"
+      href: "deposer-un-cv/"
     },
     {
       key: "tertiaire",
@@ -21,7 +21,7 @@
       color: "#D946EF",
       text: "Comptabilité, administration, accueil, ressources humaines : des postes pour tous les métiers de bureau.",
       points: ["Comptabilité & gestion", "Administration", "Accueil & secrétariat", "Ressources humaines"],
-      href: "contact.html#postuler"
+      href: "deposer-un-cv/"
     },
     {
       key: "environnement",
@@ -29,7 +29,7 @@
       color: "#22C55E",
       text: "Propreté, espaces verts et gestion des déchets, au service des collectivités et des entreprises.",
       points: ["Collecte et tri", "Espaces verts", "Propreté urbaine", "Assainissement"],
-      href: "contact.html#postuler"
+      href: "deposer-un-cv/"
     }
   ];
 

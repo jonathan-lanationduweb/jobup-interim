@@ -233,7 +233,7 @@ window.JobBoard = (function () {
       remu: job.salary,
       secteur: job.sector
     });
-    return "contact.html?" + params.toString();
+    return "deposer-un-cv/?" + params.toString();
   }
 
   function renderDetail(job) {

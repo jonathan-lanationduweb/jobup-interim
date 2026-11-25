@@ -6,8 +6,28 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.jobup-interim.fr/contact.html</loc>
+    <loc>https://www.jobup-interim.fr/metiers/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jobup-interim.fr/accompagnement/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jobup-interim.fr/deposer-un-cv/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jobup-interim.fr/faq/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.jobup-interim.fr/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

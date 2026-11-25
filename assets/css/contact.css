@@ -18,7 +18,16 @@
   position: relative;
   overflow: hidden;
 }
-.contact-card__title { color: #fff; font-size: clamp(1.9rem, 1.4rem + 2vw, 2.6rem); margin-bottom: var(--space-3); position: relative; z-index: 1; }
+.contact-card__title { color: #fff; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin-bottom: var(--space-3); position: relative; z-index: 1; }
+
+/* En-tête des pages Contact / Déposer un CV */
+.contact-head { margin-bottom: var(--space-7); }
+.contact-head .lead { max-width: 62ch; }
+.contact-head__title { margin-bottom: var(--space-3); }
+.contact-head__switch { margin-top: var(--space-4); font-size: 0.95rem; color: var(--color-text-muted); }
+.contact-head__switch a { display: inline-flex; align-items: center; gap: 0.35em; font-weight: 600; color: var(--color-primary); }
+.contact-head__switch .icon { width: 15px; height: 15px; }
+.upload__note { display: block; margin-top: var(--space-2); font-size: var(--fs-small); color: var(--color-text-muted); }
 .contact-card__intro { color: rgba(255,255,255,0.86); margin-bottom: var(--space-7); position: relative; z-index: 1; }
 .contact-list { display: flex; flex-direction: column; gap: var(--space-6); position: relative; z-index: 1; }
 .contact-list__item { display: flex; gap: var(--space-4); align-items: flex-start; }
