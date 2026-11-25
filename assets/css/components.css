@@ -94,31 +94,6 @@ img.value-card__icon { width: auto; height: 26px; object-fit: contain; }
 .value-card__title { color: var(--color-primary); font-size: var(--fs-h3); font-weight: 600; }
 .value-card p { color: var(--color-text-muted); }
 
-/* Icon badge button (bookmark, close) */
-.icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.icon-btn:hover { color: var(--color-primary); border-color: var(--color-primary); }
-.icon-btn .icon { width: 18px; height: 18px; }
-.icon-btn--solid {
-  background: var(--color-primary-strong);
-  color: #fff;
-  border: none;
-}
-.icon-btn--solid:hover { background: var(--color-primary-dark); color: #fff; }
-
-/* Stars */
-.stars { display: inline-flex; gap: 2px; color: var(--color-star); }
-.stars .icon { width: 18px; height: 18px; }
-
 /* ----------------------------- Form controls --------------------------- */
 .field { display: flex; flex-direction: column; gap: var(--space-2); }
 .field__label {

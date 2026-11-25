@@ -151,8 +151,6 @@
   .process-step { display: flex; align-items: center; gap: var(--space-4); text-align: left; }
   .process-step__num { flex: none; width: 44px; height: 44px; margin: 0; font-size: 1.05rem; }
 
-  .testimonial-card { flex-basis: 86%; }
-
   .form-actions { flex-direction: column-reverse; }
   .form-actions .btn { width: 100%; }
   .form-actions .btn--back { order: 2; }
