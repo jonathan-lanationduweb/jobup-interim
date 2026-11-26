@@ -29,7 +29,7 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="../assets/css/app.css?v=20261126d" />
+  <link rel="stylesheet" href="../assets/css/app.css?v=20261126e" />
 
   <script type="application/ld+json">
   {
@@ -155,7 +155,7 @@
                 <input class="input" type="text" name="sujet" placeholder="Une mission, un document, un rendez-vous…" maxlength="150" />
               </label>
               <label class="field" style="margin-top:1.5rem">
-                <span class="field__label">Votre message</span>
+                <span class="field__label">Votre message <span class="upload__req" aria-hidden="true">*</span></span>
                 <textarea class="textarea" name="message" placeholder="Écrivez votre question…" required maxlength="3000"></textarea>
                 <span class="field-error" hidden>Merci d’écrire votre question.</span>
               </label>
@@ -166,15 +166,15 @@
               <h2 class="form-step__title">Votre offre / besoin de recrutement</h2>
               <p class="form-step__subtitle">Décrivez le poste à pourvoir : nous vous proposons des profils qualifiés sous 48h.</p>
               <div class="form-row form-row--2">
-                <label class="field"><span class="field__label">Nom de l'entreprise</span><input class="input" type="text" name="entreprise" placeholder="Votre société" required /><span class="field-error" hidden>Merci d'indiquer le nom de l'entreprise.</span></label>
+                <label class="field"><span class="field__label">Nom de l'entreprise <span class="upload__req" aria-hidden="true">*</span></span><input class="input" type="text" name="entreprise" placeholder="Votre société" required /><span class="field-error" hidden>Merci d'indiquer le nom de l'entreprise.</span></label>
                 <label class="field"><span class="field__label">Secteur</span><select class="select" name="secteur_entreprise"><option value="BTP &amp; Construction">BTP &amp; Construction</option><option value="Tertiaire">Tertiaire</option><option value="Environnement">Environnement</option></select></label>
               </div>
               <div class="form-row form-row--2" style="margin-top:1.5rem">
-                <label class="field"><span class="field__label">SIRET</span><input class="input" type="text" name="siret" inputmode="numeric" placeholder="123 456 789 00012" required /><span class="field-error" hidden>Merci d'indiquer le SIRET.</span></label>
-                <label class="field"><span class="field__label">N° TVA intracommunautaire</span><input class="input" type="text" name="tva" placeholder="FR 12 345678901" required /><span class="field-error" hidden>Merci d'indiquer le numéro de TVA.</span></label>
+                <label class="field"><span class="field__label">SIRET <span class="upload__req" aria-hidden="true">*</span></span><input class="input" type="text" name="siret" inputmode="numeric" placeholder="123 456 789 00012" required /><span class="field-error" hidden>Merci d'indiquer le SIRET.</span></label>
+                <label class="field"><span class="field__label">N° TVA intracommunautaire <span class="upload__req" aria-hidden="true">*</span></span><input class="input" type="text" name="tva" placeholder="FR 12 345678901" required /><span class="field-error" hidden>Merci d'indiquer le numéro de TVA.</span></label>
               </div>
               <div class="form-row form-row--2" style="margin-top:1.5rem">
-                <label class="field"><span class="field__label">Poste recherché</span><input class="input" type="text" name="poste_entreprise" placeholder="2 maçons coffreurs" required /><span class="field-error" hidden>Merci d'indiquer le poste.</span></label>
+                <label class="field"><span class="field__label">Poste recherché <span class="upload__req" aria-hidden="true">*</span></span><input class="input" type="text" name="poste_entreprise" placeholder="2 maçons coffreurs" required /><span class="field-error" hidden>Merci d'indiquer le poste.</span></label>
                 <label class="field"><span class="field__label">Type de contrat</span><select class="select" name="contrat_entreprise"><option>Intérim</option><option>CDD</option><option>CDI</option></select></label>
               </div>
               <div class="form-row form-row--2" style="margin-top:1.5rem">
@@ -202,12 +202,12 @@
 
             <div class="form-row form-row--2">
               <label class="field">
-                <span class="field__label">Prénom</span>
+                <span class="field__label">Prénom <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="text" name="prenom" placeholder="Votre prénom" required />
                 <span class="field-error" hidden>Merci d'indiquer votre prénom.</span>
               </label>
               <label class="field">
-                <span class="field__label">Nom</span>
+                <span class="field__label">Nom <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="text" name="nom" placeholder="Votre nom" required />
                 <span class="field-error" hidden>Merci d'indiquer votre nom.</span>
               </label>
@@ -215,19 +215,19 @@
 
             <div class="form-row form-row--2">
               <label class="field">
-                <span class="field__label">Email</span>
+                <span class="field__label">Email <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="email" name="email" placeholder="vous@email.fr" required />
                 <span class="field-error" hidden>Merci d'indiquer un email valide.</span>
               </label>
               <label class="field">
-                <span class="field__label">Téléphone <span class="upload__opt" data-show-for="Question">— facultatif</span></span>
+                <span class="field__label">Téléphone <span class="upload__req" aria-hidden="true" data-show-for="Entreprise" hidden>*</span><span class="upload__opt" data-show-for="Question">— facultatif</span></span>
                 <input class="input" type="tel" name="telephone" placeholder="06 12 34 56 78" required data-optional-for="Question" />
                 <span class="field-error" hidden>Merci d'indiquer un téléphone.</span>
               </label>
             </div>
 
             <div data-profil-panel="Entreprise" hidden style="margin-top:1.5rem">
-              <label class="field"><span class="field__label">Fonction dans l'entreprise</span><input class="input" type="text" name="fonction" placeholder="Responsable RH, dirigeant…" required /><span class="field-error" hidden>Merci d'indiquer votre fonction.</span></label>
+              <label class="field"><span class="field__label">Fonction dans l'entreprise <span class="upload__req" aria-hidden="true">*</span></span><input class="input" type="text" name="fonction" placeholder="Responsable RH, dirigeant…" required /><span class="field-error" hidden>Merci d'indiquer votre fonction.</span></label>
             </div>
 
             <label class="check" style="margin-top:1.5rem; align-items:flex-start">
@@ -360,10 +360,10 @@
     </div>
   </footer>
 
-  <script src="../assets/js/config.js?v=20261126d" defer></script>
-  <script src="../assets/js/site.js?v=20261126d" defer></script>
-  <script src="../assets/js/main.js?v=20261126d" defer></script>
-  <script src="../assets/js/animations.js?v=20261126d" defer></script>
-  <script src="../assets/js/contact.js?v=20261126d" defer></script>
+  <script src="../assets/js/config.js?v=20261126e" defer></script>
+  <script src="../assets/js/site.js?v=20261126e" defer></script>
+  <script src="../assets/js/main.js?v=20261126e" defer></script>
+  <script src="../assets/js/animations.js?v=20261126e" defer></script>
+  <script src="../assets/js/contact.js?v=20261126e" defer></script>
 </body>
 </html>
