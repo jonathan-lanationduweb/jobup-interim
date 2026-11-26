@@ -30,8 +30,9 @@
   display: grid;
   grid-template-columns: 1fr minmax(360px, 460px);
   align-items: center;
-  /* 1er écran = en-tête + menu des pages + hero : le hero remplit la hauteur restante. */
-  height: calc(100vh - 133px);
+  /* 1er écran = en-tête + menu des pages + hero : le hero remplit la hauteur restante.
+     Plancher de 560px : sur les écrans peu hauts, l'encadré ne passe pas sur les chiffres clés. */
+  height: max(560px, calc(100vh - 133px));
   padding-top: var(--space-6);
   padding-bottom: clamp(4.5rem, 3.5rem + 3vw, 6rem);
 }
