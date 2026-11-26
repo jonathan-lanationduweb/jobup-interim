@@ -71,7 +71,7 @@
   .footer-col__list span { display: inline-block; padding-block: 0.65rem; }
 
   .hero-stats { position: static; background: var(--color-primary-strong); }
-  .hero__inner { padding-bottom: var(--space-8); min-height: auto; }
+  .hero__inner { padding-bottom: var(--space-8); min-height: auto; height: auto; }
 
   .contact-grid { grid-template-columns: 1fr; }
   /* Contact : le formulaire passe au-dessus de l'encadré bleu des coordonnées. */
