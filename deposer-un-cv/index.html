@@ -29,7 +29,7 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="../assets/css/app.css?v=20261126c" />
+  <link rel="stylesheet" href="../assets/css/app.css?v=20261126d" />
 
   <script type="application/ld+json">
   {
@@ -147,7 +147,7 @@
               </div>
 
               <label class="field">
-                <span class="field__label">Poste actuel ou recherché</span>
+                <span class="field__label">Poste actuel ou recherché <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="text" name="poste" placeholder="Maçon" required />
                 <span class="field-error" hidden>Merci d'indiquer un poste.</span>
               </label>
@@ -170,10 +170,10 @@
               </div>
 
               <div class="uploads">
-                <!-- CV (optionnel) -->
+                <!-- CV (obligatoire) -->
                 <div class="upload">
-                  <span class="upload__label">CV <span class="upload__opt">— facultatif</span></span>
-                  <div class="dropzone dropzone--compact" data-dropzone tabindex="0" role="button" aria-label="Téléverser votre CV">
+                  <span class="upload__label">CV <span class="upload__req" aria-hidden="true">*</span></span>
+                  <div class="dropzone dropzone--compact" data-dropzone data-required-file tabindex="0" role="button" aria-label="Téléverser votre CV">
                     <input type="file" name="cv" accept=".pdf,.doc,.docx" hidden />
                     <div class="dropzone__prompt">
                       <span class="dropzone__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
@@ -185,7 +185,8 @@
                       <button type="button" class="dropzone__remove" data-file-remove>Retirer</button>
                     </div>
                   </div>
-                  <span class="upload__note">Pas de CV à jour&nbsp;? Passez cette étape&nbsp;: nous le constituons avec vous.</span>
+                  <span class="field-error" hidden>Merci de joindre votre CV.</span>
+                  <span class="upload__note">Pas de CV à jour&nbsp;? Passez nous voir à l’agence&nbsp;: nous le constituons avec vous.</span>
                 </div>
 
                 <!-- Lettre de motivation (facultatif) -->
@@ -218,12 +219,12 @@
 
             <div class="form-row form-row--2">
               <label class="field">
-                <span class="field__label">Prénom</span>
+                <span class="field__label">Prénom <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="text" name="prenom" placeholder="Votre prénom" required />
                 <span class="field-error" hidden>Merci d'indiquer votre prénom.</span>
               </label>
               <label class="field">
-                <span class="field__label">Nom</span>
+                <span class="field__label">Nom <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="text" name="nom" placeholder="Votre nom" required />
                 <span class="field-error" hidden>Merci d'indiquer votre nom.</span>
               </label>
@@ -231,12 +232,12 @@
 
             <div class="form-row form-row--2">
               <label class="field">
-                <span class="field__label">Email</span>
+                <span class="field__label">Email <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="email" name="email" placeholder="vous@email.fr" required />
                 <span class="field-error" hidden>Merci d'indiquer un email valide.</span>
               </label>
               <label class="field">
-                <span class="field__label">Téléphone</span>
+                <span class="field__label">Téléphone <span class="upload__req" aria-hidden="true">*</span></span>
                 <input class="input" type="tel" name="telephone" placeholder="06 12 34 56 78" required />
                 <span class="field-error" hidden>Merci d'indiquer un téléphone.</span>
               </label>
@@ -311,11 +312,11 @@
         <div class="faq-cards__grid">
           <article class="faq-card" data-animate>
             <h3 class="faq-card__q"><button class="faq-card__btn" type="button" aria-expanded="true" aria-controls="faq-card-1">Combien de temps prend le formulaire&nbsp;?<span class="faq-card__toggle" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
-            <div class="faq-card__a" id="faq-card-1"><p>Environ deux minutes&nbsp;: votre recherche, puis vos coordonnées.</p></div>
+            <div class="faq-card__a" id="faq-card-1"><p>Environ deux minutes&nbsp;: votre recherche et votre CV, puis vos coordonnées.</p></div>
           </article>
           <article class="faq-card" data-animate data-animate-delay="1">
             <h3 class="faq-card__q"><button class="faq-card__btn" type="button" aria-expanded="true" aria-controls="faq-card-2">Dois-je obligatoirement joindre un CV&nbsp;?<span class="faq-card__toggle" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
-            <div class="faq-card__a" id="faq-card-2"><p>Non. Si vous n’en avez pas à jour, passez cette étape et venez nous rencontrer&nbsp;: nous le constituons avec vous.</p></div>
+            <div class="faq-card__a" id="faq-card-2"><p>Oui, le CV est obligatoire pour postuler en ligne. Si vous n’en avez pas à jour, passez nous voir à l’agence&nbsp;: nous le constituons avec vous.</p></div>
           </article>
           <article class="faq-card" data-animate>
             <h3 class="faq-card__q"><button class="faq-card__btn" type="button" aria-expanded="true" aria-controls="faq-card-3">Quels formats de CV acceptez-vous&nbsp;?<span class="faq-card__toggle" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span></button></h3>
@@ -413,10 +414,10 @@
     </div>
   </footer>
 
-  <script src="../assets/js/config.js?v=20261126c" defer></script>
-  <script src="../assets/js/site.js?v=20261126c" defer></script>
-  <script src="../assets/js/main.js?v=20261126c" defer></script>
-  <script src="../assets/js/animations.js?v=20261126c" defer></script>
-  <script src="../assets/js/contact.js?v=20261126c" defer></script>
+  <script src="../assets/js/config.js?v=20261126d" defer></script>
+  <script src="../assets/js/site.js?v=20261126d" defer></script>
+  <script src="../assets/js/main.js?v=20261126d" defer></script>
+  <script src="../assets/js/animations.js?v=20261126d" defer></script>
+  <script src="../assets/js/contact.js?v=20261126d" defer></script>
 </body>
 </html>

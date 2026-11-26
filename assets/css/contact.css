@@ -144,7 +144,7 @@
 .uploads { display: grid; gap: var(--space-4); margin-top: var(--space-5); }
 .upload__label { display: block; font-size: var(--fs-small); font-weight: 600; color: var(--color-text); margin-bottom: 0.4rem; }
 .upload__opt { color: var(--color-text-muted); font-weight: 400; }
-.upload__req { color: var(--color-primary); font-weight: 600; }
+.upload__req { color: #DC2626; font-weight: 600; }
 .dropzone--compact { padding: var(--space-4) var(--space-5); text-align: left; }
 .dropzone--compact .dropzone__prompt { display: flex; align-items: center; gap: var(--space-4); }
 .dropzone--compact .dropzone__icon { margin-bottom: 0; width: 38px; height: 38px; flex: none; }
