@@ -1,5 +1,7 @@
-User-agent: *
-Allow: /
-Allow: /assets/
+# PHASE DE DÉVELOPPEMENT
+# Exploration bloquée tant que le site est hébergé sur GitHub Pages.
+# À REMPLACER PAR LA VERSION DE PRODUCTION AVANT LA MISE EN LIGNE
+# SUR interimjobup.com (voir robots.production.txt).
 
-Sitemap: https://interimjobup.com/sitemap.xml
+User-agent: *
+Disallow: /

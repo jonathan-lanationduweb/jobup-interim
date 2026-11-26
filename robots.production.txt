@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Le CSS, le JS et les images doivent rester accessibles,
+# sinon Google ne peut pas afficher correctement les pages.
+Allow: /assets/
+
+Sitemap: https://interimjobup.com/sitemap.xml
